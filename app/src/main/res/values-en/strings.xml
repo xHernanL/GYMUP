@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GYMUP!</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="gymList">Gym List</string>
+    <string name="aboutUs">About Us</string>
+    <string name="services">Services</string>
+    <string name="contact">Contact</string>
+    <string name="users">Users</string>
+    <string name="userProfile">User Profile</string>
+    <string name="nutrition">Nutrition and Health</string>
+
+    <!-- Para formulario de registro-->
+    <string name="register">Register</string>
+    <string name="register2">Register</string>
+    <string name="userRegister">User Register</string>
+    <string name="fullName">Full Name</string>
+    <string name="document">Document</string>
+    <string name="cellphone">Cellphone Number</string>
+    <string name="address">Address</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="repeatPassword">Repeat Password</string>
+    <string name="gender">Gender</string>
+    <string-array name="genderList">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- Prueba para servicios -->
+    <string-array name="servicesList">
+        <item>Natación</item>
+        <item>Funcional</item>
+        <item>Yoga</item>
+        <item>Pilates</item>
+        <item>Musculación</item>
+        <item>Crossfit</item>
+    </string-array>
+
+</resources>

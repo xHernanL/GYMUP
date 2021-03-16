@@ -1,3 +1,43 @@
 <resources>
-    <string name="app_name">GYMUP</string>
+    <string name="app_name">GYMUP!</string>
+    <string name="email">E-mail</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Ingresar</string>
+    <string name="gymList">Listado de Gimnasios</string>
+    <string name="aboutUs">Nosotros</string>
+    <string name="services">Servicios</string>
+    <string name="contact">Contacto</string>
+    <string name="users">Usuarios</string>
+    <string name="userProfile">Perfil del Usuario</string>
+    <string name="nutrition">Salud y Nutrición</string>
+
+    <!-- Para formulario de registro-->
+    <string name="register">Registro</string>
+    <string name="register2">Registrarse</string>
+    <string name="userRegister">Registro de Usuario</string>
+    <string name="fullName">Nombre Completo</string>
+    <string name="document">Documento de Identidad</string>
+    <string name="cellphone">Celular</string>
+    <string name="address">Dirección</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
+    <string name="repeatPassword">Repita la Contraseña</string>
+    <string name="gender">Sexo</string>
+    <string-array name="genderList">
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>Otro</item>
+    </string-array>
+
+    <!-- Prueba para servicios -->
+    <string-array name="servicesList">
+        <item>Natación</item>
+        <item>Funcional</item>
+        <item>Yoga</item>
+        <item>Pilates</item>
+        <item>Musculación</item>
+        <item>Crossfit</item>
+    </string-array>
+
+
 </resources>
