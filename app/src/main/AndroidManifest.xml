@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bitgymup.gymup">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
-        <activity android:name=".Register"></activity>
+        <activity android:name=".admin.AdminAgenda"></activity>
+        <activity android:name=".admin.AdminOffers" />
+        <activity android:name=".admin.AdminUsers" />
+        <activity android:name=".admin.AdminAddUser" />
+        <activity android:name=".admin.AdminNews" />
+        <activity android:name=".admin.AdminProfile" />
+        <activity android:name=".admin.AdminHome" />
+        <activity android:name=".Register" />
         <activity android:name=".UserProfile" />
         <activity android:name=".Nutrition" />
         <activity android:name=".Contact" />
