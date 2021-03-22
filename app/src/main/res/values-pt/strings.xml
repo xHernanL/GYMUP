@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">GYMUP</string>
     <string name="Hola">Alo</string>
+    <string name="loginUser">Inicio de sesión</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="IngresarUsuario">Ingresar</string>
+    <string name="notienecuenta">¿No tienes registro? <b>Registrate aquí</b></string>
 </resources>

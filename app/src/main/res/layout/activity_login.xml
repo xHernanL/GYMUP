@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_marginTop="50dp"
-        android:text="@string/IngresarHost"
+        android:text="@string/IngresarUsuario"
         android:translationY="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
         android:layout_marginTop="40dp"
         android:textSize="16dp"
         android:fontFamily="@font/poppinsmedium"
-        android:text="@string/notienecuentahost"
+        android:text="@string/notienecuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_LoginUser" />
