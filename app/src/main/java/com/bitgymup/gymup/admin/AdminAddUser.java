@@ -22,6 +22,10 @@ public class AdminAddUser extends AppCompatActivity {
     }
 
     /*Inicio de los enlaces*/
+    public void ClickHome(View view){
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminHome.class);
+    }
     public void ClickAgenda(View view){
         //Redirecciona la activity al Dashboard
         redirectActivity(this, AdminAgenda.class);

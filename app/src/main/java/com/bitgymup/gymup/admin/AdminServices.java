@@ -33,6 +33,10 @@ public class AdminServices extends AppCompatActivity {
 
 
     /*Inicio de los enlaces*/
+    public void ClickHome(View view){
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminHome.class);
+    }
     public void ClickAgenda(View view){
         //Redirección de la activity a AboutUs
         redirectActivity(this,AdminAgenda.class);
