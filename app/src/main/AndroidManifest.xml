@@ -13,14 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
         <activity android:name=".admin.AdminServices"></activity>
-        <activity android:name=".users.UserHome" />
+        <activity android:name=".users.UserHome"></activity>
         <activity android:name=".admin.AdminAgenda" />
         <activity android:name=".admin.AdminOffers" />
         <activity android:name=".admin.AdminUsers" />
         <activity android:name=".admin.AdminAddUser" />
         <activity android:name=".admin.AdminNews" />
         <activity android:name=".admin.AdminProfile" />
-        <activity android:name=".admin.AdminHome" />
+        <activity android:name=".admin.AdminHome">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".Register" />
         <activity android:name=".users.UserProfile" />
         <activity android:name=".Nutrition" />
@@ -28,13 +34,11 @@
         <activity android:name=".Services" />
         <activity android:name=".AboutUs" />
         <activity android:name=".GymList" />
-        <activity android:name=".LogIn" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".LogIn">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

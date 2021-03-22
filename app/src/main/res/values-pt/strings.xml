@@ -6,4 +6,9 @@
     <string name="username">Nombre de usuario</string>
     <string name="IngresarUsuario">Ingresar</string>
     <string name="notienecuenta">¿No tienes registro? <b>Registrate aquí</b></string>
+    <string name="agenda">Agenda</string>
+    <string name="clientes">Clientes</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="servicios">Servicios</string>
+    <string name="mi_perfil">Mi Perfil</string>
 </resources>
