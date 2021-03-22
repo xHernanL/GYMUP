@@ -7,11 +7,17 @@
     android:id="@+id/drawer_layout"
     tools:context=".admin.AdminProfile">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
+
 
         <TextView
             android:layout_width="match_parent"
@@ -293,20 +299,22 @@
 
         <Button
             android:id="@+id/btn_LoginUser"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:text="@string/ActualizarDatos"
             android:translationY="10dp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
 
 
+
 <!--Abajo no se toca-->
     </LinearLayout>
-
+    </ScrollView>
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"

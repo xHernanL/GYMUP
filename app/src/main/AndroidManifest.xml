@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/logo_circular"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
+        android:allowClearUserData="true"
         <activity android:name=".admin.AdminServices"></activity>
         <activity android:name=".users.UserHome"></activity>
         <activity android:name=".admin.AdminAgenda" />

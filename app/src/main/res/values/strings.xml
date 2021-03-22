@@ -44,7 +44,7 @@
     <string name="MovilPropietario">Móvil Propietario</string>
     <string name="EmailDueno">Correo electrónico del Propietario</string>
     <string name="passwordueno">Contraseña del Propietario</string>
-    <string name="ActualizarDatos">Actaulizar datos</string>
+    <string name="ActualizarDatos">Actualizar datos</string>
     <string-array name="genderList">
         <item>Hombre</item>
         <item>Mujer</item>
