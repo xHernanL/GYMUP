@@ -1,8 +1,10 @@
-package com.bitgymup.gymup;
+package com.bitgymup.gymup.users;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.bitgymup.gymup.R;
 
 public class UserProfile extends AppCompatActivity {
 
