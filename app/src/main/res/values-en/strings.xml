@@ -33,6 +33,19 @@
     <string name="notificaciones">Notificaciones</string>
     <string name="servicios">Servicios</string>
     <string name="mi_perfil">Mi Perfil</string>
+    <string name="nombregimnasio">Nombre del Gimnasio</string>
+    <string name="direccionprincipal">Dirección Principal</string>
+    <string name="telefonoprincipal">Teléfono Principal</string>
+    <string name="telMovil">Teléfono móvil</string>
+    <string name="Email">Correo electrónico</string>
+    <string name="Ciudad">Ciudad</string>
+    <string name="Estado">Estado / Departamento</string>
+    <string name="RUT">RUT / Registro Mercantil</string>
+    <string name="NombrePropietario">Nombre del Propietario</string>
+    <string name="MovilPropietario">Móvil Propietario</string>
+    <string name="EmailDueno">Correo electrónico del Propietario</string>
+    <string name="passwordueno">Contraseña del Propietario</string>
+    <string name="ActualizarDatos">Actaulizar datos</string>
     <string-array name="genderList">
         <item>Male</item>
         <item>Female</item>

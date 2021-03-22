@@ -6,22 +6,305 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     tools:context=".admin.AdminProfile">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
 
-
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Perfil Admin"
+            android:layout_height="38sp"
+            android:text="Perfil del Gimnasio"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"/>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/nombregimnasio"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nombregimnasio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/direccionprincipal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/direccionPrincipal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/telefonoprincipal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/telefonoprincipal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutMovil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/telMovil"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/telMovil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/Email"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutCiudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/Ciudad"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Ciudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/Estado"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Estado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutRUT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/RUT"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/RUT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutPropietario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/NombrePropietario"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Propietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutCelPro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/MovilPropietario"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/MovilPropietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEMailDueno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/EmailDueno"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailDueno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutPassordDueno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="@string/passwordueno"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordDueno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDFDFD"
+                android:drawableEnd="@drawable/ic_username"
+                android:fontFamily="@font/poppinsmedium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+
+        <Button
+            android:id="@+id/btn_LoginUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_marginTop="50dp"
+            android:text="@string/ActualizarDatos"
+            android:translationY="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+
+
+<!--Abajo no se toca-->
     </LinearLayout>
 
     <RelativeLayout
@@ -32,4 +315,5 @@
 
         <include layout="@layout/main_nav_admin" />
     </RelativeLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>
