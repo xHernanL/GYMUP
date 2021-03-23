@@ -13,13 +13,13 @@ import android.view.View;
 
 import com.bitgymup.gymup.R;
 
-public class UserServicios extends AppCompatActivity {
+public class UserSaludNutricion extends AppCompatActivity {
     //Inicializar las variables
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_servicios);
+        setContentView(R.layout.activity_user_salud_nutricion);
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
     }
@@ -48,34 +48,42 @@ public class UserServicios extends AppCompatActivity {
 
     /*Inicio de los LINKS*/
     public void ClickHomeU(View view){
+        //recrea la actividad
         redirectActivity(this, UserHome.class);
     }
     public void ClickMiNutri(View view){
-        redirectActivity(this, UserSaludNutricion.class);
+        //recrea la actividad
+        recreate();
     }
     public void ClickAgendaU(View view){
+        //Redirecciona la activity al Dashboard
         redirectActivity(this, UserReservas.class);
     }
     public void ClickServiciosU(View view){
-        recreate();
+        //Redirección de la activity a AboutUs
+        redirectActivity(this, UserServicios.class);
     }
     public void ClickMiSalud(View view){
+        //Redirección de la activity a AboutUs
         redirectActivity(this, UserSalud.class);
     }
     public void ClickPagosU(View view){
+        //Redirección de la activity a AboutUs
         redirectActivity(this, UserPagos.class);
     }
+
     public void ClickPromoU(View view){
+        //Redirección de la activity a AboutUs
         redirectActivity(this, UserPromo.class);
     }
     public void ClickMyProfileU(View view){
+        //Redirección de la activity a AboutUs
         redirectActivity(this, UserProfile.class);
     }
     public void ClickLogout(View view){
         //Close APP
         salir(this);
     }
-
     /*Fin de los LINKS*/
 
 
@@ -125,5 +133,8 @@ public class UserServicios extends AppCompatActivity {
         //Close drawer
         closeDrawer(drawerLayout);
     }
+
+
+
 
 }

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/logo_circular"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
-        <activity android:name=".users.UserPromo"></activity>
+        <activity android:name=".users.UserSaludNutricion"></activity>
+        <activity android:name=".users.UserPromo" />
         <activity android:name=".users.UserSalud" />
         <activity android:name=".users.UserPagos" />
         <activity android:name=".users.UserServicios" />

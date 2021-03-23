@@ -50,6 +50,9 @@ public class UserPromo extends AppCompatActivity {
     public void ClickHomeU(View view){
         redirectActivity(this, UserHome.class);
     }
+    public void ClickMiNutri(View view){
+        redirectActivity(this, UserSaludNutricion.class);
+    }
     public void ClickAgendaU(View view){
         redirectActivity(this, UserReservas.class);
     }

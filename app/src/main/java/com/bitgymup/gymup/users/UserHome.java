@@ -51,6 +51,9 @@ public class UserHome extends AppCompatActivity {
         //recrea la actividad
         recreate();
     }
+    public void ClickMiNutri(View view){
+        redirectActivity(this, UserSaludNutricion.class);
+    }
     public void ClickAgendaU(View view){
         //Redirecciona la activity al Dashboard
         redirectActivity(this, UserReservas.class);

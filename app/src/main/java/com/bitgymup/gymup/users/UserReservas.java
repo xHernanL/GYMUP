@@ -53,6 +53,9 @@ public class UserReservas extends AppCompatActivity {
     public void ClickAgendaU(View view){
         recreate();
     }
+    public void ClickMiNutri(View view){
+        redirectActivity(this, UserSaludNutricion.class);
+    }
     public void ClickServiciosU(View view){
         redirectActivity(this, UserServicios.class);
     }
