@@ -24,4 +24,9 @@
     <string name="EmailDueno">Correo electrónico del Propietario</string>
     <string name="passwordueno">Contraseña del Propietario</string>
     <string name="ActualizarDatos">Actaulizar datos</string>
+    <string name="area_del_cliente">Área del cliente</string>
+    <string name="reservas">Reservas</string>
+    <string name="mi_salud">Mi Salud</string>
+    <string name="balance">Balance</string>
+    <string name="estado_de_cuenta">Estado de Cuenta</string>
 </resources>

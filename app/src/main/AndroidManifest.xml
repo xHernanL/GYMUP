@@ -12,18 +12,20 @@
         android:roundIcon="@mipmap/logo_circular"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
-        android:allowClearUserData="true"
-        <activity android:name=".admin.AdminServices"></activity>
-        <activity android:name=".users.UserHome"></activity>
+        <activity android:name=".users.UserPromo"></activity>
+        <activity android:name=".users.UserSalud" />
+        <activity android:name=".users.UserPagos" />
+        <activity android:name=".users.UserServicios" />
+        <activity android:name=".users.UserReservas" />
+        <activity android:name=".admin.AdminServices" />
+        <activity android:name=".users.UserHome" />
         <activity android:name=".admin.AdminAgenda" />
         <activity android:name=".admin.AdminOffers" />
         <activity android:name=".admin.AdminUsers" />
         <activity android:name=".admin.AdminAddUser" />
         <activity android:name=".admin.AdminNews" />
         <activity android:name=".admin.AdminProfile" />
-        <activity android:name=".admin.AdminHome">
-
-        </activity>
+        <activity android:name=".admin.AdminHome" />
         <activity android:name=".Register" />
         <activity android:name=".users.UserProfile" />
         <activity android:name=".Nutrition" />
@@ -34,12 +36,11 @@
         <activity android:name=".LogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

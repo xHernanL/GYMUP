@@ -13,17 +13,16 @@ import android.view.View;
 
 import com.bitgymup.gymup.R;
 
-public class UserProfile extends AppCompatActivity {
+public class UserPromo extends AppCompatActivity {
     //Inicializar las variables
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_user_promo);
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
     }
-
     public void ClickMenu(View view){
         //Abrir drawer
         openDrawer(drawerLayout);
@@ -46,7 +45,8 @@ public class UserProfile extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
-    /*Inicio de los LINKS*/
+
+/*Inicio de los LINKS*/
     public void ClickHomeU(View view){
         redirectActivity(this, UserHome.class);
     }
@@ -63,17 +63,17 @@ public class UserProfile extends AppCompatActivity {
         redirectActivity(this, UserPagos.class);
     }
     public void ClickPromoU(View view){
-        redirectActivity(this, UserPromo.class);
+        recreate();
     }
     public void ClickMyProfileU(View view){
-        recreate();
+        redirectActivity(this, UserProfile.class);
     }
     public void ClickLogout(View view){
         //Close APP
         salir(this);
     }
 
-    /*Fin de los LINKS*/
+/*Fin de los LINKS*/
 
 
     public static void salir(Activity activity) {
@@ -122,6 +122,7 @@ public class UserProfile extends AppCompatActivity {
         //Close drawer
         closeDrawer(drawerLayout);
     }
+
 
 
 }
