@@ -27,7 +27,7 @@ public class AdminHome extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         Intent i = this.getIntent();
         String usuario_s = i.getStringExtra("usuario");
-        setUsuario_s(usuario_s);
+
     }//Fin onCreate
 
     public void ClickMenu(View view){

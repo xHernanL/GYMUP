@@ -56,8 +56,8 @@ public class AdminProfile extends AppCompatActivity {
         txtMovilProp = (EditText)findViewById(R.id.MovilPropietario);
         txtMailProp = (EditText)findViewById(R.id.emailDueno);
         txtPass = (EditText)findViewById(R.id.passwordDueno);
-        Intent i = this.getIntent();
-        String usuario = i.getStringExtra("usuario");
+        //Intent i = this.getIntent();
+        //String usuario = i.getStringExtra("usuario");
         getUsuario_s();
         try
         {

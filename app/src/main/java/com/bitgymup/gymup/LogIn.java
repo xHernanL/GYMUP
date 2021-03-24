@@ -19,6 +19,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import extras.EnviarDatos;
 
+import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
+
 public class LogIn extends AppCompatActivity {
 
     TextInputEditText textInputEditTextUserName, textInputEditTextPassword;
@@ -109,6 +111,7 @@ public class LogIn extends AppCompatActivity {
 
                                                     Intent bienvenido = new Intent(getApplicationContext(), AdminHome.class);
                                                     bienvenido.putExtra("usuario", username);
+                                                    setUsuario_s(username);
                                                     startActivity(bienvenido);
                                                     finish();
                                                 }
