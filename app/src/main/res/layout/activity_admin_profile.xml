@@ -85,6 +85,7 @@
                 android:id="@+id/telefonoprincipal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:background="#FDFDFD"
                 android:drawableEnd="@drawable/ic_username"
                 android:fontFamily="@font/poppinsmedium"
@@ -106,6 +107,7 @@
                 android:id="@+id/telMovil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:background="#FDFDFD"
                 android:drawableEnd="@drawable/ic_username"
                 android:fontFamily="@font/poppinsmedium"
@@ -129,6 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FDFDFD"
+                android:inputType="textEmailAddress"
                 android:drawableEnd="@drawable/ic_username"
                 android:fontFamily="@font/poppinsmedium"
                 />
@@ -298,10 +301,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
 
         <Button
-            android:id="@+id/btn_LoginUser"
+            android:id="@+id/btn_ActualizarUsr"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:text="@string/ActualizarDatos"
             android:translationY="10dp"
@@ -310,7 +314,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
 
-
+        <TextView
+            android:id="@+id/loginText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textSize="16dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text=""
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_ActualizarUsr" />
 
 <!--Abajo no se toca-->
     </LinearLayout>

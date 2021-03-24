@@ -13,6 +13,8 @@ import android.view.View;
 
 import com.bitgymup.gymup.R;
 
+import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
+
 public class AdminHome extends AppCompatActivity {
     //Inicializar las variables
     DrawerLayout drawerLayout;
@@ -23,6 +25,9 @@ public class AdminHome extends AppCompatActivity {
 
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        Intent i = this.getIntent();
+        String usuario_s = i.getStringExtra("usuario");
+        setUsuario_s(usuario_s);
     }//Fin onCreate
 
     public void ClickMenu(View view){
