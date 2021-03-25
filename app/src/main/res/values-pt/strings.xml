@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="email">E-mail</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Ingresar</string>
+    <string name="gymList">Listado de Gimnasios</string>
+    <string name="aboutUs">Nosotros</string>
+    <string name="services">Servicios</string>
+    <string name="contact">Contacto</string>
+    <string name="users">Usuarios</string>
+    <string name="userProfile">Perfil del Usuario</string>
+    <string name="nutrition">Salud y Nutrición</string>
+
+    <!-- Para formulario de registro-->
+    <string name="register">Registro</string>
+    <string name="register2">Registrarse</string>
+    <string name="userRegister">Registro de Usuario</string>
+    <string name="fullName">Nombre Completo</string>
+    <string name="document">Documento de Identidad</string>
+    <string name="cellphone">Celular</string>
+    <string name="address">Dirección</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
+    <string name="repeatPassword">Repita la Contraseña</string>
+    <string name="gender">Sexo</string>
     <string name="app_name">GYMUP</string>
-    <string name="Hola">Alo</string>
+
     <string name="loginUser">Inicio de sesión</string>
     <string name="username">Nombre de usuario</string>
     <string name="IngresarUsuario">Ingresar</string>
@@ -30,4 +53,11 @@
     <string name="balance">Balance</string>
     <string name="estado_de_cuenta">Estado de Cuenta</string>
     <string name="salud_y_nutrici_n">Salud y Nutrición</string>
+    <!-- Start Reservation -->
+    <string name="btnDatePicker">Seleccionar Fecha</string>
+    <string name="btnReservaAction1">Cancelar Reserva</string>
+    <string name="btnReservaAction2">Modificar</string>
+    <string name="btnReservar">Reservar</string>
+    <string name="guardarReserva">Guardar Reserva</string>
+    <!-- End Reservation -->
 </resources>
