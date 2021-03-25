@@ -30,4 +30,6 @@
     <string name="balance">Balance</string>
     <string name="estado_de_cuenta">Estado de Cuenta</string>
     <string name="salud_y_nutrici_n">Salud y Nutrición</string>
+    <string name="mensaje_a_ser_enviado">Mensaje a ser enviado</string>
+    <string name="t_tulo_o_asunto">Título o Asunto</string>
 </resources>
