@@ -23,17 +23,17 @@
             android:id="@+id/gimnasio_nombre"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:text="@string/offer_gim" />
+            android:text="@string/about_gim" />
 
-        <ImageView
-            android:id="@+id/gimnasio_imagen"
+        <TextView
+            android:id="@+id/about_mision"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:background="@color/purple_500"
-            android:foreground="@drawable/gym_pesas"
-            android:text="Imagen" />
+            android:text="@string/about_mision" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -41,31 +41,37 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/promo_titulo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:hint="Titulo"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <EditText
-                android:id="@+id/promo_contenido"
+                android:id="@+id/content_mision"
                 android:layout_width="match_parent"
                 android:layout_height="138dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:hint="Describa la promoción:"
+                android:hint="@string/about_content_mision"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/about_vision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/about_vision" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/content_vision"
+                android:layout_width="match_parent"
+                android:layout_height="138dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="@string/about_content_vision"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
@@ -74,6 +80,11 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="45dp"
             android:text="@string/offer_button" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
     <RelativeLayout

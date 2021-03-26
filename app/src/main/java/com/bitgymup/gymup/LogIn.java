@@ -3,7 +3,9 @@ package com.bitgymup.gymup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -108,6 +110,8 @@ public class LogIn extends AppCompatActivity {
                                                     Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
                                                     //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
+                                                    //Para manterner los datos en varias activities mientras la app se ejecuta se usa SharedPreferences.
+                                                    saveUserLogin(username); //Subir
 
                                                     Intent bienvenido = new Intent(getApplicationContext(), AdminHome.class);
                                                     bienvenido.putExtra("usuario", username);
@@ -139,4 +143,10 @@ public class LogIn extends AppCompatActivity {
 
 
     }//Fin de onCreate
+    private void saveUserLogin(String username) { //Subir
+        SharedPreferences sharedPref = getSharedPreferences("user_login",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("username", username);
+        editor.apply();
+    }
 }

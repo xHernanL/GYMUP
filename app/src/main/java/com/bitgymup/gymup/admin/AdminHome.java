@@ -88,6 +88,10 @@ public class AdminHome extends AppCompatActivity {
         //Close APP
         salir(this);
     }
+    public void CAbout(View view){
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminAboutUs.class);
+    }
 
     public static void salir(Activity activity) {
         //Se coloca el dialogo de alerta

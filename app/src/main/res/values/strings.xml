@@ -11,6 +11,22 @@
     <string name="userProfile">Perfil del Usuario</string>
     <string name="nutrition">Salud y Nutrición</string>
 
+    <!-- Para AdminServices-->
+    <string name="services_tipo">Seleccione tipo de servicio:</string>
+
+    <!-- Para AdminAbout-->
+    <string name="about_gim">Aca va el nombre del gim</string>
+    <string name="about_mision">Misión:</string>
+    <string name="about_vision">Visión:</string>
+    <string name="about_content_mision">Agregar información sobre Mision</string>
+    <string name="about_content_vision">Agregar información sobre Vision</string>
+
+    <!-- Para AdminOffers-->
+    <string name="offer_gim">Aca va el nombre del gim</string>
+    <string name="offer_title">Titulo</string>
+    <string name="offer_content">Titulo</string>
+    <string name="offer_button">Guardar</string>
+
     <!-- Para formulario de registro-->
     <string name="register">Registro</string>
     <string name="register2">Registrarse</string>
@@ -31,6 +47,7 @@
     <string name="clientes">Clientes</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="servicios">Servicios</string>
+    <string name="mi_about">About</string>
     <string name="mi_perfil">Mi Perfil</string>
     <string name="nombregimnasio">Nombre del Gimnasio</string>
     <string name="direccionprincipal">Dirección Principal</string>
