@@ -10,9 +10,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.bitgymup.gymup.R;
-
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.bitgymup.gymup.admin.MyFirebaseInstanceIDService.*;
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 
 public class AdminHome extends AppCompatActivity {
@@ -27,7 +29,11 @@ public class AdminHome extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         Intent i = this.getIntent();
         String usuario_s = i.getStringExtra("usuario");
+        TextView tvToken;
+        tvToken = findViewById(R.id.tvToken);
+        tvToken.setText(FirebaseInstanceId.getInstance().getToken());
 
+        //tvToken.setText(FirebaseInstanceId.getInstance().getInstanceId());
     }//Fin onCreate
 
     public void ClickMenu(View view){
