@@ -45,12 +45,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notificacion" />
 
-        <service
-            android:name=".admin.MyFirebaseInstanceIDService">
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/material_on_surface_emphasis_high_type" />
 
+        <service android:name=".notification.FirebaseServiciodeMensajes">
             <intent-filter>
-                <action android:name="com.google.firebase.MESAGING_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
 

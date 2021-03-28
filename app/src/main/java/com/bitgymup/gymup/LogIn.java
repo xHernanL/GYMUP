@@ -1,29 +1,50 @@
 package com.bitgymup.gymup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.bitgymup.gymup.admin.AdminHome;
 import com.bitgymup.gymup.users.UserHome;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import extras.EnviarDatos;
 
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
+import static com.bitgymup.gymup.admin.Variables.usuario_s;
 
 public class LogIn extends AppCompatActivity {
 
+    private static final String CHANNEL_ID = "102";
     TextInputEditText textInputEditTextUserName, textInputEditTextPassword;
     Button buttonLogin;
     TextView textViewSignUp;
@@ -42,6 +63,7 @@ public class LogIn extends AppCompatActivity {
         Toolbar miActionbar = (Toolbar) findViewById(R.id.miActionbarBack);
         setSupportActionBar(miActionbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         /*Se le asigna un evento en el caso que este registrado puede ser redirigido al Registro*/
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
@@ -147,8 +169,58 @@ public class LogIn extends AppCompatActivity {
             }
         });//Parte final
 
-
+        //createNotificationChannel();
+        //getToken();
+        //subscribeToTopic();
 
 
     }//Fin de onCreate
+
+
+    //get de application token
+    private void getToken(){
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                    @Override
+                    public void onSuccess(InstanceIdResult instanceIdResult) {
+                        Log.e("Token", instanceIdResult.getToken());
+                        Toast.makeText(getApplicationContext(), "Se::", Toast.LENGTH_LONG).show();
+                        //enviarTokenToServer(instanceIdResult.getToken(), usuario_s, idgim);
+                    }
+                });
+    }
+    //create a notif channel
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "firebaseNotifChannel";
+            String description = "Este es el canal para recibir las notificaciones";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void subscribeToTopic(){
+        FirebaseMessaging.getInstance().subscribeToTopic("newsletter")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                       /* String msg = getString(R.string.msg_subscribed);
+                        if (!task.isSuccessful()) {
+                            msg = getString(R.string.msg_subscribe_failed);
+                        }
+                        Log.d(TAG, msg);*/
+                        Toast.makeText(LogIn.this, "Suscriotoooo", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+    }
+
+
 }

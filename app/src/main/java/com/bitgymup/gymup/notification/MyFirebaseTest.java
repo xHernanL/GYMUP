@@ -1,4 +1,4 @@
-package com.bitgymup.gymup.admin;
+package com.bitgymup.gymup.notification;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -30,7 +30,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
+public class MyFirebaseTest extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -110,7 +110,7 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Se registro exitosamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Se registro exitosamente21", Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
