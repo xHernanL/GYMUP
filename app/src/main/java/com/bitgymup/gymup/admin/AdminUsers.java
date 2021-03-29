@@ -60,6 +60,10 @@ public class AdminUsers extends AppCompatActivity {
         //recreamos la actividad!
         recreate();
     }
+    public void CAbout(View view){
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminAboutUs.class);
+    }
 /*Fin de los enlaces generales*/
 
     public void ClickLogout(View view){

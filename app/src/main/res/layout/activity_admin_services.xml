@@ -5,22 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".admin.AdminServices">
+    tools:context=".admin.AdminHome">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
 
+        <!-- EditText con Material Design -->
+        <TextView
+            android:fontFamily="@font/poppinsmedium"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/gimnasio_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/offer_gim" />
+
 
         <TextView
+            android:id="@+id/text_servicio"
+            android:gravity="left"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Servicios"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_height="wrap_content"
+            android:text="@string/services_tipo" />
 
+
+        <Spinner
+            android:id="@+id/services_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/services_desc"
+                android:layout_width="match_parent"
+                android:layout_height="138dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Describa el servicio:"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="45dp"
+            android:text="@string/offer_button" />
 
     </LinearLayout>
 

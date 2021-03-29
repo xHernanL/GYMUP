@@ -7,6 +7,8 @@
 
     <application
         android:allowBackup="true"
+        android:allowClearUserData="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:icon="@mipmap/logo_circular"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo_circular"
@@ -20,6 +22,7 @@
         <activity android:name=".users.UserReservas" />
         <activity android:name=".admin.AdminServices" />
         <activity android:name=".users.UserHome" />
+        <activity android:name=".admin.AdminAboutUs" />
         <activity android:name=".admin.AdminAgenda" />
         <activity android:name=".admin.AdminOffers" />
         <activity android:name=".admin.AdminUsers" />

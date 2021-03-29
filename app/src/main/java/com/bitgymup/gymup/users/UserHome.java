@@ -47,36 +47,29 @@ public class UserHome extends AppCompatActivity {
         }
     }
 /*Inicio de los LINKS*/
+
     public void ClickHomeU(View view){
-        //recrea la actividad
         recreate();
     }
     public void ClickMiNutri(View view){
         redirectActivity(this, UserSaludNutricion.class);
     }
     public void ClickAgendaU(View view){
-        //Redirecciona la activity al Dashboard
         redirectActivity(this, UserReservas.class);
     }
     public void ClickServiciosU(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this, UserServicios.class);
+         redirectActivity(this, UserServicios.class);
     }
     public void ClickMiSalud(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this, UserSalud.class);
+         redirectActivity(this, UserSalud.class);
     }
     public void ClickPagosU(View view){
-        //Redirección de la activity a AboutUs
         redirectActivity(this, UserPagos.class);
     }
-
     public void ClickPromoU(View view){
-        //Redirección de la activity a AboutUs
         redirectActivity(this, UserPromo.class);
     }
     public void ClickMyProfileU(View view){
-        //Redirección de la activity a AboutUs
         redirectActivity(this, UserProfile.class);
     }
     public void ClickLogout(View view){

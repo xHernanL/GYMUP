@@ -56,6 +56,10 @@ public class AdminAddUser extends AppCompatActivity {
         //Cerrar APP
         AdminHome.salir(this);
     }
+    public void CAbout(View view){
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminAboutUs.class);
+    }
     @Override
     protected void onPause(){
         super.onPause();

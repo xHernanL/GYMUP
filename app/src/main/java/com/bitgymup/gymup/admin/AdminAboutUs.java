@@ -10,10 +10,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,13 +29,12 @@ import org.json.JSONObject;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminServices extends AppCompatActivity {
-    private EditText services_desc;
-    private Spinner services_name;
+public class AdminAboutUs extends AppCompatActivity {
+    private EditText content_mision, content_vision;
     private TextView gimnasio_nombre;
     private Button btnSubmit;
-    String username, service_selected;
     private String idgim;
+    String username;
 
     ProgressDialog progreso;
 
@@ -49,37 +46,27 @@ public class AdminServices extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_services);
-        //Asignamos la variable
-        drawerLayout = findViewById(R.id.drawer_layout);
+        setContentView(R.layout.activity_admin_about_us);
 
-        //services_name = (EditText) findViewById(R.id.services_name);
-        services_name = (Spinner) findViewById(R.id.services_name);
-        services_desc = (EditText) findViewById(R.id.services_desc);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        content_mision = (EditText) findViewById(R.id.content_mision);
+        content_vision = (EditText) findViewById(R.id.content_vision);
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
 
-        String [] opciones = {"Zumba","Yoga","Crossfit","Funcional","OpenBox","Pilates","Musculacion","Natacion"};
-        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
-        services_name.setAdapter(adapter);
         username = getUserLogin("username");
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         request = Volley.newRequestQueue(this);
 
-        //username = "nanoman07";
         cargarWSgimnasio(username);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                service_selected = services_name.getSelectedItem().toString();
-
-                if(service_selected.equals("") || service_selected.equals(null) ){
-                    Toast.makeText(getApplicationContext(),"Campo servicio no debe estar varcio", Toast.LENGTH_LONG).show();
-                }else if(TextUtils.isEmpty(services_desc.getText().toString())){
-                    Toast.makeText(getApplicationContext(),"Campo descripcion no debe estar varcio", Toast.LENGTH_LONG).show();
+                if(content_mision.getText().toString().equals("") || content_mision.getText().toString().equals(null) ){
+                    Toast.makeText(getApplicationContext(),"Campo misión no debe estar varcio", Toast.LENGTH_LONG).show();
+                }else if(TextUtils.isEmpty(content_vision.getText().toString())){
+                    Toast.makeText(getApplicationContext(),"Campo visión no debe estar varcio", Toast.LENGTH_LONG).show();
                 }else{
                     cargarWebService();
                 }
@@ -87,7 +74,9 @@ public class AdminServices extends AppCompatActivity {
             }
 
         });
+
     }
+
     private String getUserLogin(String key) {
         SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String username = sharedPref.getString(key,"");
@@ -103,8 +92,8 @@ public class AdminServices extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         //progreso.hide();
                         //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
-                        //services_name.setText("");
-                        services_desc.setText("");
+                        content_mision.setText("");
+                        content_vision.setText("");
                         //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
                         JSONArray json=response.optJSONArray("detail");
                         JSONObject jsonObject=null;
@@ -131,13 +120,13 @@ public class AdminServices extends AppCompatActivity {
     }
     private void cargarWebService() {
 
-        progreso= new ProgressDialog(AdminServices.this);
+        progreso= new ProgressDialog(AdminAboutUs.this);
         progreso.setMessage("Cargando...");
         progreso.show();
 
-        String url = "http://gymup.zonahosting.net/gymphp/RegistroServicesWS.php?gim="+idgim+
-                "&name="+service_selected+
-                "&description="+services_desc.getText().toString();
+        String url = "http://gymup.zonahosting.net/gymphp/AboutusWS.php?gim="+idgim+
+                "&contentsmision="+content_mision.getText().toString()+
+                "&contentsvision="+content_vision.getText().toString();
 
         url = url.replace(" ","%20");
 
@@ -148,8 +137,8 @@ public class AdminServices extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         progreso.hide();
                         Toast.makeText(getApplicationContext(),"Exito al guardar :) "+ response.toString(), Toast.LENGTH_LONG).show();
-                        //services_name.setText("");
-                        services_desc.setText("");
+                        content_mision.setText("");
+                        content_vision.setText("");
 
 
                     }
@@ -165,6 +154,7 @@ public class AdminServices extends AppCompatActivity {
         request.add(jsonObjectRequest);
 
     }
+
 
     public void ClickMenu(View view){
         //Abrir el drawer
@@ -183,8 +173,8 @@ public class AdminServices extends AppCompatActivity {
         redirectActivity(this,AdminHome.class);
     }
     public void ClickAgenda(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminAgenda.class);
+        //recreamos la actividad!
+        recreate();
     }
     public void ClickNews(View view){
         //Redirección de la activity a AboutUs
@@ -195,20 +185,16 @@ public class AdminServices extends AppCompatActivity {
         redirectActivity(this,AdminOffers.class);
     }
     public void ClickServicios(View view){
-        //recreamos la actividad!
-        recreate();
+        //Redirección de la activity a AboutUs
+        redirectActivity(this,AdminServices.class);
     }
     public void ClickMyProfile(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminProfile.class);
+        //recreamos la actividad!
+        recreate();
     }
     public void ClickClientes(View view){
         //Redirección de la activity a AboutUs
         redirectActivity(this,AdminUsers.class);
-    }
-    public void CAbout(View view){
-        //Redirección de la activity to Home
-        redirectActivity(this,AdminAboutUs.class);
     }
     /*Fin de los enlaces generales*/
 
@@ -216,13 +202,17 @@ public class AdminServices extends AppCompatActivity {
         //Cerrar APP
         AdminHome.salir(this);
     }
+
+    public void CAbout(View view){
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminAboutUs.class);
+    }
     @Override
     protected void onPause(){
         super.onPause();
         //Close drawer
         AdminHome.closeDrawer(drawerLayout);
     }
-
 
 
 
