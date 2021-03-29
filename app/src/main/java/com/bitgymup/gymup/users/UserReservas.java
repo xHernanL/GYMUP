@@ -9,19 +9,104 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.bitgymup.gymup.admin.Variables;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.admin.AdminHome;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import extras.EnviarDatos;
+
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
+import static com.bitgymup.gymup.admin.Variables.getUsuario_s;
+import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 
 public class UserReservas extends AppCompatActivity {
     //Inicializar las variables
     DrawerLayout drawerLayout;
+    TextView gymid, idservice, nameservice, day, hour;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_reservas);
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        gymid = findViewById(R.id.idgym);
+        idservice = findViewById(R.id.idservice);
+        nameservice = findViewById(R.id.nameservice);
+        day = findViewById(R.id.day);
+        hour = findViewById(R.id.time);
+        FloatingActionButton fab;
+        fab =findViewById(R.id.floatingActionButton2);
+
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public  void onClick(View v){
+                //  obtenemos los datos http://gymup.zonahosting.net/gymphp/getServices.php
+
+                try
+                {
+                    getServices("http://gymup.zonahosting.net/gymphp/getServices.php?username=daniferpro"+getUsuario_s());
+                } catch (Exception e) {
+                    e.printStackTrace();//Para mejorar esto!!!
+                }
+
+            }
+        });
+    }
+    private void getServices(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i= 0; i < response.length(); i++){
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        gymid.setText(jsonObject.getString("idGym"));
+                        idservice.setText(jsonObject.getString("idService"));
+                        nameservice.setText(jsonObject.getString("name"));
+                        day.setText(jsonObject.getString("Date"));
+                        hour.setText(jsonObject.getString("Hour"));
+
+
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
     }
     public void ClickMenu(View view){
         //Abrir drawer
