@@ -15,9 +15,19 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.admin.AdminHome;
 import com.bitgymup.gymup.users.UserHome;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import extras.EnviarDatos;
 
@@ -51,39 +61,7 @@ public class RecuperarPass extends AppCompatActivity {
                 {
                     //Start ProgressBar first (Establecer visibility VISIBLE)
                     progressBar.setVisibility(View.VISIBLE);
-                    Handler handler = new Handler(Looper.getMainLooper());
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Inicio de datos por URL.
-                            //Creando arrary par los parametros.
-                            String[] field = new String[2];
-                            field[0] = "usuario";
-                            field[1] = "email";
-                            //Creando el arrary para los datos.
-                            String[] data = new String[2];
-                            data[0] = username;
-                            data[1] = username;
-                            EnviarDatos enviarDatos = new EnviarDatos("http://gymup.zonahosting.net/recuperar", "GET", field, data);
-                            //Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();//prueba general
-                            if (enviarDatos.startPut()) {
-                                if (enviarDatos.onComplete()) {
-                                    progressBar.setVisibility(View.GONE);
-                                    String result = enviarDatos.getResult();
-
-                                    if (result.contains("Correo enviado")){
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-
-                                        //Caso del Intent, paso por variables.
-                                        Intent bienvenido = new Intent(getApplicationContext(), UserHome.class);
-                                        //bienvenido.putExtra("usuario", username);
-                                        //startActivity(bienvenido);
-                                        finish();
-                                    }
-                                }
-                            }//End Write and Read data with URL
-                        }
-                    });
+                    EnviarRecuperar("http://gymup.zonahosting.net/recuperar?email="+username);
 
                 }//fin del Ii
                 else {
@@ -94,6 +72,38 @@ public class RecuperarPass extends AppCompatActivity {
 
 
     }//Fin onCreate
+
+    private void EnviarRecuperar(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(), "¡Correo enviado correctamente! Revise la carpeta spam.", Toast.LENGTH_LONG).show();
+                //Caso del Intent, paso por variables.
+
+                Intent bienvenido = new Intent(getApplicationContext(), LogIn.class);
+                //bienvenido.putExtra("usuario", username);
+                startActivity(bienvenido);
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parametros = new HashMap<String, String>();
+                parametros.put("usuario", textInputEditTextUserName.getText().toString());
+                parametros.put("email", textInputEditTextUserName.getText().toString());
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
