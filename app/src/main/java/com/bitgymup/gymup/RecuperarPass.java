@@ -84,7 +84,12 @@ public class RecuperarPass extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "¡Correo enviado correctamente! Revise la carpeta spam.", Toast.LENGTH_LONG).show();
+                if (response.toString().contains("Nombre de usuario")){
+                    Toast.makeText(getApplicationContext(), "¡Nombre de usuario incorrecto!", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Correo enviado correctamente, revise carpeta spam.", Toast.LENGTH_LONG).show();
+                }
+
                 //Caso del Intent, paso por variables.
 
                 Intent bienvenido = new Intent(getApplicationContext(), LogIn.class);
