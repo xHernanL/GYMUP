@@ -54,14 +54,20 @@ public class RecuperarPass extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username, password;
-                username = String.valueOf(textInputEditTextUserName.getText());
+                username = String.valueOf(textInputEditTextUserName.getText().toString().trim());
 
                 //Se determina si hay valores nulos, en tan caso se despliega un Toast
                 if(!username.equals(""))
                 {
                     //Start ProgressBar first (Establecer visibility VISIBLE)
                     progressBar.setVisibility(View.VISIBLE);
-                    EnviarRecuperar("http://gymup.zonahosting.net/recuperar?email="+username);
+                    if (username.contains("@")){
+                        EnviarRecuperar("http://gymup.zonahosting.net/recuperar?email="+username);
+                    }else
+                    {
+                        EnviarRecuperar("http://gymup.zonahosting.net/recuperar?usuario="+username);
+                    }
+
 
                 }//fin del Ii
                 else {
