@@ -47,7 +47,7 @@ public class LogIn extends AppCompatActivity {
     private static final String CHANNEL_ID = "102";
     TextInputEditText textInputEditTextUserName, textInputEditTextPassword;
     Button buttonLogin;
-    TextView textViewSignUp;
+    TextView textViewSignUp, textViewForgotPass;
     ProgressBar progressBar;
 
     @Override
@@ -59,6 +59,7 @@ public class LogIn extends AppCompatActivity {
         textInputEditTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_LoginUser);//usa buttonSignUp
         textViewSignUp = findViewById(R.id.loginText);//signUpText
+        textViewForgotPass = findViewById(R.id.olvidopass);
         progressBar = findViewById(R.id.progress);
         Toolbar miActionbar = (Toolbar) findViewById(R.id.miActionbarBack);
         setSupportActionBar(miActionbar);
@@ -75,38 +76,47 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+        textViewForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public  void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), RecuperarPass.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         buttonLogin.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                String username, password;
-                username = String.valueOf(textInputEditTextUserName.getText());
-                password = String.valueOf(textInputEditTextPassword.getText());
+                                        @Override
+                                        public void onClick(View v) {
+                                            String username, password;
+                                            username = String.valueOf(textInputEditTextUserName.getText());
+                                            password = String.valueOf(textInputEditTextPassword.getText());
 
-                //Se determina si hay valores nulos, en tan caso se despliega un Toast
-                if(!username.equals("") && !password.equals(""))
-                {
-                    //Start ProgressBar first (Establecer visibility VISIBLE)
-                    progressBar.setVisibility(View.VISIBLE);
-                    Handler handler = new Handler(Looper.getMainLooper());
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Inicio de datos por URL.
-                            //Creando arrary par los parametros.
-                            String[] field = new String[2];
-                            field[0] = "username";
-                            field[1] = "password";
-                            //Creando el arrary para los datos.
-                            String[] data = new String[2];
-                            data[0] = username;
-                            data[1] = password;
-                            EnviarDatos enviarDatos = new EnviarDatos("http://gymup.zonahosting.net/gymphp/loginuser.php", "POST", field, data);
-                            //Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();//prueba general
-                            if (enviarDatos.startPut()) {
-                                if (enviarDatos.onComplete()) {
-                                    progressBar.setVisibility(View.GONE);
-                                    String result = enviarDatos.getResult();
+                                            //Se determina si hay valores nulos, en tan caso se despliega un Toast
+                                            if(!username.equals("") && !password.equals(""))
+                                            {
+                                                //Start ProgressBar first (Establecer visibility VISIBLE)
+                                                progressBar.setVisibility(View.VISIBLE);
+                                                Handler handler = new Handler(Looper.getMainLooper());
+                                                handler.post(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        //Inicio de datos por URL.
+                                                        //Creando arrary par los parametros.
+                                                        String[] field = new String[2];
+                                                        field[0] = "username";
+                                                        field[1] = "password";
+                                                        //Creando el arrary para los datos.
+                                                        String[] data = new String[2];
+                                                        data[0] = username;
+                                                        data[1] = password;
+                                                        EnviarDatos enviarDatos = new EnviarDatos("http://gymup.zonahosting.net/gymphp/loginuser.php", "POST", field, data);
+                                                        //Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();//prueba general
+                                                        if (enviarDatos.startPut()) {
+                                                            if (enviarDatos.onComplete()) {
+                                                                progressBar.setVisibility(View.GONE);
+                                                                String result = enviarDatos.getResult();
 
                                     if (result.equals("Login Success")){
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();

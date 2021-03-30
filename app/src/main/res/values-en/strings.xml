@@ -54,6 +54,9 @@
     <string name="salud_y_nutrici_n">Salud y Nutrición</string>
     <string name="mensaje_a_ser_enviado">Mensaje a ser enviado</string>
     <string name="t_tulo_o_asunto">Título o Asunto</string>
+    <string name="olvido_pass">¿Olvidó su contraseña?</string>
+    <string name="recuperar_contrasena">Recuperar contraseña</string>
+    <string name="correo_electr_nico_registrado">Correo electrónico registrado</string>
     <string-array name="genderList">
         <item>Male</item>
         <item>Female</item>
