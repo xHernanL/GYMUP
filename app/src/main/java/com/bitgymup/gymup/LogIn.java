@@ -91,7 +91,7 @@ public class LogIn extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
-
+                                        setUsuario_s(username);
                                         Intent bienvenido = new Intent(getApplicationContext(), UserHome.class);
                                         bienvenido.putExtra("usuario", username);
                                         startActivity(bienvenido);
@@ -112,6 +112,7 @@ public class LogIn extends AppCompatActivity {
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
                                                     //Para manterner los datos en varias activities mientras la app se ejecuta se usa SharedPreferences.
                                                     saveUserLogin(username); //Subir
+
 
                                                     Intent bienvenido = new Intent(getApplicationContext(), AdminHome.class);
                                                     bienvenido.putExtra("usuario", username);

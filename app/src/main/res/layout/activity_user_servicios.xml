@@ -6,20 +6,21 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     tools:context=".users.UserServicios">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <include layout="@layout/main_toolbar"/>
 
 
-        <TextView
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Servicios asociados al usuario, etc... O del propio Gym"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_height="wrap_content" />
+
 
 
     </LinearLayout>
@@ -31,5 +32,6 @@
         android:background="@color/white">
 
         <include layout="@layout/main_nav_users" />
+
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

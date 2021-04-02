@@ -89,7 +89,7 @@
     <!-- Start Reservation -->
     <string name="btnDatePicker">Seleccionar Fecha</string>
     <string name="btnReservaAction1">Cancelar Reserva</string>
-    <string name="btnReservaAction2">Modificar</string>
+    <string name="btnReservaAction2">Reservar</string>
     <string name="btnReservar">Reservar</string>
     <string name="guardarReserva">Guardar Reserva</string>
     <!-- End Reservation -->
