@@ -1,22 +1,19 @@
 package extras;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bitgymup.gymup.R;
 import com.bitgymup.gymup.users.UserSaveReservations;
+import com.squareup.picasso.Picasso;
 
-import java.text.BreakIterator;
 import java.util.List;
 
 
@@ -26,6 +23,8 @@ public class getServicesAdapter extends RecyclerView.Adapter<getServicesAdapter.
     private LayoutInflater mInflater;
     private Context context;
     final getServicesAdapter.OnItemClickListener listener;
+    private Context mCtx;
+    private String domainImage = "http://gymup.zonahosting.net/gymphp/images/";
 
 
     public interface OnItemClickListener {
@@ -53,6 +52,8 @@ public class getServicesAdapter extends RecyclerView.Adapter<getServicesAdapter.
     @Override
     public void onBindViewHolder(final getServicesAdapter.ViewHolder holder, final int position) {
         holder.bindData(mData.get(position));
+
+
     }
 
     public void setItems(List<getServices> items) {
@@ -66,7 +67,7 @@ public class getServicesAdapter extends RecyclerView.Adapter<getServicesAdapter.
         ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.textView4);
-            nameGym = itemView.findViewById(R.id.textView3);
+            nameGym = itemView.findViewById(R.id.tvDate);
             imGymLogo = itemView.findViewById(R.id.imGymLogo);
 
 
@@ -76,6 +77,7 @@ public class getServicesAdapter extends RecyclerView.Adapter<getServicesAdapter.
         void bindData(final getServices item) {
             name.setText("SERVICIO : " + item.getServiceName());
             nameGym.setText("Gym : " + item.getNameGym());
+            Picasso.get().load(domainImage + item.getServiceName()+".jpg").into(imGymLogo);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -85,6 +87,7 @@ public class getServicesAdapter extends RecyclerView.Adapter<getServicesAdapter.
 
 
                                                 goUserSaveReservations.putExtra("serviceName", item.getServiceName());
+                                                goUserSaveReservations.putExtra("serviceDes", item.getServiceDes());
                                                 goUserSaveReservations.putExtra("IdService", item.getIdService());
                                                 context.startActivity(goUserSaveReservations);
                                             }

@@ -97,11 +97,9 @@ public class UserReservas extends AppCompatActivity {
                         String idService     = jsonObject.optString("idService");
                         String idGym         = jsonObject.optString("idGym");
                         String serviceName   = jsonObject.optString("name");
-                        String serviceDate   = jsonObject.optString("Date");
-                        String serviceHour   = jsonObject.optString("Hour");
                         String nameGym       = jsonObject.optString("nameGym");
-
-                        serviceList.add(new getServices(idService, serviceName, idGym, nameGym));
+                        String serviceDes    =jsonObject.optString("serviceDes");
+                        serviceList.add(new getServices(idService, serviceName, idGym, nameGym, serviceDes));
                         getServicesAdapter listAdapter = new getServicesAdapter(serviceList, getApplicationContext(), new getServicesAdapter.OnItemClickListener() {
 
                             @Override

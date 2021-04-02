@@ -11,8 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <include layout="@layout/main_toolbar"/>
 
+
+        <TextView
+            android:id="@+id/tvDetalleServicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DFDBDB"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Detalle Servicio"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
@@ -53,23 +65,15 @@
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Nombre del Servicio"
                         android:textAppearance="?attr/textAppearanceHeadline6" />
 
                     <TextView
-                        android:id="@+id/tvDate"
+                        android:id="@+id/tvDes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="25-03-2021"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                    <TextView
-                        android:id="@+id/tvHour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="16:00 hrs"
+                        android:text="Descripcion delservicio"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />
 
@@ -86,16 +90,8 @@
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:paddingEnd="100dp"
-                        android:stateListAnimator="@android:anim/fade_out"
-                        android:text="@string/btnReservaAction1" />
-
-                    <com.google.android.material.button.MaterialButton
-                        style="?attr/borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btnReservaAction2" />
+                        android:text="@string/btnReservaAction2"
+                        android:textAlignment="center" />
 
                     <androidx.core.widget.NestedScrollView
                         android:layout_width="match_parent"
@@ -112,14 +108,12 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recicerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Guardar Booking"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_height="match_parent">
 
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </LinearLayout>

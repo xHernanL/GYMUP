@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -56,7 +57,7 @@ import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 public class UserServicios extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-    String userId;
+    SharedPreferences userId1;
     List<getServices> serviceList;
     TextView  day, time, status;
     ListView listView;
@@ -69,7 +70,8 @@ public class UserServicios extends AppCompatActivity {
         setContentView(R.layout.activity_user_servicios);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        userId = getUsuario_s();
+        userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String userId = userId1.getString("username", "");
 
         // la activity comienza con este intento de obtener los servicios.
         try
@@ -100,8 +102,9 @@ public class UserServicios extends AppCompatActivity {
                         String idGym         = jsonObject.optString("idGym");
                         String serviceName   = jsonObject.optString("name");
                         String nameGym       = jsonObject.optString("nameGym");
+                        String serviceDes    =jsonObject.optString("serviceDes");
 
-                        serviceList.add(new getServices(idService, serviceName, idGym, nameGym));
+                        serviceList.add(new getServices(idService, serviceName, idGym, nameGym, serviceDes));
                         getServicesAdapter listAdapter = new getServicesAdapter(serviceList, getApplicationContext(), new getServicesAdapter.OnItemClickListener() {
 
                             @Override

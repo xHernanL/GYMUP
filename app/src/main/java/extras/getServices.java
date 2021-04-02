@@ -5,10 +5,9 @@ import java.io.Serializable;
 public class getServices implements Serializable {
     private String idService;
     private String serviceName;
-    private String serviceHour;
     private String idGym;
-    private String serviceDate;
     private String nameGym;
+    private String serviceDes;
 
 
     public String getNameGym() {
@@ -19,13 +18,20 @@ public class getServices implements Serializable {
         this.nameGym = nameGym;
     }
 
-    public getServices(String idService, String serviceName, String idGym, String nameGym) {
+    public String getServiceDes() {
+        return serviceDes;
+    }
+
+    public void setServiceDes(String serviceDes) {
+        this.serviceDes = serviceDes;
+    }
+
+    public getServices(String idService, String serviceName, String idGym, String nameGym, String serviceDes) {
         this.idService = idService;
         this.serviceName = serviceName;
-        this.serviceHour = serviceHour;
-        this.serviceDate = serviceDate;
         this.idGym = idGym;
         this.nameGym = nameGym;
+        this.serviceDes = serviceDes;
 
     }
 
@@ -45,14 +51,6 @@ public class getServices implements Serializable {
         this.serviceName = serviceName;
     }
 
-    public String getServiceHour() {
-        return serviceHour;
-    }
-
-    public void setServiceHour(String serviceHour) {
-        this.serviceHour = serviceHour;
-    }
-
     public String getIdGym() {
         return idGym;
     }
@@ -61,12 +59,6 @@ public class getServices implements Serializable {
         this.idGym = idGym;
     }
 
-    public String getServiceDate() {
-        return serviceDate;
-    }
 
-    public void setServiceDate(String serviceDate) {
-        this.serviceDate = serviceDate;
-    }
 };
 

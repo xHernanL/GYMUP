@@ -28,62 +28,34 @@
             android:orientation="horizontal"
             android:padding="6dp">
 
-            <ImageView
-                android:id="@+id/imGymLogo"
-                android:layout_width="170dp"
-                android:layout_height="120dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:layout_alignParentLeft="true"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                android:src="@drawable/yoga"
-                />
-
 
             <LinearLayout
                 android:id="@+id/linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_toEndOf="@id/imGymLogo"
-                android:layout_toRightOf="@id/imGymLogo"
-                android:orientation="vertical"
                 android:layout_gravity="center_vertical|center_horizontal"
-                >
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:text="NOMBRE SERVICIO"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:text="hola@gmail.com" />
+
+                    android:text="Fecha :" />
 
                 <TextView
                     android:id="@+id/tvHour"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:paddingTop="30dp"
-                    android:text="Ver Actividad"
+                    android:text="Hora :"
                     android:textAlignment="textEnd"
-                    android:textStyle="bold"
-                    android:translationX="80dp" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </RelativeLayout>
