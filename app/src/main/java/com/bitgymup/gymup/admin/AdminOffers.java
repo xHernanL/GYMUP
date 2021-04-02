@@ -212,6 +212,4 @@ public class AdminOffers extends AppCompatActivity {
         //Close drawer
         AdminHome.closeDrawer(drawerLayout);
     }
-
-
 }
