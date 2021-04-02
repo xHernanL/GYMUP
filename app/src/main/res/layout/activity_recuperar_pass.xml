@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogIn">
+    tools:context=".RecuperarPass">
     <include android:id="@+id/miActionbarBack"
         layout="@layout/actionbar_back"></include>
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
-        android:text="@string/loginUser"
+        android:text="@string/recuperar_contrasena"
         android:textColor="#11568E"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayoutUsername"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
-        android:hint="@string/username"
+        android:hint="@string/correo_electr_nico_registrado"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,8 +51,7 @@
             android:layout_height="wrap_content"
             android:background="#FDFDFD"
             android:drawableEnd="@drawable/ic_username"
-            android:fontFamily="@font/poppinsmedium"
-            />
+            android:fontFamily="@font/poppinsmedium" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -60,23 +59,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayoutUsername">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FDFDFD"
-            android:drawableRight="@drawable/ic_pass"
-            android:fontFamily="@font/poppinsmedium"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutUsername"/>
 
     <ProgressBar
         android:id="@+id/progress"
@@ -85,42 +74,18 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUsername" />
 
     <Button
         android:id="@+id/btn_LoginUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_marginTop="50dp"
-        android:text="@string/IngresarUsuario"
+        android:layout_marginTop="30dp"
+        android:text="@string/recuperar_contrasena"
         android:translationY="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
-
-    <TextView
-        android:id="@+id/loginText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textSize="16dp"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="@string/notienecuenta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_LoginUser" />
-
-    <TextView
-        android:id="@+id/olvidopass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="16dp"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="@string/olvido_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

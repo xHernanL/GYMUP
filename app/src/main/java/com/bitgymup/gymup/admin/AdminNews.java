@@ -15,8 +15,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
@@ -40,11 +51,39 @@ public class AdminNews extends AppCompatActivity {
         btn_Notificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              createNotificationChannel();//funciona para versión 8 y superior...
-              createNotification();
+              enviarPush("https://www.zonahosting.com/NotifyFCM.php");
+              //createNotificationChannel();//funciona para versión 8 y superior...
+              //createNotification();
             }
         });
     }//fin de onCreate
+
+    private void enviarPush(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "Notificaciones enviadas.", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parametros = new HashMap<String, String>();
+                String idGym = "Algo";
+                parametros.put("idGym", idGym);
+                parametros.put("Asunto", txt_titulo.getText().toString());
+                parametros.put("Contenido", txt_mensaje.getText().toString());
+                parametros.put("Gimnasio", "");//aquí a el id del Gym
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
 
     private void createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -75,62 +114,31 @@ public class AdminNews extends AppCompatActivity {
 
     /*ABAJO VAN TODOS LOS MENUS*/
     public void ClickMenu(View view){
-        //Abrir el drawer
         AdminHome.openDrawer(drawerLayout);
     }
-
     public void ClickLogo(View view){
-        //Close drawer
         AdminHome.closeDrawer(drawerLayout);
     }
 
-
-
     /*Inicio de los enlaces*/
-    public void ClickHome(View view){
-        //Redirección de la activity to Home
-        redirectActivity(this,AdminHome.class);
-    }
-    public void ClickAgenda(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminAgenda.class);
-    }
+    public void ClickHome(View view){ redirectActivity(this,AdminHome.class);}
+    public void ClickAgenda(View view){ redirectActivity(this,AdminAgenda.class); }
     public void ClickNews(View view){
-        //recreamos la actividad!
         recreate();
     }
-    public void ClickPromo(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminOffers.class);
-    }
-    public void ClickServicios(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminServices.class);
-    }
-    public void ClickMyProfile(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminProfile.class);
-    }
-    public void ClickClientes(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminUsers.class);
-    }
+    public void ClickPromo(View view){redirectActivity(this,AdminOffers.class);}
+    public void ClickServicios(View view){redirectActivity(this,AdminServices.class);}
+    public void ClickMyProfile(View view){ redirectActivity(this,AdminProfile.class);}
+    public void ClickClientes(View view){redirectActivity(this,AdminUsers.class);}
     /*Fin de los enlaces generales*/
 
-    public void ClickLogout(View view){
-        //Cerrar APP
-        AdminHome.salir(this);
-    }
-    public void CAbout(View view){
-        //Redirección de la activity to Home
-        redirectActivity(this,AdminAboutUs.class);
-    }
+    public void ClickLogout(View view){  AdminHome.salir(this); }
+    public void CAbout(View view){  redirectActivity(this,AdminAboutUs.class);    }
     @Override
     protected void onPause(){
         super.onPause();
         //Close drawer
         AdminHome.closeDrawer(drawerLayout);
     }
-
 
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "175722657048",
+    "project_id": "gymup10",
+    "storage_bucket": "gymup10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175722657048:android:214d803c07f1493495da6d",
+        "android_client_info": {
+          "package_name": "com.bitgymup.gymup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175722657048-2tp74enqn9qit74hh17r5p71dkjne8jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYYWJO_SWyZhk248FX6RdoySP9UvYTF0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175722657048-2tp74enqn9qit74hh17r5p71dkjne8jj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
