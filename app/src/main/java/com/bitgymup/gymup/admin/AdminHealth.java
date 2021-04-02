@@ -1,19 +1,22 @@
 package com.bitgymup.gymup.admin;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,15 +32,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminServices extends AppCompatActivity {
-    private EditText services_desc;
-    private Spinner services_name;
+public class AdminHealth extends AppCompatActivity {
+    private static final int GALLERY_REQUEST = 10;
+    private EditText health_titulo, health_contenido;
     private TextView gimnasio_nombre;
-    private Button btnSubmit;
-    String username, service_selected;
+    private ImageView image;
+    private Button btnSubmit, btnCargarImg;
     private String idgim;
+    String username;
 
     ProgressDialog progreso;
 
@@ -49,37 +54,42 @@ public class AdminServices extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_services);
-        //Asignamos la variable
+        setContentView(R.layout.activity_admin_health);
+
         drawerLayout = findViewById(R.id.drawer_layout);
-
-        //services_name = (EditText) findViewById(R.id.services_name);
-        services_name = (Spinner) findViewById(R.id.services_name);
-        services_desc = (EditText) findViewById(R.id.services_desc);
+        health_titulo = (EditText) findViewById(R.id.health_titulo);
+        health_contenido = (EditText) findViewById(R.id.health_contenido);
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        image = (ImageView) findViewById(R.id.imagenId);
 
-        String [] opciones = {"Zumba","Yoga","Crossfit","Funcional","OpenBox","Pilates","Musculacion","Natacion"};
-        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
-        services_name.setAdapter(adapter);
         username = getUserLogin("username");
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnCargarImg = (Button) findViewById(R.id.btnCargarImg);
+
         request = Volley.newRequestQueue(this);
 
-        //username = "nanoman07";
         cargarWSgimnasio(username);
+
+        btnCargarImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Aca va el procedimiento para cargar imanges
+                cargarImagen();
+                //Toast.makeText(getApplicationContext(),"Cargar Imagen", Toast.LENGTH_LONG).show();
+            }
+
+        });
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                service_selected = services_name.getSelectedItem().toString();
-
-                if(service_selected.equals("") || service_selected.equals(null) ){
-                    Toast.makeText(getApplicationContext(),"Campo servicio no debe estar varcio", Toast.LENGTH_LONG).show();
-                }else if(TextUtils.isEmpty(services_desc.getText().toString())){
-                    Toast.makeText(getApplicationContext(),"Campo descripcion no debe estar varcio", Toast.LENGTH_LONG).show();
+                if(health_titulo.getText().toString().equals("") || health_titulo.getText().toString().equals(null) ){
+                    Toast.makeText(getApplicationContext(),"Campo titulo no debe estar varcio", Toast.LENGTH_LONG).show();
+                }else if(TextUtils.isEmpty(health_contenido.getText().toString())){
+                    Toast.makeText(getApplicationContext(),"Campo contenido no debe estar varcio", Toast.LENGTH_LONG).show();
+                }else if(health_contenido.length()>500){
+                    Toast.makeText(getApplicationContext(),"No debe haber mas de 500 caracteres", Toast.LENGTH_LONG).show();
                 }else{
                     cargarWebService();
                 }
@@ -87,7 +97,24 @@ public class AdminServices extends AppCompatActivity {
             }
 
         });
+
     }
+
+    private void cargarImagen() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent.createChooser(intent,"Selecciones app"), GALLERY_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK){
+            Uri path=data.getData();
+            image.setImageURI(path);
+        }
+    }
+
     private String getUserLogin(String key) {
         SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String username = sharedPref.getString(key,"");
@@ -103,8 +130,8 @@ public class AdminServices extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         //progreso.hide();
                         //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
-                        //services_name.setText("");
-                        services_desc.setText("");
+                        health_titulo.setText("");
+                        health_contenido.setText("");
                         //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
                         JSONArray json=response.optJSONArray("detail");
                         JSONObject jsonObject=null;
@@ -129,16 +156,15 @@ public class AdminServices extends AppCompatActivity {
         });
         request.add(jsonObjectRequest);
     }
-
     private void cargarWebService() {
 
-        progreso= new ProgressDialog(AdminServices.this);
+        progreso= new ProgressDialog(AdminHealth.this);
         progreso.setMessage("Cargando...");
         progreso.show();
 
-        String url = "http://gymup.zonahosting.net/gymphp/RegistroServicesWS.php?gim="+idgim+
-                "&name="+service_selected+
-                "&description="+services_desc.getText().toString();
+        String url = "http://gymup.zonahosting.net/gymphp/HealthWS.php?gim="+idgim+
+                "&title="+health_titulo.getText().toString()+
+                "&content="+health_contenido.getText().toString();
 
         url = url.replace(" ","%20");
 
@@ -149,8 +175,8 @@ public class AdminServices extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         progreso.hide();
                         Toast.makeText(getApplicationContext(),"Exito al guardar :) "+ response.toString(), Toast.LENGTH_LONG).show();
-                        //services_name.setText("");
-                        services_desc.setText("");
+                        health_titulo.setText("");
+                        health_contenido.setText("");
 
 
                     }
@@ -166,6 +192,7 @@ public class AdminServices extends AppCompatActivity {
         request.add(jsonObjectRequest);
 
     }
+
 
     public void ClickMenu(View view){
         //Abrir el drawer
@@ -199,25 +226,23 @@ public class AdminServices extends AppCompatActivity {
         redirectActivity(this,AdminOffers.class);
     }
     public void ClickServicios(View view){
-        //Recrea la actividad
-        recreate();
+        //Redirección de la activity a Servicios
+        redirectActivity(this,AdminServices.class);
     }
     public void CAbout(View view){
         //Redirección de la activity a Nosotros
         redirectActivity(this,AdminAboutUs.class);
     }
     public void ClickHealth(View view){
-        //Redirección de la activity a Salud y nutrición
-        redirectActivity(this,AdminHealth.class);
+        //Recrea la actividad
+        recreate();
     }
     public void ClickMyProfile(View view){
         //Redirección de la activity a Mi Perfil
         redirectActivity(this,AdminProfile.class);
     }
-    /*Fin de los enlaces generales*/
-
     public void ClickLogout(View view){
-        //Cerrar APP
+        //Close APP
         AdminHome.salir(this);
     }
     @Override
@@ -226,7 +251,6 @@ public class AdminServices extends AppCompatActivity {
         //Close drawer
         AdminHome.closeDrawer(drawerLayout);
     }
-
 
 
 

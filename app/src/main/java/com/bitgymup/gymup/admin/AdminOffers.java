@@ -169,32 +169,42 @@ public class AdminOffers extends AppCompatActivity {
         AdminHome.closeDrawer(drawerLayout);
     }
 
-
-
     /*Inicio de los enlaces*/
+    public void ClickHome(View view){
+        //Redirecciona la activity a Home
+        redirectActivity(this, AdminHome.class);
+    }
     public void ClickAgenda(View view){
-        //recreamos la actividad!
-        recreate();
+        //Redirección de la activity Agenda
+        redirectActivity(this,AdminAgenda.class);
+    }
+    public void ClickClientes(View view){
+        //Redirección de la activity a Clientes
+        redirectActivity(this,AdminUsers.class);
     }
     public void ClickNews(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Notificaciones
         redirectActivity(this,AdminNews.class);
     }
     public void ClickPromo(View view){
-        //recreamos la actividad!
+        //Recrea la actividad
         recreate();
     }
     public void ClickServicios(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Servicios
         redirectActivity(this,AdminServices.class);
     }
-    public void ClickMyProfile(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminProfile.class);
+    public void CAbout(View view){
+        //Redirección de la activity a Nosotros
+        redirectActivity(this,AdminAboutUs.class);
     }
-    public void ClickClientes(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminUsers.class);
+    public void ClickHealth(View view){
+        //Redirección de la activity a Salud y nutrición
+        redirectActivity(this,AdminHealth.class);
+    }
+    public void ClickMyProfile(View view){
+        //Redirección de la activity a Mi Perfil
+        redirectActivity(this,AdminProfile.class);
     }
     /*Fin de los enlaces generales*/
 
@@ -202,10 +212,7 @@ public class AdminOffers extends AppCompatActivity {
         //Cerrar APP
         AdminHome.salir(this);
     }
-    public void CAbout(View view){
-        //Redirección de la activity to Home
-        redirectActivity(this,AdminAboutUs.class);
-    }
+
     @Override
     protected void onPause(){
         super.onPause();

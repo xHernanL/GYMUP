@@ -121,19 +121,46 @@ public class AdminNews extends AppCompatActivity {
     }
 
     /*Inicio de los enlaces*/
-    public void ClickHome(View view){ redirectActivity(this,AdminHome.class);}
-    public void ClickAgenda(View view){ redirectActivity(this,AdminAgenda.class); }
+    /*Listado de todas las funciones de click*/
+    public void ClickHome(View view){
+        //Redirecciona la activity a Home
+        redirectActivity(this, AdminHome.class);
+    }
+    public void ClickAgenda(View view){
+        //Redirección de la activity Clientes
+        redirectActivity(this,AdminAgenda.class);
+    }
+    public void ClickClientes(View view){
+        //Redirección de la activity a Notificaciones
+        redirectActivity(this,AdminUsers.class);
+    }
     public void ClickNews(View view){
+        //Recrea la actividad
         recreate();
     }
-    public void ClickPromo(View view){redirectActivity(this,AdminOffers.class);}
-    public void ClickServicios(View view){redirectActivity(this,AdminServices.class);}
-    public void ClickMyProfile(View view){ redirectActivity(this,AdminProfile.class);}
-    public void ClickClientes(View view){redirectActivity(this,AdminUsers.class);}
+    public void ClickPromo(View view){
+        //Redirección de la activity a Promociones
+        redirectActivity(this,AdminOffers.class);
+    }
+    public void ClickServicios(View view){
+        //Redirección de la activity a Servicios
+        redirectActivity(this,AdminServices.class);
+    }
+    public void CAbout(View view){
+        //Redirección de la activity a Nosotros
+        redirectActivity(this,AdminAboutUs.class);
+    }
+    public void ClickHealth(View view){
+        //Redirección de la activity a Salud y nutrición
+        redirectActivity(this,AdminHealth.class);
+    }
+    public void ClickMyProfile(View view){
+        //Redirección de la activity a Mi Perfil
+        redirectActivity(this,AdminProfile.class);
+    }
     /*Fin de los enlaces generales*/
 
     public void ClickLogout(View view){  AdminHome.salir(this); }
-    public void CAbout(View view){  redirectActivity(this,AdminAboutUs.class);    }
     @Override
     protected void onPause(){
         super.onPause();

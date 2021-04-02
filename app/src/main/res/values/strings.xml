@@ -11,6 +11,12 @@
     <string name="userProfile">Perfil del Usuario</string>
     <string name="nutrition">Salud y Nutrición</string>
 
+    <!-- Para AdminHealth-->
+    <string name="health_titulo">Titulo</string>
+    <string name="health_articulo">Articulo</string>
+    <string name="health_btncargar">Cargar:</string>
+    <string name="health_btnguardar">Guardar</string>
+
     <!-- Para AdminServices-->
     <string name="services_tipo">Seleccione tipo de servicio:</string>
 
