@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -26,6 +28,7 @@
         <activity android:name=".admin.AdminServices" />
         <activity android:name=".users.UserHome" />
         <activity android:name=".admin.AdminAboutUs" />
+        <activity android:name=".admin.AdminHealth"/>
         <activity android:name=".admin.AdminAgenda" />
         <activity android:name=".admin.AdminOffers" />
         <activity android:name=".admin.AdminUsers" />
@@ -37,7 +40,7 @@
         <activity android:name=".users.UserProfile" />
         <activity android:name=".Nutrition" />
         <activity android:name=".Contact" />
-        <activity android:name=".Services" />
+        <activity android:name=".users.Services" />
         <activity android:name=".AboutUs" />
         <activity android:name=".GymList" />
         <activity android:name=".LogIn">
