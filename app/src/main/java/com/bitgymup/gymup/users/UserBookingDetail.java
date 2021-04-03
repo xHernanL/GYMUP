@@ -42,6 +42,7 @@ public class UserBookingDetail extends AppCompatActivity {
         setContentView(R.layout.activity_user_booking_detail);
 
         // Variables a Utilizar //
+        // comentario //
 
 
         String user        = getUsuario_s();
