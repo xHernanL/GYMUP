@@ -37,6 +37,8 @@ dependencies {
     implementation 'com.google.gms:google-services:4.3.5'
     implementation 'com.google.firebase:firebase-messaging:20.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

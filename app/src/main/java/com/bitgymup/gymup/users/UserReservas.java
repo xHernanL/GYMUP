@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -33,6 +35,9 @@ import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
 import com.bitgymup.gymup.admin.AdminHome;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import extras.Booking;
+import extras.getBookingsAdapter;
 import extras.getServices;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,8 +59,8 @@ import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 public class UserReservas extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-    String userId;
-    List<getServices> serviceList;
+    SharedPreferences userId1;
+    List<Booking> serviceList;
     TextView  day, time, status;
     ListView listView;
     RecyclerView mRecyclerView;
@@ -67,12 +72,13 @@ public class UserReservas extends AppCompatActivity {
         setContentView(R.layout.activity_user_reservas);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        userId  = getIntent().getStringExtra("userId");
+        userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String userId = userId1.getString("username", "");
 
         // la activity comienza con este intento de obtener los servicios.
         try
         {
-            getServices("http://gymup.zonahosting.net/gymphp/getServices.php?username=daniferpro");
+            getServices("http://gymup.zonahosting.net/gymphp/getBookings.php?username=" + userId);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,16 +100,15 @@ public class UserReservas extends AppCompatActivity {
 
                         jsonObject = response.getJSONObject(i);
 
-                        String idService     = jsonObject.optString("idService");
-                        String idGym         = jsonObject.optString("idGym");
-                        String serviceName   = jsonObject.optString("name");
-                        String nameGym       = jsonObject.optString("nameGym");
-                        String serviceDes    =jsonObject.optString("serviceDes");
-                        serviceList.add(new getServices(idService, serviceName, idGym, nameGym, serviceDes));
-                        getServicesAdapter listAdapter = new getServicesAdapter(serviceList, getApplicationContext(), new getServicesAdapter.OnItemClickListener() {
+                        String serviceName        = jsonObject.optString("serviceName");
+                        String serviceDescripcion = jsonObject.optString("serviceDescripcion");
+                        String serviceDateTime    = jsonObject.optString("serviceDateTime");
+                        String serviceId          = jsonObject.optString("serviceId");
+                        serviceList.add(new Booking(serviceName, serviceDescripcion, serviceDateTime, serviceId));
+                        getBookingsAdapter listAdapter = new getBookingsAdapter(serviceList, getApplicationContext(), new getBookingsAdapter.OnItemClickListener() {
 
                             @Override
-                            public void onItemClick(getServices item) {
+                            public void onItemClick(Booking item) {
                                 
 
                             }

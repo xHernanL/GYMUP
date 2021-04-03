@@ -21,6 +21,7 @@
         <activity android:name=".users.UserPagos" />
         <activity android:name=".users.UserServicios" />
         <activity android:name=".users.UserReservas" />
+        <activity android:name=".users.UserBookingDetail"/>
         <activity android:name=".users.UserSaveReservations"/>
         <activity android:name=".admin.AdminServices" />
         <activity android:name=".users.UserHome" />

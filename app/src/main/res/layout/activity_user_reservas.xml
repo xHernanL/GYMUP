@@ -15,6 +15,14 @@
         <include layout="@layout/main_toolbar"/>
 
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CFCECE"
+            android:text="Mis Reservas"
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
