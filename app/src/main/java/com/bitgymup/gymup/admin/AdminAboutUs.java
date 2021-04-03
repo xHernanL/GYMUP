@@ -166,35 +166,42 @@ public class AdminAboutUs extends AppCompatActivity {
         AdminHome.closeDrawer(drawerLayout);
     }
 
-
     /*Inicio de los enlaces*/
     public void ClickHome(View view){
-        //Redirección de la activity to Home
-        redirectActivity(this,AdminHome.class);
+        //Redirecciona la activity a Home
+        redirectActivity(this, AdminHome.class);
     }
     public void ClickAgenda(View view){
-        //recreamos la actividad!
-        recreate();
+        //Redirección de la activity a Agenda
+        redirectActivity(this,AdminAgenda.class);
+    }
+    public void ClickClientes(View view){
+        //Redirección de la activity a Clientes
+        redirectActivity(this,AdminUsers.class);
     }
     public void ClickNews(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Notificaciones
         redirectActivity(this,AdminNews.class);
     }
     public void ClickPromo(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Promociones
         redirectActivity(this,AdminOffers.class);
     }
     public void ClickServicios(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Servicios
         redirectActivity(this,AdminServices.class);
     }
-    public void ClickMyProfile(View view){
-        //recreamos la actividad!
+    public void CAbout(View view){
+        //Recrea la actividad
         recreate();
     }
-    public void ClickClientes(View view){
-        //Redirección de la activity a AboutUs
-        redirectActivity(this,AdminUsers.class);
+    public void ClickHealth(View view){
+        //Redirección de la activity a Salud y nutrición
+        redirectActivity(this,AdminHealth.class);
+    }
+    public void ClickMyProfile(View view){
+        //Redirección de la activity a Mi Perfil
+        redirectActivity(this,AdminProfile.class);
     }
     /*Fin de los enlaces generales*/
 
@@ -203,10 +210,6 @@ public class AdminAboutUs extends AppCompatActivity {
         AdminHome.salir(this);
     }
 
-    public void CAbout(View view){
-        //Redirección de la activity to Home
-        redirectActivity(this,AdminAboutUs.class);
-    }
     @Override
     protected void onPause(){
         super.onPause();

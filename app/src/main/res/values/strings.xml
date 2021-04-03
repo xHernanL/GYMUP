@@ -11,6 +11,12 @@
     <string name="userProfile">Perfil del Usuario</string>
     <string name="nutrition">Salud y Nutrición</string>
 
+    <!-- Para AdminHealth-->
+    <string name="health_titulo">Titulo</string>
+    <string name="health_articulo">Articulo</string>
+    <string name="health_btncargar">Cargar:</string>
+    <string name="health_btnguardar">Guardar</string>
+
     <!-- Para AdminServices-->
     <string name="services_tipo">Seleccione tipo de servicio:</string>
 
@@ -79,6 +85,22 @@
         <item>Otro</item>
     </string-array>
 
+    <!-- Para formulario de registro usuario -->
+
+    <string name="name">Nombre</string>
+    <string name="lastName">Apellido</string>
+    <string name="city">Ciudad</string>
+    <string name="postalCode">Código postal</string>
+    <string name="country">País</string>
+    <string name="phoneNumber">Teléfono</string>
+    <string name="userName">Usuario</string>
+    <string name="status">Estado</string>
+    <string name="comments">Comentarios</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="selectDate">Fecha de nacimiento</string>
+    <string name="selectGym">Selecciona un gimnasio</string>
+
+
     <!-- Prueba para servicios -->
     <string-array name="servicesList">
         <item>Natación</item>
@@ -96,6 +118,8 @@
     <string name="btnReservar">Reservar</string>
     <string name="guardarReserva">Guardar Reserva</string>
     <!-- End Reservation -->
+
+
 
 
 </resources>

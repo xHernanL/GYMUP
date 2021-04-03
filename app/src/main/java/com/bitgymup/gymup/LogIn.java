@@ -19,11 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.bitgymup.gymup.admin.AdminHome;
+import com.bitgymup.gymup.Register;
 import com.bitgymup.gymup.users.UserHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,14 +30,9 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import extras.EnviarDatos;
 
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
-import static com.bitgymup.gymup.admin.Variables.usuario_s;
 
 public class LogIn extends AppCompatActivity {
 

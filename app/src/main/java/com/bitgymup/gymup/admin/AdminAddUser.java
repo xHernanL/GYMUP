@@ -23,31 +23,35 @@ public class AdminAddUser extends AppCompatActivity {
 
     /*Inicio de los enlaces*/
     public void ClickHome(View view){
-        //Redirección de la activity to Home
+        //Redirección de la activity Home
         redirectActivity(this,AdminHome.class);
     }
     public void ClickAgenda(View view){
-        //Redirecciona la activity al Dashboard
+        //Redirecciona la activity Agenda
         redirectActivity(this, AdminAgenda.class);
     }
     public void ClickNews(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity News
         redirectActivity(this,AdminNews.class);
     }
     public void ClickPromo(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Offers
         redirectActivity(this,AdminOffers.class);
     }
     public void ClickServicios(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Services
         redirectActivity(this,AdminServices.class);
     }
+    public void CAbout(View view){
+        //Redirección de la activity About
+        redirectActivity(this,AdminAboutUs.class);
+    }
     public void ClickMyProfile(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Profile
         redirectActivity(this,AdminProfile.class);
     }
     public void ClickClientes(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity a Users
         redirectActivity(this,AdminUsers.class);
     }
     /*Fin de los enlaces generales*/
@@ -56,10 +60,7 @@ public class AdminAddUser extends AppCompatActivity {
         //Cerrar APP
         AdminHome.salir(this);
     }
-    public void CAbout(View view){
-        //Redirección de la activity to Home
-        redirectActivity(this,AdminAboutUs.class);
-    }
+
     @Override
     protected void onPause(){
         super.onPause();
