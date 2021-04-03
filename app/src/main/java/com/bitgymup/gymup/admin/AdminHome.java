@@ -270,7 +270,7 @@ public class AdminHome extends AppCompatActivity {
         salir(this);
     }
 
-    public static void salir(Activity activity) {
+    public static void salir(final Activity activity) {
         //Se coloca el dialogo de alerta
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set Titulo
