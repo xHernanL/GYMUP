@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bitgymup.gymup.R;
 import com.bitgymup.gymup.users.UserBookingDetail;
-import com.bitgymup.gymup.users.UserSaveReservations;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
