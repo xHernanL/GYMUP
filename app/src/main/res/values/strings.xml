@@ -117,6 +117,8 @@
     <string name="btnReservaAction2">Reservar</string>
     <string name="btnReservar">Reservar</string>
     <string name="guardarReserva">Guardar Reserva</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="ingresar">Ingresar</string>
     <!-- End Reservation -->
 
 
