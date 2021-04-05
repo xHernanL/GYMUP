@@ -89,7 +89,8 @@ public class getServicesAdapter extends RecyclerView.Adapter<getServicesAdapter.
                                                 goUserSaveReservations.putExtra("serviceName", item.getServiceName());
                                                 goUserSaveReservations.putExtra("serviceDes", item.getServiceDes());
                                                 goUserSaveReservations.putExtra("IdService", item.getIdService());
-                                                context.startActivity(goUserSaveReservations);
+                                                context.startActivity(goUserSaveReservations.setFlags(goUserSaveReservations.FLAG_ACTIVITY_NEW_TASK));
+                                                //context.startActivity(goUserSaveReservations);
                                             }
                                         }
             );
