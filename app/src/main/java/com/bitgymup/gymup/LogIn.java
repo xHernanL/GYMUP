@@ -20,9 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.admin.AdminHome;
 import com.bitgymup.gymup.users.UserHome;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,6 +51,10 @@ public class LogIn extends AppCompatActivity {
     Button buttonLogin;
     TextView textViewSignUp, textViewForgotPass;
     ProgressBar progressBar;
+    private String idgim, nombregim;
+    private RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class LogIn extends AppCompatActivity {
         textViewSignUp = findViewById(R.id.loginText);//signUpText
         textViewForgotPass = findViewById(R.id.olvidopass);
         progressBar = findViewById(R.id.progress);
+        request = Volley.newRequestQueue(this);
         Toolbar miActionbar = (Toolbar) findViewById(R.id.miActionbarBack);
         setSupportActionBar(miActionbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -123,6 +130,7 @@ public class LogIn extends AppCompatActivity {
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
 
+
                                         //Ahora se creará SharedPreferences
                                         SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = pref.edit();
@@ -148,9 +156,12 @@ public class LogIn extends AppCompatActivity {
                                                     //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
                                                     //Ahora se creará SharedPreferences
+
+                                                    cargarWSgimnasio(username);
                                                     SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                                     SharedPreferences.Editor editor = pref.edit();
                                                     editor.putString("username", username);  // Saving string
+
                                                     editor.apply();
                                                     //Pasaje por variables.
                                                     Intent bienvenido = new Intent(getApplicationContext(), AdminHome.class);
@@ -230,6 +241,45 @@ public class LogIn extends AppCompatActivity {
                     }
 
                 });
+    }
+    private void cargarWSgimnasio(String username) {
+        String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("login",username);
+                        //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
+
+                        //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
+                        JSONArray json=response.optJSONArray("detail");
+                        JSONObject jsonObject=null;
+                        try {
+                            jsonObject=json.getJSONObject(0);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        nombregim = jsonObject.optString("name");
+                        idgim =  jsonObject.optString("id");
+                        SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("idgym", idgim);
+                        editor.putString("namegym", nombregim);
+                        editor.apply();
+                        //Log.d("Response", "onResponse: "+ nombregim);
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //progreso.hide();
+                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                Log.i("Error",error.toString());
+
+            }
+        });
+        request.add(jsonObjectRequest);
     }
 
 

@@ -39,6 +39,7 @@ public class AdminServices extends AppCompatActivity {
     String username, service_selected;
     private String idgim;
 
+
     ProgressDialog progreso;
 
     private RequestQueue request;
@@ -52,22 +53,24 @@ public class AdminServices extends AppCompatActivity {
         setContentView(R.layout.activity_admin_services);
         //Asignamos la variable
         drawerLayout = findViewById(R.id.drawer_layout);
-
+        request = Volley.newRequestQueue(this);
         //services_name = (EditText) findViewById(R.id.services_name);
         services_name = (Spinner) findViewById(R.id.services_name);
         services_desc = (EditText) findViewById(R.id.services_desc);
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        idgim = getUserLogin("idgym");
 
-        String [] opciones = {"Zumba","Yoga","Crossfit","Funcional","OpenBox","Pilates","Musculacion","Natacion"};
-        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
+
+        String [] opciones = {"Zumba", "Yoga", "Crossfit", "Funcional", "OpenBox", "Pilates", "Musculacion", "Natacion","Spinning","Aparatos","Remo","GAP","Localizado","Boxeo","Kick-Boxing","Cross-Trainning","Step"};
+        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, opciones);
         services_name.setAdapter(adapter);
+
         username = getUserLogin("username");
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        request = Volley.newRequestQueue(this);
 
-        //username = "nanoman07";
-        cargarWSgimnasio(username);
+        gimnasio_nombre.setText(getUserLogin("namegym"));
+
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,42 +95,6 @@ public class AdminServices extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String username = sharedPref.getString(key,"");
         return username;
-    }
-
-    //Cuando carga la pantalla me traiga el nombre del gimnasio
-    private void cargarWSgimnasio(String username) {
-        String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //progreso.hide();
-                        //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
-                        //services_name.setText("");
-                        services_desc.setText("");
-                        //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
-                        JSONArray json=response.optJSONArray("detail");
-                        JSONObject jsonObject=null;
-                        try {
-                            jsonObject=json.getJSONObject(0);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        String name = jsonObject.optString("name");
-                        idgim =  jsonObject.optString("id");
-                        gimnasio_nombre.setText(name);
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
-                Log.i("Error",error.toString());
-
-            }
-        });
-        request.add(jsonObjectRequest);
     }
 
     private void cargarWebService() {

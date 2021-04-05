@@ -12,6 +12,10 @@
     <string name="nutrition">Salud y Nutrición</string>
 
     <!-- Para AdminServices-->
+    <string name="btn_bloquear">Bloquear</string>
+
+
+    <!-- Para AdminServices-->
     <string name="services_tipo">Seleccione tipo de servicio:</string>
 
     <!-- Para AdminAbout-->
