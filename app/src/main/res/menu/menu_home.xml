@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_registro"
-    android:title="@string/registrarse"
-    android:icon="@drawable/ic_registration_32"/>
+        android:title="@string/registrarse"
+        android:icon="@drawable/ic_registration_32"/>
     <item android:id="@+id/menu_login"
         android:title="@string/ingresar"
         android:icon="@drawable/ic_login_24"/>
