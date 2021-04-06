@@ -10,10 +10,11 @@
     <string name="users">Usuarios</string>
     <string name="userProfile">Perfil del Usuario</string>
     <string name="nutrition">Salud y Nutrición</string>
+    <string name="promotion">Promociones</string>
 
     <!-- Para AdminHealth-->
-    <string name="health_titulo">Titulo</string>
-    <string name="health_articulo">Articulo</string>
+    <string name="health_titulo">Título</string>
+    <string name="health_articulo">Artículo</string>
     <string name="health_btncargar">Cargar:</string>
     <string name="health_btnguardar">Guardar</string>
 
@@ -30,7 +31,7 @@
     <!-- Para AdminOffers-->
     <string name="offer_gim">Aca va el nombre del gim</string>
     <string name="offer_title">Titulo</string>
-    <string name="offer_content">Titulo</string>
+    <string name="offer_content">Ingrese promoción:</string>
     <string name="offer_button">Guardar</string>
 
     <!-- Para formulario de registro-->
