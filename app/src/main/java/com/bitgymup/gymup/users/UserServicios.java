@@ -75,13 +75,18 @@ public class UserServicios extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String userId = userId1.getString("username", "");
-        String mensaje   = getIntent().getExtras().getString("mensaje");
+        try {
+            String mensaje = getIntent().getExtras().getString("mensaje");
+            if(mensaje != ""){
+                Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        if(mensaje != ""){
-            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
-             }
 
-        // la activity comienza con este intento de obtener los servicios.
+
+            // la activity comienza con este intento de obtener los servicios.
         try
         {
             getServices("http://gymup.zonahosting.net/gymphp/getServices.php?username=" + userId);
