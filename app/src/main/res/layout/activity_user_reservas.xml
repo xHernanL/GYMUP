@@ -7,6 +7,26 @@
     android:id="@+id/drawer_layout"
     tools:context=".users.UserReservas">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="55dp"
+            android:layout_height="64dp"
+            android:clickable="true"
+            app:backgroundTint="#ED6A41"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.95"
+            app:rippleColor="#FFFFFF"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,16 +39,37 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#CFCECE"
+            android:background="#5E35B1"
             android:text="Mis Reservas"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSinReservas"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="5dp"
+            android:background="#FFFFFF"
+            android:text="Al parecer aún no tienes ninguna reserva creada"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnNuevaReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Crear nueva reserva"
+            android:translationY="250dp"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </LinearLayout>

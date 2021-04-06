@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,9 +62,12 @@ public class UserReservas extends AppCompatActivity {
     DrawerLayout drawerLayout;
     SharedPreferences userId1;
     List<Booking> serviceList;
-    TextView  day, time, status;
+    TextView  day, time, status, tvSinReservas;
     ListView listView;
     RecyclerView mRecyclerView;
+    Button btnnuevaReserva;
+    FloatingActionButton floatingActionButton3;
+    private Context context;
 
 
     @Override
@@ -72,6 +76,9 @@ public class UserReservas extends AppCompatActivity {
         setContentView(R.layout.activity_user_reservas);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+        btnnuevaReserva = findViewById(R.id.btnNuevaReserva);
+        tvSinReservas = findViewById(R.id.tvSinReservas);
+        floatingActionButton3 = findViewById(R.id.floatingActionButton3);
         userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String userId = userId1.getString("username", "");
 
@@ -94,6 +101,35 @@ public class UserReservas extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 JSONObject jsonObject = null;
                 serviceList = new ArrayList<>();
+                if(response.length() == 0){
+
+                    tvSinReservas.setVisibility(View.VISIBLE);
+                    btnnuevaReserva.setVisibility(View.VISIBLE);
+                    floatingActionButton3.setVisibility(View.INVISIBLE);
+                    btnnuevaReserva.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent goServicios = new Intent(getApplicationContext(), UserServicios.class);
+                            goServicios.putExtra("mensaje", "Seleccione un Servicio para agendarse");
+                            startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));
+
+                        }
+                    });
+
+
+                }else{
+                    floatingActionButton3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent goServicios = new Intent(getApplicationContext(), UserServicios.class);
+                            goServicios.putExtra("mensaje", "Seleccione un Servicio para agendarse");
+                            startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));
+
+                        }
+                    });
+
+
+                }
                 for (int i= 0; i < response.length(); i++){
 
                     try {

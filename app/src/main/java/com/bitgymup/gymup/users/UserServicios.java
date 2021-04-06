@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -46,6 +47,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import extras.EnviarDatos;
 import extras.getServicesAdapter;
@@ -72,6 +75,11 @@ public class UserServicios extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String userId = userId1.getString("username", "");
+        String mensaje   = getIntent().getExtras().getString("mensaje");
+
+        if(mensaje != ""){
+            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+             }
 
         // la activity comienza con este intento de obtener los servicios.
         try
