@@ -2,11 +2,16 @@ package com.bitgymup.gymup.users;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +35,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import extras.Schedule;
 import extras.ScheduleAdapter;
@@ -55,20 +62,20 @@ public class UserSaveReservations extends AppCompatActivity {
         // Variables a Utilizar //
 
 
-        String user        = getUsuario_s();
+        SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username    = userId1.getString("username", "");
         String idService   = getIntent().getExtras().getString("IdService");
         String serviceName = getIntent().getExtras().getString("serviceName");
         String serviceDes  = getIntent().getExtras().getString("serviceDes");
 
-
-
-
-
         TextView srvName, srvDes;
         ImageView imageView;
+        Button btnReservar;
+        Button btnReservar2;
+        ProgressBar progressBar;
 
-
-
+        btnReservar = findViewById(R.id.btnReservar);
+        btnReservar2 = findViewById(R.id.btnReservar2);
         srvName = findViewById(R.id.tvName);
         srvDes = findViewById(R.id.tvDes);
         imageView = findViewById(R.id.imageView);
@@ -95,7 +102,63 @@ public class UserSaveReservations extends AppCompatActivity {
 
         }
 
+        btnReservar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setBooking("http://gymup.zonahosting.net/gymphp/setBooking.php?username="+ username + "&serviceid=" + idService);
+
+                final ProgressDialog dialog = new ProgressDialog(UserSaveReservations.this); dialog.setTitle("Cargando..."); dialog.setMessage("Por Favore espere..."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 3000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+            }
+        });
+
+
+
+
     }    // end onCreate
+
+    private void setBooking(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+
+                for (int i= 0; i < response.length(); i++){
+
+                    try {
+
+                        jsonObject = response.getJSONObject(i);
+
+                        String mensaje =jsonObject.optString("mensaje");
+                        Boolean status =jsonObject.optBoolean("status");
+                        if(status){
+                            final ProgressDialog dialog = new ProgressDialog(UserSaveReservations.this); dialog.setTitle("Exito!"); dialog.setMessage("Se ha registrado la Reserva."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+                            Toast.makeText(getApplicationContext(), "Se ha registrado Exitosamente tu reserva", Toast.LENGTH_LONG).show();
+                        }else{
+                            final ProgressDialog dialog = new ProgressDialog(UserSaveReservations.this); dialog.setTitle("Upss!"); dialog.setMessage("Parece que ya estas Registrado"); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+                            Toast.makeText(getApplicationContext(), "Negativa la Consulta wey", Toast.LENGTH_LONG).show();
+                        }
+
+                    } catch (JSONException e) {
+
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
+    }
 
 
     private void getShedule(String URL){
