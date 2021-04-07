@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -223,6 +224,16 @@ public class LogIn extends AppCompatActivity {
 
                 });
     }
-
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Your desired class
+                startActivity(new Intent(LogIn.this, MainActivity.class));
+                break;
+        }
+        return true;
+    }
 
 }

@@ -6,87 +6,94 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     tools:context=".admin.AdminHome">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <include layout="@layout/main_toolbar"/>
+        android:layout_height="wrap_content">
 
-        <!-- EditText con Material Design -->
-        <TextView
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="15dp"
-            android:gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:id="@+id/gimnasio_nombre"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="@string/about_gim" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include layout="@layout/main_toolbar"/>
 
-        <TextView
-            android:id="@+id/about_mision"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:text="@string/about_mision" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <EditText
-                android:id="@+id/content_mision"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="138dp"
+                android:layout_height="40dp"
+                android:text="@string/aboutUs"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <!-- EditText con Material Design -->
+            <TextView
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="15dp"
+                android:gravity="center"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:hint="@string/about_content_mision"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/about_vision"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:text="@string/about_vision" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <EditText
-                android:id="@+id/content_vision"
+                android:id="@+id/gimnasio_nombre"
                 android:layout_width="match_parent"
-                android:layout_height="138dp"
+                android:layout_height="70dp"
+                android:text="@string/about_gim" />
+
+            <TextView
+                android:id="@+id/about_mision"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                android:hint="@string/about_content_vision"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="45dp"
-            android:text="@string/offer_button" />
+                android:text="@string/about_mision" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-    </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/content_mision"
+                    android:layout_width="match_parent"
+                    android:layout_height="138dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="@string/about_content_mision"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/about_vision"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:text="@string/about_vision" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/content_vision"
+                    android:layout_width="match_parent"
+                    android:layout_height="138dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="@string/about_content_vision"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="45dp"
+                android:text="@string/offer_button" />
+
+        </LinearLayout>
+    </ScrollView>
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"

@@ -92,7 +92,7 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
                 selected_spinner = spinner.getSelectedItem().toString();
                 String vUserName = vUserName();
                 //!validateUserName(vUserName)|
-                if (!validateEmail() |!validatePassword()  | !validateName() | !validateLastName()| !validateDocument() ) {
+                if (!validateEmail() | !validatePassword()  | !validateName() | !validateLastName()| !validateDocument()) {
                     Toast.makeText(getApplicationContext(), "Corrija los datos ingresados.", Toast.LENGTH_LONG).show();
                 }else {
                     insertUser();
@@ -113,21 +113,22 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
         progreso.setMessage("Cargando...");
         progreso.show();
 
-        String url = "http://gymup.zonahosting.net/gymphp/RegistroClientsWS.php?name=" + etName.getText().toString() +
-                "&surname="   + etSurname.getText().toString() +
-                "&document="  + etDocument.getText().toString() +
-                "&address="   + etAddress.getText().toString() +
-                "&city="      + etCity.getText().toString() +
+
+        String url = "http://gymup.zonahosting.net/gymphp/RegistroClientsWS2.php?name=" + etName.getText().toString().trim() +
+                "&surname="   + etSurname.getText().toString().trim() +
+                "&document="  + etDocument.getText().toString().trim() +
+                "&address="   + etAddress.getText().toString().trim() +
+                "&city="      + etCity.getText().toString().trim() +
                 "&birthday="  + selectedDate +
                 "&country="   + etCountry.getText().toString() +
-                "&phone="     + etPhone.getText().toString() +
-                "&email="     + etEmail.getText().toString() +
-                "&mobile="    + etMobile.getText().toString() +
+                "&phone="     + etPhone.getText().toString().trim() +
+                "&email="     + etEmail.getText().toString().trim() +
+                "&mobile="    + etMobile.getText().toString().trim() +
                 "&gender="    + selected_spinner +
-                "&height="    + etHeight.getText().toString() +
-                "&weight="    + etWeight.getText().toString() +
-                "&cusername=" + etcUsername.getText().toString() +
-                "&cpassword=" + etcPassword.getText().toString();
+                "&height="    + etHeight.getText().toString().trim() +
+                "&weight="    + etWeight.getText().toString().trim() +
+                "&cusername=" + etcUsername.getText().toString().trim() +
+                "&cpassword=" + etcPassword.getText().toString().trim();
 
         url = url.replace(" ", "%20");
 
