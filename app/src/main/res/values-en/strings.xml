@@ -69,12 +69,12 @@
     <string name="EmailDueno">Owner\'s Email</string>
     <string name="passwordueno">Owner Password</string>
     <string name="ActualizarDatos">Update data</string>
-    <string name="area_del_cliente">Client area</string>
+    <string name="area_del_cliente">Client Area</string>
     <string name="reservas">Bookings</string>
-    <string name="mi_salud">My health</string>
+    <string name="mi_salud">My Health</string>
     <string name="balance">Balance</string>
     <string name="estado_de_cuenta">Account status</string>
-    <string name="salud_y_nutrici_n">Health and nutrition</string>
+    <string name="salud_y_nutrici_n">Health and Nutrition</string>
     <string name="mensaje_a_ser_enviado">Message to be sent</string>
     <string name="t_tulo_o_asunto">Title or Subject</string>
     <string name="olvido_pass">Forgot your password?</string>
@@ -119,6 +119,10 @@
     <string name="guardarReserva">Save Reservation</string>
     <string name="registrarse">Sign in</string>
     <string name="ingresar">Login</string>
+    <string name="estasseguro">Are you sure you want to exit?</string>
+    <string name="Si">Yes</string>
+    <string name="No">No</string>
+    <string name="TodoslosCampos">All fields are required.</string>
     <!-- End Reservation -->
 
 
