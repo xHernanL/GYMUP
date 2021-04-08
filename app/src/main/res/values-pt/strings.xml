@@ -10,6 +10,13 @@
     <string name="users">Usuarios</string>
     <string name="userProfile">Perfil del Usuario</string>
     <string name="nutrition">Salud y Nutrición</string>
+    <string name="promotion">Promociones</string>
+
+    <!-- Para AdminHealth-->
+    <string name="health_titulo">Título</string>
+    <string name="health_articulo">Artículo</string>
+    <string name="health_btncargar">Cargar:</string>
+    <string name="health_btnguardar">Guardar</string>
 
     <!-- Para AdminServices-->
     <string name="services_tipo">Seleccione tipo de servicio:</string>
@@ -24,7 +31,7 @@
     <!-- Para AdminOffers-->
     <string name="offer_gim">Aca va el nombre del gim</string>
     <string name="offer_title">Titulo</string>
-    <string name="offer_content">Titulo</string>
+    <string name="offer_content">Ingrese promoción:</string>
     <string name="offer_button">Guardar</string>
 
     <!-- Para formulario de registro-->
@@ -75,6 +82,21 @@
         <item>Mujer</item>
         <item>Otro</item>
     </string-array>
+
+    <!-- Para formulario de registro usuario -->
+
+    <string name="name">Nombre</string>
+    <string name="lastName">Apellido</string>
+    <string name="city">Ciudad</string>
+    <string name="postalCode">Código postal</string>
+    <string name="country">País</string>
+    <string name="phoneNumber">Teléfono</string>
+    <string name="userName">Usuario</string>
+    <string name="status">Estado</string>
+    <string name="comments">Comentarios</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="selectDate">Fecha de nacimiento</string>
+    <string name="selectGym">Selecciona un gimnasio</string>
 
     <!-- Prueba para servicios -->
     <string-array name="servicesList">

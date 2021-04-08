@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bitgymup.gymup.R;
 import com.bitgymup.gymup.users.UserBookingDetail;
-import com.bitgymup.gymup.users.UserSaveReservations;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -90,8 +89,8 @@ public class getBookingsAdapter extends RecyclerView.Adapter<getBookingsAdapter.
                                                 goUserBookingDetail.putExtra("serviceName", item.getServiceName());
                                                 goUserBookingDetail.putExtra("serviceDes", item.getServiceDescripcion());
                                                 goUserBookingDetail.putExtra("IdService", item.getIdService());
-                                                context.startActivity(Intent.createChooser(goUserBookingDetail, "Compartir en")
-                                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                                goUserBookingDetail.putExtra("idBooking", item.getIdBooking());
+                                                context.startActivity(goUserBookingDetail.setFlags(goUserBookingDetail.FLAG_ACTIVITY_NEW_TASK));
                                                 //context.startActivity(goUserBookingDetail);
                                             }
                                         }

@@ -30,7 +30,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="271dp"
+            android:layout_height="323dp"
             android:layout_margin="8dp"
             android:layout_marginTop="8dp"
             android:visibility="visible"
@@ -41,12 +41,23 @@
             app:layout_constraintVertical_bias="0.19"
             tools:ignore="MissingConstraints">
 
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recicerView"
+                    android:layout_width="591dp"
+                    android:layout_height="match_parent"
+                    android:translationX="220dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="209dp"
+                android:layout_height="279dp"
                 android:orientation="vertical">
 
                 <!-- Media -->
@@ -73,58 +84,47 @@
                         android:text="Nombre del Servicio"
                         android:textAppearance="?attr/textAppearanceHeadline6" />
 
-                    <androidx.core.widget.NestedScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fillViewport="true">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvDes"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="Descripcion delservicio"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
-                        </LinearLayout>
-                    </androidx.core.widget.NestedScrollView>
+                    <TextView
+                        android:id="@+id/tvDes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Descripcion delservicio"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:visibility="gone"
+                        tools:visibility="gone" />
 
                 </LinearLayout>
 
                 <!-- Buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnReservar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btnReservaAction2" />
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#5E35B1"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                        <!-- Scrollable content -->
+
+                    </androidx.core.widget.NestedScrollView>
+                </LinearLayout>
 
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:textAlignment="center">
-
-            <Button
-                android:id="@+id/btnReservar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnReservaAction2" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recicerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
 
 
     </LinearLayout>
