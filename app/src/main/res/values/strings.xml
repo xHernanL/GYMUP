@@ -30,7 +30,7 @@
 
     <!-- Para AdminOffers-->
     <string name="offer_gim">Aca va el nombre del gim</string>
-    <string name="offer_title">Titulo</string>
+    <string name="offer_title">Título</string>
     <string name="offer_content">Ingrese promoción:</string>
     <string name="offer_button">Guardar</string>
 
@@ -44,7 +44,7 @@
     <string name="address">Dirección</string>
     <string name="height">Altura</string>
     <string name="weight">Peso</string>
-    <string name="repeatPassword">Repita la Contraseña</string>
+    <string name="repeatPassword">Repita la contraseña</string>
     <string name="gender">Sexo</string>
     <string name="loginUser">Inicio de sesión</string>
     <string name="username">Nombre de usuario</string>

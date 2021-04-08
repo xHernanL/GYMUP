@@ -1,85 +1,85 @@
 <resources>
     <string name="app_name">GYMUP!</string>
     <string name="email">E-mail</string>
-    <string name="password">Contraseña</string>
-    <string name="login">Ingresar</string>
-    <string name="gymList">Listado de Gimnasios</string>
-    <string name="aboutUs">Nosotros</string>
-    <string name="services">Servicios</string>
-    <string name="contact">Contacto</string>
-    <string name="users">Usuarios</string>
-    <string name="userProfile">Perfil del Usuario</string>
-    <string name="nutrition">Salud y Nutrición</string>
-    <string name="promotion">Promociones</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="gymList">Gym List</string>
+    <string name="aboutUs">About Us</string>
+    <string name="services">Services</string>
+    <string name="contact">Contact</string>
+    <string name="users">Users</string>
+    <string name="userProfile">User Profile</string>
+    <string name="nutrition">Health and Nutrition</string>
+    <string name="promotion">Promotions</string>
 
     <!-- Para AdminHealth-->
-    <string name="health_titulo">Título</string>
-    <string name="health_articulo">Artículo</string>
-    <string name="health_btncargar">Cargar:</string>
-    <string name="health_btnguardar">Guardar</string>
+    <string name="health_titulo">Subject</string>
+    <string name="health_articulo">Article</string>
+    <string name="health_btncargar">Load:</string>
+    <string name="health_btnguardar">Save</string>
 
     <!-- Para AdminServices-->
-    <string name="services_tipo">Seleccione tipo de servicio:</string>
+    <string name="services_tipo">Select type of service:</string>
 
     <!-- Para AdminAbout-->
     <string name="about_gim">Aca va el nombre del gim</string>
-    <string name="about_mision">Misión:</string>
-    <string name="about_vision">Visión:</string>
-    <string name="about_content_mision">Agregar información sobre Mision</string>
-    <string name="about_content_vision">Agregar información sobre Vision</string>
+    <string name="about_mision">Our mission:</string>
+    <string name="about_vision">Our vision:</string>
+    <string name="about_content_mision">Add here information about our mission</string>
+    <string name="about_content_vision">Add here information about our vision</string>
 
     <!-- Para AdminOffers-->
     <string name="offer_gim">Aca va el nombre del gim</string>
-    <string name="offer_title">Titulo</string>
-    <string name="offer_content">Ingrese promoción:</string>
-    <string name="offer_button">Guardar</string>
+    <string name="offer_title">Title</string>
+    <string name="offer_content">Enter promotion:</string>
+    <string name="offer_button">Save</string>
 
     <!-- Para formulario de registro-->
-    <string name="register">Registro</string>
-    <string name="register2">Registrarse</string>
-    <string name="userRegister">Registro de Usuario</string>
-    <string name="fullName">Nombre Completo</string>
-    <string name="document">Documento de Identidad</string>
-    <string name="cellphone">Celular</string>
-    <string name="address">Dirección</string>
-    <string name="height">Altura</string>
-    <string name="weight">Peso</string>
-    <string name="repeatPassword">Repita la Contraseña</string>
-    <string name="gender">Sexo</string>
-    <string name="loginUser">Inicio de sesión</string>
-    <string name="username">Nombre de usuario</string>
-    <string name="IngresarUsuario">Ingresar</string>
-    <string name="notienecuenta">¿No tienes registro? <b>Registrate aquí</b></string>
-    <string name="agenda">Agenda</string>
-    <string name="clientes">Clientes</string>
-    <string name="notificaciones">Notificaciones</string>
-    <string name="servicios">Servicios</string>
+    <string name="register">Registration</string>
+    <string name="register2">Sign in</string>
+    <string name="userRegister">User register</string>
+    <string name="fullName">Full Name</string>
+    <string name="document">National identity</string>
+    <string name="cellphone">Mobile</string>
+    <string name="address">Address</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="repeatPassword">Repeat password</string>
+    <string name="gender">Gender</string>
+    <string name="loginUser">Login</string>
+    <string name="username">Username</string>
+    <string name="IngresarUsuario">Login</string>
+    <string name="notienecuenta">"Don't have an account? <b> Signin here</b> "</string>
+    <string name="agenda">Reservation</string>
+    <string name="clientes">Customers</string>
+    <string name="notificaciones">Notifications</string>
+    <string name="servicios">Services</string>
     <string name="mi_about">About</string>
-    <string name="mi_perfil">Mi Perfil</string>
-    <string name="nombregimnasio">Nombre del Gimnasio</string>
-    <string name="direccionprincipal">Dirección Principal</string>
-    <string name="telefonoprincipal">Teléfono Principal</string>
-    <string name="telMovil">Teléfono móvil</string>
-    <string name="Email">Correo electrónico</string>
-    <string name="Ciudad">Ciudad</string>
-    <string name="Estado">Estado / Departamento</string>
-    <string name="RUT">RUT / Registro Mercantil</string>
-    <string name="NombrePropietario">Nombre del Propietario</string>
-    <string name="MovilPropietario">Móvil Propietario</string>
-    <string name="EmailDueno">Correo electrónico del Propietario</string>
-    <string name="passwordueno">Contraseña del Propietario</string>
-    <string name="ActualizarDatos">Actualizar datos</string>
-    <string name="area_del_cliente">Área del cliente</string>
-    <string name="reservas">Reservas</string>
-    <string name="mi_salud">Mi Salud</string>
+    <string name="mi_perfil">My Profile</string>
+    <string name="nombregimnasio">Gym Name</string>
+    <string name="direccionprincipal">Main address</string>
+    <string name="telefonoprincipal">Main phone</string>
+    <string name="telMovil">Mobile</string>
+    <string name="Email">Email</string>
+    <string name="Ciudad">City</string>
+    <string name="Estado">State / Province</string>
+    <string name="RUT">Commercial register number</string>
+    <string name="NombrePropietario">Owner\'s Name</string>
+    <string name="MovilPropietario">Mobile Owner</string>
+    <string name="EmailDueno">Owner\'s Email</string>
+    <string name="passwordueno">Owner Password</string>
+    <string name="ActualizarDatos">Update data</string>
+    <string name="area_del_cliente">Client area</string>
+    <string name="reservas">Bookings</string>
+    <string name="mi_salud">My health</string>
     <string name="balance">Balance</string>
-    <string name="estado_de_cuenta">Estado de Cuenta</string>
-    <string name="salud_y_nutrici_n">Salud y Nutrición</string>
-    <string name="mensaje_a_ser_enviado">Mensaje a ser enviado</string>
-    <string name="t_tulo_o_asunto">Título o Asunto</string>
-    <string name="olvido_pass">¿Olvidó su contraseña?</string>
-    <string name="recuperar_contrasena">Recuperar contraseña</string>
-    <string name="correo_electr_nico_registrado">Correo electrónico registrado</string>
+    <string name="estado_de_cuenta">Account status</string>
+    <string name="salud_y_nutrici_n">Health and nutrition</string>
+    <string name="mensaje_a_ser_enviado">Message to be sent</string>
+    <string name="t_tulo_o_asunto">Title or Subject</string>
+    <string name="olvido_pass">Forgot your password?</string>
+    <string name="recuperar_contrasena">Recover password</string>
+    <string name="correo_electr_nico_registrado">Registered email</string>
     <string-array name="genderList">
         <item>Hombre</item>
         <item>Mujer</item>
@@ -88,18 +88,18 @@
 
     <!-- Para formulario de registro usuario -->
 
-    <string name="name">Nombre</string>
-    <string name="lastName">Apellido</string>
-    <string name="city">Ciudad</string>
-    <string name="postalCode">Código postal</string>
-    <string name="country">País</string>
-    <string name="phoneNumber">Teléfono</string>
-    <string name="userName">Usuario</string>
-    <string name="status">Estado</string>
-    <string name="comments">Comentarios</string>
-    <string name="birthday">Fecha de nacimiento</string>
-    <string name="selectDate">Fecha de nacimiento</string>
-    <string name="selectGym">Selecciona un gimnasio</string>
+    <string name="name">Name</string>
+    <string name="lastName">Surname</string>
+    <string name="city">City</string>
+    <string name="postalCode">ZIP</string>
+    <string name="country">Country</string>
+    <string name="phoneNumber">Phone</string>
+    <string name="userName">Username</string>
+    <string name="status">State</string>
+    <string name="comments">Comments</string>
+    <string name="birthday">Date of birth</string>
+    <string name="selectDate">Date of birth</string>
+    <string name="selectGym">Select a gym</string>
 
     <!-- Prueba para servicios -->
     <string-array name="servicesList">
@@ -112,13 +112,13 @@
     </string-array>
 
     <!-- Start Reservation -->
-    <string name="btnDatePicker">Seleccionar Fecha</string>
-    <string name="btnReservaAction1">Cancelar Reserva</string>
-    <string name="btnReservaAction2">Reservar</string>
-    <string name="btnReservar">Reservar</string>
-    <string name="guardarReserva">Guardar Reserva</string>
-    <string name="registrarse">Registrarse</string>
-    <string name="ingresar">Ingresar</string>
+    <string name="btnDatePicker">Select Date</string>
+    <string name="btnReservaAction1">Cancel booking</string>
+    <string name="btnReservaAction2">Reserve</string>
+    <string name="btnReservar">Reserve</string>
+    <string name="guardarReserva">Save Reservation</string>
+    <string name="registrarse">Sign in</string>
+    <string name="ingresar">Login</string>
     <!-- End Reservation -->
 
 
