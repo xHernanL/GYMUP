@@ -2,6 +2,7 @@ package com.bitgymup.gymup.users;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -30,6 +32,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import extras.Schedule;
 import extras.ScheduleAdapter;
@@ -57,14 +61,18 @@ public class UserBookingDetail extends AppCompatActivity {
         String idService   = getIntent().getExtras().getString("IdService");
         String serviceName = getIntent().getExtras().getString("serviceName");
         String serviceDes  = getIntent().getExtras().getString("serviceDes");
+        String idbooking   = getIntent().getExtras().getString("idBooking");
 
 
         TextView srvName, srvDes;
         ImageView imageView;
+        FloatingActionButton fabDelete;
+        Activity ac = this;
 
         srvName = findViewById(R.id.tvName);
         srvDes = findViewById(R.id.tvDes);
         imageView = findViewById(R.id.imageView);
+        fabDelete = findViewById(R.id.fabDelete);
 
 
         try {
@@ -88,7 +96,96 @@ public class UserBookingDetail extends AppCompatActivity {
 
         }
 
+        fabDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DeleteBookingAlert(ac, idService, idbooking, user);
+            }
+        });
+
+
+
     }    // end onCreate
+
+
+
+    private void DeleteBooking(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+
+                for (int i= 0; i < response.length(); i++){
+
+                    try {
+
+                        jsonObject = response.getJSONObject(i);
+                        Boolean status = jsonObject.optBoolean("status");
+                        String mensaje = jsonObject.optString("mensaje");
+
+                        if(status){
+                            final ProgressDialog dialog = new ProgressDialog(UserBookingDetail.this); dialog.setTitle("Exito!"); dialog.setMessage(mensaje); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+                            Toast.makeText(getApplicationContext(), "Se ha Eliminado Correctamente", Toast.LENGTH_LONG).show();
+                        }else{
+                            final ProgressDialog dialog = new ProgressDialog(UserBookingDetail.this); dialog.setTitle("Upss!"); dialog.setMessage(mensaje); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+                            Toast.makeText(getApplicationContext(), "No se logró eliminar", Toast.LENGTH_LONG).show();
+                        }
+
+                        Intent goToReservasList = new Intent(getApplicationContext(), UserReservas.class);
+                        startActivity(goToReservasList.setFlags(goToReservasList.FLAG_ACTIVITY_NEW_TASK));
+                    } catch (JSONException e) {
+
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+    private void DeleteBookingAlert(Activity activity, String idservices, String idBookings, String usernames) {
+        //Se coloca el dialogo de alerta
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        //Set Titulo
+        builder.setTitle("Eliminar Reserva");
+        //Set mensaje
+        builder.setMessage("¿Estás seguro que deseas Eiminar la Reserva?");
+
+        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                String idService = idservices;
+                String idBooking = idBookings;
+                String username  = usernames;
+                DeleteBooking(
+                        "http://gymup.zonahosting.net/gymphp/deleteBooking.php?username=" + username + "&serviceid=" + idService + "&idBooking=" + idBooking
+                );
+            }
+        });
+        //Respuesta Negativa
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Salida del diálogo
+                dialog.dismiss();
+            }
+        });
+        //Mostrar dialogo
+        builder.show();
+    }
 
 
     private void getShedule(String URL){

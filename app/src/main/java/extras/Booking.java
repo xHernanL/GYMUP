@@ -8,6 +8,16 @@ public class Booking implements Serializable {
     private String serviceDescripcion;
     private String serviceDateTime;
 
+    public String getIdBooking() {
+        return idBooking;
+    }
+
+    public void setIdBooking(String idBooking) {
+        this.idBooking = idBooking;
+    }
+
+    private String idBooking;
+
     public String getIdService() {
         return idService;
     }
@@ -44,10 +54,11 @@ public class Booking implements Serializable {
 
 
 
-    public Booking(String serviceName, String serviceDescripcion, String serviceDateTime, String idService) {
+    public Booking(String serviceName, String serviceDescripcion, String serviceDateTime, String idService, String idBooking) {
         this.serviceName        = serviceName;
         this.serviceDescripcion = serviceDescripcion;
         this.serviceDateTime    = serviceDateTime;
-        this.idService          =idService;
+        this.idService          = idService;
+        this.idBooking          = idBooking;
     }
 }
