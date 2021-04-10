@@ -167,7 +167,7 @@ public class LogIn extends AppCompatActivity {
 
                 }//fin del Ii
                 else {
-                    Toast.makeText(getApplicationContext(),"Todos los campos son requeridos.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.TodoslosCampos,Toast.LENGTH_SHORT).show();
                 }
             }
         });//Parte final

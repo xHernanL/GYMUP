@@ -30,7 +30,7 @@
 
     <!-- Para AdminOffers-->
     <string name="offer_gim">Aca va el nombre del gim</string>
-    <string name="offer_title">Titulo</string>
+    <string name="offer_title">Título</string>
     <string name="offer_content">Ingrese promoción:</string>
     <string name="offer_button">Guardar</string>
 
@@ -44,7 +44,7 @@
     <string name="address">Dirección</string>
     <string name="height">Altura</string>
     <string name="weight">Peso</string>
-    <string name="repeatPassword">Repita la Contraseña</string>
+    <string name="repeatPassword">Repita la contraseña</string>
     <string name="gender">Sexo</string>
     <string name="loginUser">Inicio de sesión</string>
     <string name="username">Nombre de usuario</string>
@@ -120,6 +120,10 @@
     <string name="guardarReserva">Guardar Reserva</string>
     <string name="registrarse">Registrarse</string>
     <string name="ingresar">Ingresar</string>
+    <string name="estasseguro">¿Estás seguro que deseas salir?</string>
+    <string name="Si">SI</string>
+    <string name="No">No</string>
+    <string name="TodoslosCampos">Todos los campos son requeridos.</string>
     <!-- End Reservation -->
 
 

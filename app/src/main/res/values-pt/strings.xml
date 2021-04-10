@@ -122,4 +122,8 @@
     <string name="correo_electr_nico_registrado">Correo electrónico registrado</string>
     <string name="registrarse">Registrarse</string>
     <string name="ingresar">Ingresar</string>
+    <string name="estasseguro">¿Estás seguro que deseas salir?</string>
+    <string name="Si">SI</string>
+    <string name="No">No</string>
+    <string name="TodoslosCampos">Todos los campos son requeridos.</string>
 </resources>
