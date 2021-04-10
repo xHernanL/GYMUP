@@ -3,8 +3,10 @@ package com.bitgymup.gymup.users;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,12 +40,7 @@ import java.util.TimerTask;
 import extras.Schedule;
 import extras.ScheduleAdapter;
 
-import static com.bitgymup.gymup.admin.Variables.getUsuario_s;
-
-
 public class UserBookingDetail extends AppCompatActivity {
-    private String domainImage = "http://gymup.zonahosting.net/gymphp/images/";
-
 
     List<Schedule> serviceList;
     DrawerLayout drawerLayout;
@@ -56,13 +53,12 @@ public class UserBookingDetail extends AppCompatActivity {
 
         // Variables a Utilizar //
 
-
-        String user        = getUsuario_s();
+        SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String user        = userId1.getString("username", "");
         String idService   = getIntent().getExtras().getString("IdService");
         String serviceName = getIntent().getExtras().getString("serviceName");
         String serviceDes  = getIntent().getExtras().getString("serviceDes");
         String idbooking   = getIntent().getExtras().getString("idBooking");
-
 
         TextView srvName, srvDes;
         ImageView imageView;
@@ -80,6 +76,7 @@ public class UserBookingDetail extends AppCompatActivity {
             srvName.setText(serviceName);
             srvDes.setText(serviceDes);
 
+            String domainImage = "http://gymup.zonahosting.net/gymphp/images/";
             Picasso.get().load(domainImage + serviceName+".jpg").into(imageView);
 
         }catch (Exception e){
@@ -129,7 +126,7 @@ public class UserBookingDetail extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Se ha Eliminado Correctamente", Toast.LENGTH_LONG).show();
                         }else{
                             final ProgressDialog dialog = new ProgressDialog(UserBookingDetail.this); dialog.setTitle("Upss!"); dialog.setMessage(mensaje); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-                            Toast.makeText(getApplicationContext(), "No se logró eliminar", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
                         }
 
                         Intent goToReservasList = new Intent(getApplicationContext(), UserReservas.class);
