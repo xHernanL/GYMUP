@@ -11,15 +11,27 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
-
-
+        <!-- EditText con Material Design -->
         <TextView
+            android:fontFamily="@font/poppinsmedium"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/gimnasio_nombre"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Clientes"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_height="70dp"
+            android:text="@string/offer_gim" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_clients"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

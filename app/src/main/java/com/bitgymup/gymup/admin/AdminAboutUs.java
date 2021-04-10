@@ -58,7 +58,8 @@ public class AdminAboutUs extends AppCompatActivity {
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         request = Volley.newRequestQueue(this);
 
-        cargarWSgimnasio(username);
+        //cargarWSgimnasio(username);
+        gimnasio_nombre.setText(getUserLogin("namegym"));
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,40 +85,40 @@ public class AdminAboutUs extends AppCompatActivity {
     }
 
     //Cuando carga la pantalla me traiga el nombre del gimnasio
-    private void cargarWSgimnasio(String username) {
-        String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //progreso.hide();
-                        //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
-                        content_mision.setText("");
-                        content_vision.setText("");
-                        //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
-                        JSONArray json=response.optJSONArray("detail");
-                        JSONObject jsonObject=null;
-                        try {
-                            jsonObject=json.getJSONObject(0);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        String name = jsonObject.optString("name");
-                        idgim =  jsonObject.optString("id");
-                        gimnasio_nombre.setText(name);
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
-                Log.i("Error",error.toString());
-
-            }
-        });
-        request.add(jsonObjectRequest);
-    }
+//    private void cargarWSgimnasio(String username) {
+//        String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
+//        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        //progreso.hide();
+//                        //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
+//                        content_mision.setText("");
+//                        content_vision.setText("");
+//                        //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
+//                        JSONArray json=response.optJSONArray("detail");
+//                        JSONObject jsonObject=null;
+//                        try {
+//                            jsonObject=json.getJSONObject(0);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                        String name = jsonObject.optString("name");
+//                        idgim =  jsonObject.optString("id");
+//                        gimnasio_nombre.setText(name);
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                //progreso.hide();
+//                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+//                Log.i("Error",error.toString());
+//
+//            }
+//        });
+//        request.add(jsonObjectRequest);
+//    }
     private void cargarWebService() {
 
         progreso= new ProgressDialog(AdminAboutUs.this);
