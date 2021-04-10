@@ -184,7 +184,7 @@ public class AdminUsers extends AppCompatActivity {
         redirectActivity(this,AdminAgenda.class);
     }
     public void ClickNews(View view){
-        //Redirección de la activity a AboutUs
+        //Redirección de la activity  AboutUs
         redirectActivity(this,AdminNews.class);
     }
     public void ClickPromo(View view){
