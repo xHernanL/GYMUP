@@ -11,6 +11,10 @@
     <string name="userProfile">Perfil del Usuario</string>
     <string name="nutrition">Salud y Nutrición</string>
     <string name="promotion">Promociones</string>
+    <string name="TodoslosCampos">Todos los campos son requeridos."</string>
+    <string name="estasseguro">¿Estás seguro?</string>
+    <string name="Si">Sí</string>
+    <string name="No">No</string>
 
     <!-- Para AdminHealth-->
     <string name="health_titulo">Título</string>
@@ -34,7 +38,7 @@
 
     <!-- Para AdminOffers-->
     <string name="offer_gim">Aca va el nombre del gim</string>
-    <string name="offer_title">Título</string>
+    <string name="offer_title">Titulo</string>
     <string name="offer_content">Ingrese promoción:</string>
     <string name="offer_button">Guardar</string>
 
@@ -48,10 +52,28 @@
     <string name="address">Dirección</string>
     <string name="height">Altura</string>
     <string name="weight">Peso</string>
-    <string name="repeatPassword">Repita la contraseña</string>
+    <string name="repeatPassword">Repita la Contraseña</string>
     <string name="gender">Sexo</string>
     <string name="loginUser">Inicio de sesión</string>
     <string name="username">Nombre de usuario</string>
+    <string name="name">Nombre</string>
+    <string name="lastName">Apellido</string>
+    <string name="city">Ciudad</string>
+    <string name="postalCode">Código postal</string>
+    <string name="country">País</string>
+    <string name="phoneNumber">Teléfono</string>
+    <string name="userName">Usuario</string>
+    <string name="status">Estado</string>
+    <string name="comments">Comentarios</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="selectDate">Fecha de nacimiento</string>
+    <string name="selectGym">Selecciona un gimnasio</string>
+    <string-array name="genderList">
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>Otro</item>
+    </string-array>
+
     <string name="IngresarUsuario">Ingresar</string>
     <string name="notienecuenta">¿No tienes registro? <b>Registrate aquí</b></string>
     <string name="agenda">Agenda</string>
@@ -84,26 +106,11 @@
     <string name="olvido_pass">¿Olvidó su contraseña?</string>
     <string name="recuperar_contrasena">Recuperar contraseña</string>
     <string name="correo_electr_nico_registrado">Correo electrónico registrado</string>
-    <string-array name="genderList">
-        <item>Hombre</item>
-        <item>Mujer</item>
-        <item>Otro</item>
-    </string-array>
 
-    <!-- Para formulario de registro usuario -->
-
-    <string name="name">Nombre</string>
-    <string name="lastName">Apellido</string>
-    <string name="city">Ciudad</string>
-    <string name="postalCode">Código postal</string>
-    <string name="country">País</string>
-    <string name="phoneNumber">Teléfono</string>
-    <string name="userName">Usuario</string>
-    <string name="status">Estado</string>
-    <string name="comments">Comentarios</string>
-    <string name="birthday">Fecha de nacimiento</string>
-    <string name="selectDate">Fecha de nacimiento</string>
-    <string name="selectGym">Selecciona un gimnasio</string>
+    <!--Para el perfil del usuario -->
+    <string name="editProfile">Editar perfil</string>
+    <string name="updateData">Actualizar datos</string>
+    <string name="editPassword">Cambio de contraseña</string>
 
 
     <!-- Prueba para servicios -->
@@ -124,12 +131,10 @@
     <string name="guardarReserva">Guardar Reserva</string>
     <string name="registrarse">Registrarse</string>
     <string name="ingresar">Ingresar</string>
-    <string name="estasseguro">¿Estás seguro que deseas salir?</string>
-    <string name="Si">SI</string>
-    <string name="No">No</string>
-    <string name="TodoslosCampos">Todos los campos son requeridos.</string>
     <!-- End Reservation -->
 
+    <!-- Lista de clientes -->
+    <string name="btn_bloquear">Bloquear</string>
 
 
 

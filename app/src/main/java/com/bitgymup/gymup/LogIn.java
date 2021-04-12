@@ -27,7 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.admin.AdminHome;
-import com.bitgymup.gymup.Register;
+import com.bitgymup.gymup.users.UserRegister;
 import com.bitgymup.gymup.users.UserHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,9 +37,13 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import extras.EnviarDatos;
 
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
+import static com.bitgymup.gymup.admin.Variables.usuario_s;//Ver
 
 public class LogIn extends AppCompatActivity {
 
@@ -51,7 +55,6 @@ public class LogIn extends AppCompatActivity {
     private String idgim, nombregim;
     private RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class LogIn extends AppCompatActivity {
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public  void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), Register.class);
+                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
                 startActivity(intent);
                 finish();
             }
@@ -91,42 +94,41 @@ public class LogIn extends AppCompatActivity {
 
 
         buttonLogin.setOnClickListener(new View.OnClickListener(){
-                                        @Override
-                                        public void onClick(View v) {
-                                            String username, password;
-                                            username = String.valueOf(textInputEditTextUserName.getText());
-                                            password = String.valueOf(textInputEditTextPassword.getText());
+            @Override
+            public void onClick(View v) {
+                String username, password;
+                username = String.valueOf(textInputEditTextUserName.getText());
+                password = String.valueOf(textInputEditTextPassword.getText());
 
-                                            //Se determina si hay valores nulos, en tan caso se despliega un Toast
-                                            if(!username.equals("") && !password.equals(""))
-                                            {
-                                                //Start ProgressBar first (Establecer visibility VISIBLE)
-                                                progressBar.setVisibility(View.VISIBLE);
-                                                Handler handler = new Handler(Looper.getMainLooper());
-                                                handler.post(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        //Inicio de datos por URL.
-                                                        //Creando arrary par los parametros.
-                                                        String[] field = new String[2];
-                                                        field[0] = "username";
-                                                        field[1] = "password";
-                                                        //Creando el arrary para los datos.
-                                                        String[] data = new String[2];
-                                                        data[0] = username;
-                                                        data[1] = password;
-                                                        EnviarDatos enviarDatos = new EnviarDatos("http://gymup.zonahosting.net/gymphp/loginuser.php", "POST", field, data);
-                                                        //Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();//prueba general
-                                                        if (enviarDatos.startPut()) {
-                                                            if (enviarDatos.onComplete()) {
-                                                                progressBar.setVisibility(View.GONE);
-                                                                String result = enviarDatos.getResult();
+                //Se determina si hay valores nulos, en tan caso se despliega un Toast
+                if(!username.equals("") && !password.equals(""))
+                {
+                    //Start ProgressBar first (Establecer visibility VISIBLE)
+                    progressBar.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Inicio de datos por URL.
+                            //Creando arrary par los parametros.
+                            String[] field = new String[2];
+                            field[0] = "username";
+                            field[1] = "password";
+                            //Creando el arrary para los datos.
+                            String[] data = new String[2];
+                            data[0] = username;
+                            data[1] = password;
+                            EnviarDatos enviarDatos = new EnviarDatos("http://gymup.zonahosting.net/gymphp/loginuser.php", "POST", field, data);
+                            //Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();//prueba general
+                            if (enviarDatos.startPut()) {
+                                if (enviarDatos.onComplete()) {
+                                    progressBar.setVisibility(View.GONE);
+                                    String result = enviarDatos.getResult();
 
                                     if (result.equals("Login Success")){
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
-
 
                                         //Ahora se creará SharedPreferences
                                         SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
@@ -153,12 +155,10 @@ public class LogIn extends AppCompatActivity {
                                                     //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
                                                     //Ahora se creará SharedPreferences
-
                                                     cargarWSgimnasio(username);
                                                     SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                                     SharedPreferences.Editor editor = pref.edit();
                                                     editor.putString("username", username);  // Saving string
-
                                                     editor.apply();
                                                     //Pasaje por variables.
                                                     Intent bienvenido = new Intent(getApplicationContext(), AdminHome.class);
@@ -239,7 +239,7 @@ public class LogIn extends AppCompatActivity {
 
                 });
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

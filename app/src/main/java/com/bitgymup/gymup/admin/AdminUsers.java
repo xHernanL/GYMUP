@@ -5,6 +5,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +14,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,19 +40,16 @@ import java.util.List;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminUsers extends AppCompatActivity {
+public class AdminUsers extends AppCompatActivity  {
     //Inicializar las variables
     private RecyclerView recyclerViewClients;
     private RecyclerViewAdaptador adapter;
-    //List<clients> elements;
-    List<clients> clients;
-    private static RequestQueue request;
-    String idgim, username;
+    private List<clients> clients;
+    private SearchView SearchClient;
+    private String idgim, username, newText;
     private TextView id_gim,gimnasio_nombre;
-
+    private static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
-    ProgressDialog progress;
-
 
     DrawerLayout drawerLayout;
     @Override
@@ -58,19 +58,36 @@ public class AdminUsers extends AppCompatActivity {
         setContentView(R.layout.activity_admin_users);
         //Asignamos la variable
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        SearchClient     = (SearchView) findViewById(R.id.id_serch);
+
         username = getUserLogin("username");
         gimnasio_nombre.setText( getUserLogin("namegym"));
 
-        idgim= getUserLogin("idgym");
+        idgim = getUserLogin("idgym");
         String url = "http://gymup.zonahosting.net/gymphp/getClientsWS.php?id=";
         request = Volley.newRequestQueue(this);
         clients = new ArrayList<>();
         url = url + idgim;
-        Log.d("msg",url);
+
         getClientsWS(url);
         drawerLayout = findViewById(R.id.drawer_layout);
 
+        SearchClient.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
     }
+
+
 
 
     private String getUserLogin(String key) {
@@ -111,7 +128,7 @@ public class AdminUsers extends AppCompatActivity {
                         recyclerViewClients.setAdapter(adapter);
 
                         //Toast.makeText(getApplicationContext(), clients.toString(), Toast.LENGTH_LONG).show();
-                        } catch (JSONException e) {
+                    } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
@@ -124,7 +141,7 @@ public class AdminUsers extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(getApplicationContext(), clients.toString(), Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), clients.toString(), Toast.LENGTH_LONG).show();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
@@ -144,13 +161,6 @@ public class AdminUsers extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         status.setText("Inactivo");
-                        //String statusWs = status.getText().toString();
-                       /*if(statusWs.equals("0")){
-                            status.setText("Inactivo");
-                        }else{
-                            status.setText("Activo");
-                        }*/
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -174,45 +184,50 @@ public class AdminUsers extends AppCompatActivity {
         AdminHome.closeDrawer(drawerLayout);
     }
 
-/*Inicio de los enlaces*/
+    /*Inicio de los enlaces*/
     public void ClickHome(View view){
-    //Redirecciona la activity a Home
-    redirectActivity(this, AdminHome.class);
-}
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminHome.class);
+    }
     public void ClickAgenda(View view){
-        //Redirección de la activity Agenda
+        //Redirección de la activity a Agenda
         redirectActivity(this,AdminAgenda.class);
     }
-    public void ClickClientes(View view){
-        //Recrea la actividad
-        recreate();
-    }
     public void ClickNews(View view){
-        //Redirección de la activity  AboutUs
+        //Redirección de la activity a AboutUs
         redirectActivity(this,AdminNews.class);
     }
     public void ClickPromo(View view){
-        //Redirección de la activity a Promociones
+        //Redirección de la activity a AboutUs
         redirectActivity(this,AdminOffers.class);
     }
     public void ClickServicios(View view){
-        //Redirección de la activity a Servicios
+        //Redirección de la activity a AboutUs
         redirectActivity(this,AdminServices.class);
     }
-    public void CAbout(View view){
-        //Redirección de la activity a Nosotros
-        redirectActivity(this,AdminAboutUs.class);
-    }
-    public void ClickHealth(View view){
-        //Redirección de la activity a Salud y nutrición
-        redirectActivity(this,AdminHealth.class);
-    }
     public void ClickMyProfile(View view){
-        //Redirección de la activity a Mi Perfil
+        //Redirección de la activity a AboutUs
         redirectActivity(this,AdminProfile.class);
     }
-/*Fin de los enlaces generales*/
+    public void ClickClientes(View view){
+        //recreamos la actividad!
+        recreate();
+    }
+    public void CAbout(View view){
+        //Redirección de la activity to Home
+        redirectActivity(this,AdminAboutUs.class);
+    }
+    /*Fin de los enlaces generales*/
 
+    public static void redirectActivity(Activity activity, Class aClass) {
+        //Inicializar intent
+        Intent intent = new Intent(activity, aClass);
+        //Establcer las flags
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //Inicio de la Activity
+        activity.startActivity(intent);
+
+    }
     public void ClickLogout(View view){
         //Cerrar APP
         AdminHome.salir(this);
@@ -223,5 +238,6 @@ public class AdminUsers extends AppCompatActivity {
         //Close drawer
         AdminHome.closeDrawer(drawerLayout);
     }
+
 
 }
