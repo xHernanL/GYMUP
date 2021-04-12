@@ -14,12 +14,21 @@
 
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Agenda"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_height="wrap_content"
+            android:background="#5E35B1"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Mis Servicios Actuales"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
