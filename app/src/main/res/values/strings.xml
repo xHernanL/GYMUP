@@ -129,5 +129,9 @@
     <string name="ingresar">Ingresar</string>
     <!-- End Reservation -->
 
+    <!-- Lista de clientes -->
+    <string name="btn_bloquear">Bloquear</string>
+
+
 
 </resources>

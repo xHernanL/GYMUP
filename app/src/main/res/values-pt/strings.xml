@@ -129,5 +129,6 @@
     <string name="ingresar">Ingresar</string>
     <!-- End Reservation -->
 
+    <string name="btn_bloquear">Bloquear</string>
 
 </resources>
