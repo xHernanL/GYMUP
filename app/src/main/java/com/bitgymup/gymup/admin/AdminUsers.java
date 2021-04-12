@@ -5,6 +5,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -43,15 +44,12 @@ public class AdminUsers extends AppCompatActivity  {
     //Inicializar las variables
     private RecyclerView recyclerViewClients;
     private RecyclerViewAdaptador adapter;
-
-    List<clients> clients;
-    private static RequestQueue request;
-    String idgim, username;
+    private List<clients> clients;
+    private SearchView SearchClient;
+    private String idgim, username, newText;
     private TextView id_gim,gimnasio_nombre;
-
-
+    private static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
-
 
     DrawerLayout drawerLayout;
     @Override
@@ -60,7 +58,7 @@ public class AdminUsers extends AppCompatActivity  {
         setContentView(R.layout.activity_admin_users);
         //Asignamos la variable
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
-
+        SearchClient     = (SearchView) findViewById(R.id.id_serch);
 
         username = getUserLogin("username");
         gimnasio_nombre.setText( getUserLogin("namegym"));
@@ -73,6 +71,19 @@ public class AdminUsers extends AppCompatActivity  {
 
         getClientsWS(url);
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        SearchClient.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
     }
 
@@ -130,7 +141,7 @@ public class AdminUsers extends AppCompatActivity  {
             }
         });
 
-        Toast.makeText(getApplicationContext(), clients.toString(), Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), clients.toString(), Toast.LENGTH_LONG).show();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
@@ -208,6 +219,15 @@ public class AdminUsers extends AppCompatActivity  {
     }
     /*Fin de los enlaces generales*/
 
+    public static void redirectActivity(Activity activity, Class aClass) {
+        //Inicializar intent
+        Intent intent = new Intent(activity, aClass);
+        //Establcer las flags
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //Inicio de la Activity
+        activity.startActivity(intent);
+
+    }
     public void ClickLogout(View view){
         //Cerrar APP
         AdminHome.salir(this);
