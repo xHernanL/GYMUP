@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bitgymup.gymup.admin.AdminHome;
-import com.bitgymup.gymup.Register;
+import com.bitgymup.gymup.users.UserRegister;
 import com.bitgymup.gymup.users.UserHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -63,7 +63,7 @@ public class LogIn extends AppCompatActivity {
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public  void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), Register.class);
+                Intent intent = new Intent(getApplicationContext(), UserRegister.class);
                 startActivity(intent);
                 finish();
             }

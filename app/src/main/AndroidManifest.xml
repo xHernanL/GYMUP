@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -16,19 +16,21 @@
         android:roundIcon="@mipmap/logo_circular"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
-        <activity android:name=".RecuperarPass"></activity>
+        <activity android:name=".users.EditUserProfile"></activity>
+        <activity android:name=".users.UserUpdatePassword" />
+        <activity android:name=".RecuperarPass" />
         <activity android:name=".users.UserSaludNutricion" />
         <activity android:name=".users.UserPromo" />
         <activity android:name=".users.UserSalud" />
         <activity android:name=".users.UserPagos" />
         <activity android:name=".users.UserServicios" />
         <activity android:name=".users.UserReservas" />
-        <activity android:name=".users.UserBookingDetail"/>
-        <activity android:name=".users.UserSaveReservations"/>
+        <activity android:name=".users.UserBookingDetail" />
+        <activity android:name=".users.UserSaveReservations" />
         <activity android:name=".admin.AdminServices" />
         <activity android:name=".users.UserHome" />
         <activity android:name=".admin.AdminAboutUs" />
-        <activity android:name=".admin.AdminHealth"/>
+        <activity android:name=".admin.AdminHealth" />
         <activity android:name=".admin.AdminAgenda" />
         <activity android:name=".admin.AdminOffers" />
         <activity android:name=".admin.AdminUsers" />
@@ -36,16 +38,14 @@
         <activity android:name=".admin.AdminNews" />
         <activity android:name=".admin.AdminProfile" />
         <activity android:name=".admin.AdminHome" />
-        <activity android:name=".Register" />
+        <activity android:name=".users.UserRegister" />
         <activity android:name=".users.UserProfile" />
         <activity android:name=".Nutrition" />
         <activity android:name=".Contact" />
         <activity android:name=".users.Services" />
         <activity android:name=".AboutUs" />
         <activity android:name=".GymList" />
-        <activity android:name=".LogIn">
-
-        </activity>
+        <activity android:name=".LogIn" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
