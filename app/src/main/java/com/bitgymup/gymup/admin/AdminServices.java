@@ -39,8 +39,8 @@ public class AdminServices extends AppCompatActivity {
     private TextView gimnasio_nombre;
     private Button btnSubmit;
     String username, service_selected;
-    private Boolean isFirtstime = true;
-    private String idgim,description;
+    private Boolean isFirtstime = true, isExist = true;
+    private String idgim;
 
     ProgressDialog progreso;
 
@@ -106,7 +106,15 @@ public class AdminServices extends AppCompatActivity {
                 }else if(TextUtils.isEmpty(services_desc.getText().toString())){
                     Toast.makeText(getApplicationContext(),"Campo descripcion no debe estar varcio", Toast.LENGTH_LONG).show();
                 }else{
-                    cargarWebService();
+                    if(!isExist){
+                        isExist = true;
+                        RegistrarService();
+                    }else{
+                        isExist = true;
+                        ActualizarService();
+                        Log.d("Mod","Se debe modificar");
+                    }
+
                 }
 
             }
@@ -139,7 +147,7 @@ public class AdminServices extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         String name = jsonObject.optString("name");
-                        description = jsonObject.optString("description");
+                        String description = jsonObject.optString("description");
                         idgim =  jsonObject.optString("id");
                         gimnasio_nombre.setText(name);
 
@@ -156,7 +164,45 @@ public class AdminServices extends AppCompatActivity {
         request.add(jsonObjectRequest);
     }
 
-    private void cargarWebService() {
+    private void ActualizarService() {
+
+        progreso= new ProgressDialog(AdminServices.this);
+        progreso.setMessage("Cargando...");
+        progreso.show();
+
+        String url = "http://gymup.zonahosting.net/gymphp/UpdateServicesWS.php?gim="+idgim+
+                "&description="+services_desc.getText().toString()+
+                "&name="+service_selected;
+
+        url = url.replace(" ","%20");
+
+
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        progreso.hide();
+                        Toast.makeText(getApplicationContext(),"Exito al guardar :) "+ response.toString(), Toast.LENGTH_LONG).show();
+                        //services_name.setText("");
+                        services_desc.setText("");
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progreso.hide();
+                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                Log.i("Error",error.toString());
+
+            }
+        });
+        request.add(jsonObjectRequest);
+
+    }
+
+    //Modificar servicio
+    private void RegistrarService() {
 
         progreso= new ProgressDialog(AdminServices.this);
         progreso.setMessage("Cargando...");
@@ -206,6 +252,9 @@ public class AdminServices extends AppCompatActivity {
                     jsonObject  = response.getJSONObject(0);
                     String name    = jsonObject.optString("name");
                     String description = jsonObject.optString("description");
+                    if(description.equals("")){
+                        isExist = false;
+                    }
                     services_desc.setText(description);
 
                 } catch (JSONException e) {
