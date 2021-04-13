@@ -16,6 +16,7 @@ import com.bitgymup.gymup.R;
 public class UserSaludNutricion extends AppCompatActivity {
     //Inicializar las variables
     DrawerLayout drawerLayout;
+    private String idgim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
