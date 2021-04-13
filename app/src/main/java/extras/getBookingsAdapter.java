@@ -89,6 +89,7 @@ public class getBookingsAdapter extends RecyclerView.Adapter<getBookingsAdapter.
                                                 goUserBookingDetail.putExtra("serviceName", item.getServiceName());
                                                 goUserBookingDetail.putExtra("serviceDes", item.getServiceDescripcion());
                                                 goUserBookingDetail.putExtra("IdService", item.getIdService());
+                                                goUserBookingDetail.putExtra("idBooking", item.getIdBooking());
                                                 context.startActivity(goUserBookingDetail.setFlags(goUserBookingDetail.FLAG_ACTIVITY_NEW_TASK));
                                                 //context.startActivity(goUserBookingDetail);
                                             }

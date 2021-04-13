@@ -1,53 +1,75 @@
 <resources>
     <string name="app_name">GYMUP!</string>
     <string name="email">E-mail</string>
-    <string name="password">Contraseña</string>
-    <string name="login">Ingresar</string>
-    <string name="gymList">Listado de Gimnasios</string>
-    <string name="aboutUs">Nosotros</string>
-    <string name="services">Servicios</string>
-    <string name="contact">Contacto</string>
-    <string name="users">Usuarios</string>
-    <string name="userProfile">Perfil del Usuario</string>
-    <string name="nutrition">Salud y Nutrición</string>
-    <string name="promotion">Promociones</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="gymList">GymList</string>
+    <string name="aboutUs">About us</string>
+    <string name="services">Services</string>
+    <string name="contact">Contacts</string>
+    <string name="users">Users</string>
+    <string name="userProfile">User profile</string>
+    <string name="nutrition">Health and Nutrition</string>
+    <string name="promotion">Promotions</string>
+    <string name="TodoslosCampos">All fields are required."</string>
+    <string name="estasseguro">Are you sure?</string>
+    <string name="Si">Yes</string>
+    <string name="No">No</string>
 
     <!-- Para AdminHealth-->
-    <string name="health_titulo">Título</string>
-    <string name="health_articulo">Artículo</string>
-    <string name="health_btncargar">Cargar:</string>
-    <string name="health_btnguardar">Guardar</string>
+    <string name="health_titulo">Title</string>
+    <string name="health_articulo">Article</string>
+    <string name="health_btncargar">Load:</string>
+    <string name="health_btnguardar">Save</string>
 
     <!-- Para AdminServices-->
-    <string name="services_tipo">Seleccione tipo de servicio:</string>
+    <string name="services_tipo">Select a type of service:</string>
 
     <!-- Para AdminAbout-->
-    <string name="about_gim">Aca va el nombre del gim</string>
-    <string name="about_mision">Misión:</string>
-    <string name="about_vision">Visión:</string>
-    <string name="about_content_mision">Agregar información sobre Mision</string>
-    <string name="about_content_vision">Agregar información sobre Vision</string>
+    <string name="about_gim">Here goes the gym\'s name</string>
+    <string name="about_mision">Mission:</string>
+    <string name="about_vision">Vision:</string>
+    <string name="about_content_mision">Add information about Mission</string>
+    <string name="about_content_vision">Add information about Vision</string>
 
     <!-- Para AdminOffers-->
-    <string name="offer_gim">Aca va el nombre del gim</string>
-    <string name="offer_title">Titulo</string>
-    <string name="offer_content">Ingrese promoción:</string>
-    <string name="offer_button">Guardar</string>
+    <string name="offer_gim">Here goes the gym\'s name</string>
+    <string name="offer_title">Title</string>
+    <string name="offer_content">Add promotion:</string>
+    <string name="offer_button">Save</string>
 
     <!-- Para formulario de registro-->
-    <string name="register">Registro</string>
-    <string name="register2">Registrarse</string>
-    <string name="userRegister">Registro de Usuario</string>
-    <string name="fullName">Nombre Completo</string>
-    <string name="document">Documento de Identidad</string>
-    <string name="cellphone">Celular</string>
-    <string name="address">Dirección</string>
-    <string name="height">Altura</string>
-    <string name="weight">Peso</string>
-    <string name="repeatPassword">Repita la Contraseña</string>
-    <string name="gender">Sexo</string>
-    <string name="loginUser">Inicio de sesión</string>
+    <string name="register">Register</string>
+    <string name="register2">Register</string>
+    <string name="userRegister">User Register</string>
+    <string name="fullName">Full Name</string>
+    <string name="document">Document</string>
+    <string name="cellphone">Cellphone Number</string>
+    <string name="address">Address</string>
+    <string name="height">Height (cm)</string>
+    <string name="weight">Weight</string>
+    <string name="repeatPassword">Repeat Password</string>
+    <string name="gender">Gender</string>
+    <string name="loginUser">Log in</string>
     <string name="username">Nombre de usuario</string>
+    <string name="name">Name</string>
+    <string name="lastName">Last name</string>
+    <string name="city">City</string>
+    <string name="postalCode">Postal Code</string>
+    <string name="country">Country</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="userName">User Name</string>
+    <string name="status">Status</string>
+    <string name="comments">Comments</string>
+    <string name="birthday">Date of Birth</string>
+    <string name="selectDate">Date of Birth</string>
+    <string name="selectGym">Select a Gym</string>
+    <string-array name="genderList">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
     <string name="IngresarUsuario">Ingresar</string>
     <string name="notienecuenta">¿No tienes registro? <b>Registrate aquí</b></string>
     <string name="agenda">Agenda</string>
@@ -80,26 +102,12 @@
     <string name="olvido_pass">¿Olvidó su contraseña?</string>
     <string name="recuperar_contrasena">Recuperar contraseña</string>
     <string name="correo_electr_nico_registrado">Correo electrónico registrado</string>
-    <string-array name="genderList">
-        <item>Hombre</item>
-        <item>Mujer</item>
-        <item>Otro</item>
-    </string-array>
 
-    <!-- Para formulario de registro usuario -->
+    <!--Para el perfil del usuario -->
+    <string name="editProfile">Edit Profile</string>
+    <string name="updateData">Update data</string>
+    <string name="editPassword">Edit password</string>
 
-    <string name="name">Nombre</string>
-    <string name="lastName">Apellido</string>
-    <string name="city">Ciudad</string>
-    <string name="postalCode">Código postal</string>
-    <string name="country">País</string>
-    <string name="phoneNumber">Teléfono</string>
-    <string name="userName">Usuario</string>
-    <string name="status">Estado</string>
-    <string name="comments">Comentarios</string>
-    <string name="birthday">Fecha de nacimiento</string>
-    <string name="selectDate">Fecha de nacimiento</string>
-    <string name="selectGym">Selecciona un gimnasio</string>
 
     <!-- Prueba para servicios -->
     <string-array name="servicesList">
@@ -120,6 +128,10 @@
     <string name="registrarse">Registrarse</string>
     <string name="ingresar">Ingresar</string>
     <!-- End Reservation -->
+
+    <!-- Lista de clientes -->
+    <string name="btn_bloquear">Block</string>
+
 
 
 </resources>

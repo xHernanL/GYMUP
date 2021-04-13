@@ -19,12 +19,13 @@
             android:id="@+id/tvDetalleServicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#DFDBDB"
+            android:background="#5E35B1"
             android:fontFamily="@font/poppinsbold"
-            android:text="Detalle Servicio"
+            android:text="Detalle Reserva"
             android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
@@ -129,7 +130,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/fabDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="345dp"

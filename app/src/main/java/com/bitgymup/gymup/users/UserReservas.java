@@ -140,7 +140,8 @@ public class UserReservas extends AppCompatActivity {
                         String serviceDescripcion = jsonObject.optString("serviceDescripcion");
                         String serviceDateTime    = jsonObject.optString("serviceDateTime");
                         String serviceId          = jsonObject.optString("serviceId");
-                        serviceList.add(new Booking(serviceName, serviceDescripcion, serviceDateTime, serviceId));
+                        String idBooking          = jsonObject.optString("idBooking");
+                        serviceList.add(new Booking(serviceName, serviceDescripcion, serviceDateTime, serviceId, idBooking));
                         getBookingsAdapter listAdapter = new getBookingsAdapter(serviceList, getApplicationContext(), new getBookingsAdapter.OnItemClickListener() {
 
                             @Override

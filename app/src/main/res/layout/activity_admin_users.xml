@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,17 +12,42 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
-
-
+        <!-- EditText con Material Design -->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Clientes"
-            android:textSize="30sp"
+            android:layout_height="40dp"
+            android:text="@string/clientes"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:gravity="center"/>
+        <TextView
+            android:fontFamily="@font/poppinsmedium"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/gimnasio_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/offer_gim" />
 
 
+        <SearchView
+            android:id="@+id/id_serch"
+            android:iconifiedByDefault="false"
+            android:queryHint="Buscar cliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_clients"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <RelativeLayout

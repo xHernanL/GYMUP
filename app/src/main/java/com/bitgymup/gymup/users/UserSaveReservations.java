@@ -96,7 +96,7 @@ public class UserSaveReservations extends AppCompatActivity {
         try
         {
             getShedule("http://gymup.zonahosting.net/gymphp/getSchedules.php?serviceId=" + idService);
-            Toast.makeText(getApplicationContext(), idService, Toast.LENGTH_LONG).show();
+
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -136,7 +136,7 @@ public class UserSaveReservations extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Se ha registrado Exitosamente tu reserva", Toast.LENGTH_LONG).show();
                         }else{
                             final ProgressDialog dialog = new ProgressDialog(UserSaveReservations.this); dialog.setTitle("Upss!"); dialog.setMessage("Parece que ya estas Registrado"); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-                            Toast.makeText(getApplicationContext(), "Negativa la Consulta wey", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "No se pudo completar a reserva", Toast.LENGTH_LONG).show();
                         }
 
                     } catch (JSONException e) {

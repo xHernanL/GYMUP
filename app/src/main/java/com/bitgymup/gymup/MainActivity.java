@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.bitgymup.gymup.users.UserHome;
+import com.bitgymup.gymup.users.UserRegister;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                     //finish();
                 }
                 if (item.getItemId() == R.id.menu_registro){
-                    Intent registro = new Intent(getApplicationContext(), Register.class);
+                    Intent registro = new Intent(getApplicationContext(), UserRegister.class);
                     startActivity(registro);
                     //finish();
                 }
@@ -38,5 +39,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-    }
+    }//Fin OnCreate
+
+
 }
