@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
@@ -35,6 +36,7 @@ public class AdminAboutUs extends AppCompatActivity {
     private Button btnSubmit;
     private String idgim;
     String username;
+    private Boolean isExist = false;
 
     ProgressDialog progreso;
 
@@ -47,19 +49,22 @@ public class AdminAboutUs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_about_us);
-
+        request = Volley.newRequestQueue(this);
         drawerLayout = findViewById(R.id.drawer_layout);
         content_mision = (EditText) findViewById(R.id.content_mision);
         content_vision = (EditText) findViewById(R.id.content_vision);
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
-
+        idgim = getUserLogin("idgym");
         username = getUserLogin("username");
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        request = Volley.newRequestQueue(this);
 
-        //cargarWSgimnasio(username);
-        gimnasio_nombre.setText(getUserLogin("namegym"));
+
+        cargarWSgimnasio(username);
+        getMisionVision(idgim);
+
+
+
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +74,16 @@ public class AdminAboutUs extends AppCompatActivity {
                 }else if(TextUtils.isEmpty(content_vision.getText().toString())){
                     Toast.makeText(getApplicationContext(),"Campo visión no debe estar varcio", Toast.LENGTH_LONG).show();
                 }else{
-                    cargarWebService();
+                    if(isExist){
+                        Log.d("Actualizar","Actualizar");
+                        //ActualizarAboutus();
+
+
+                    }else{
+                        Log.d("Registrar","Registrar");
+                        RegistroAboutus();
+                    }
+
                 }
 
             }
@@ -85,41 +99,74 @@ public class AdminAboutUs extends AppCompatActivity {
     }
 
     //Cuando carga la pantalla me traiga el nombre del gimnasio
-//    private void cargarWSgimnasio(String username) {
-//        String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
-//        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        //progreso.hide();
-//                        //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
-//                        content_mision.setText("");
-//                        content_vision.setText("");
-//                        //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
-//                        JSONArray json=response.optJSONArray("detail");
-//                        JSONObject jsonObject=null;
-//                        try {
-//                            jsonObject=json.getJSONObject(0);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                        String name = jsonObject.optString("name");
-//                        idgim =  jsonObject.optString("id");
-//                        gimnasio_nombre.setText(name);
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                //progreso.hide();
-//                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
-//                Log.i("Error",error.toString());
-//
-//            }
-//        });
-//        request.add(jsonObjectRequest);
-//    }
-    private void cargarWebService() {
+    private void cargarWSgimnasio(String username) {
+        String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //progreso.hide();
+                        //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
+                        content_mision.setText("");
+                        content_vision.setText("");
+                        //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
+                        JSONArray json=response.optJSONArray("detail");
+                        JSONObject jsonObject=null;
+                        try {
+                            jsonObject=json.getJSONObject(0);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        String name = jsonObject.optString("name");
+                        idgim =  jsonObject.optString("id");
+                        gimnasio_nombre.setText(name);
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //progreso.hide();
+                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                Log.i("Error",error.toString());
+
+            }
+        });
+        request.add(jsonObjectRequest);
+    }
+    //Cargar Mision y Vision
+    private void getMisionVision(String id) {
+        String url = "http://gymup.zonahosting.net/gymphp/getAbouts.php?id="+id;
+        Log.d("rulo",url);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject  = response.getJSONObject(0);
+                    String mision  = jsonObject.optString("mision");
+                    String vision = jsonObject.optString("vision");
+                    Log.d("mision",mision);
+                    Log.d("vision",vision);
+                    content_mision.setText(mision);
+                    content_vision.setText(vision);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } ;
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+
+    private void RegistroAboutus() {
 
         progreso= new ProgressDialog(AdminAboutUs.this);
         progreso.setMessage("Cargando...");
