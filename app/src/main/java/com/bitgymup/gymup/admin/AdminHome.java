@@ -288,15 +288,15 @@ public class AdminHome extends AppCompatActivity {
         salir(this);
     }
 
-    public static void salir(final Activity activity) {
+    public static void salir(Activity activity) {
         //Se coloca el dialogo de alerta
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set Titulo
-        builder.setTitle("Salir");
+        builder.setTitle(R.string.Salir);
         //Set mensaje
-        builder.setMessage("¿Estás seguro que deseas salir?");
+        builder.setMessage(R.string.estasseguro);
 
-        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Si, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //finaliza la activity
@@ -306,7 +306,7 @@ public class AdminHome extends AppCompatActivity {
             }
         });
         //Respuesta Negativa
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Salida del diálogo

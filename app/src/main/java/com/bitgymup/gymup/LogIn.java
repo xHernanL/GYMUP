@@ -42,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import extras.EnviarDatos;
 
+import static com.bitgymup.gymup.R.string.baccesook;
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 import static com.bitgymup.gymup.admin.Variables.usuario_s;//Ver
 
@@ -126,7 +127,7 @@ public class LogIn extends AppCompatActivity {
                                     String result = enviarDatos.getResult();
 
                                     if (result.equals("Login Success")){
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT).show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
 

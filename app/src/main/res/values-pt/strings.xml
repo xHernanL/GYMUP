@@ -131,5 +131,6 @@
 
     <string name="btn_bloquear">Bloquear</string>
     <string name="Salir">Salir</string>
+    <string name="baccesook">Bienvenido - Acceso correcto.</string>
 
 </resources>

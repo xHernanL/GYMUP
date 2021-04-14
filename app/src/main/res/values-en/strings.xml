@@ -132,6 +132,7 @@
     <string name="btn_bloquear">Block</string>
     <string name="offer_title">Title</string>
     <string name="Salir">Sign out</string>
+    <string name="baccesook">Welcome - Access granted.</string>
 
 
 </resources>
