@@ -2,6 +2,9 @@ package com.bitgymup.gymup.admin;
 
 public class Variables {
     public static String usuario_s;
+    public static String id_gym_n = "";
+
+
 
     public static String getUsuario_s() {
         return usuario_s;

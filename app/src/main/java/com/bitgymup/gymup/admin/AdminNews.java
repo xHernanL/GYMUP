@@ -37,7 +37,7 @@ public class AdminNews extends AppCompatActivity {
     EditText txt_titulo, txt_mensaje;
     PendingIntent   pendingIntent;
     private final static String CHANNEL_ID = "NOTIFICACION";
-    private final static int  NOTIFICACION_ID= 0;
+    private final static int  NOTIFICACION_ID = 0;
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,15 +100,13 @@ public class AdminNews extends AppCompatActivity {
         builder.setSmallIcon(R.drawable.ic_admin_push);
         builder.setContentTitle(txt_titulo.getText().toString());
         builder.setContentText(txt_mensaje.getText().toString());
-        builder.setColor(Color.MAGENTA);
+        builder.setColor(Color.BLUE);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        builder.setLights(Color.MAGENTA, 100, 1000);
+        builder.setLights(Color.YELLOW, 100, 1000);
         builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
         builder.setDefaults(Notification.DEFAULT_SOUND);
-
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
         notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
-
     }
 
 

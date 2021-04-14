@@ -43,12 +43,15 @@ import org.json.JSONObject;
 import java.util.Hashtable;
 import java.util.Map;
 
+
+import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 import static com.bitgymup.gymup.admin.Variables.usuario_s;
 
 public class AdminHome extends AppCompatActivity {
 
-    private String idgim;
+    public static String idgim;
     String username;
+    private TextView gimnasio_nombre;
     private RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
 
@@ -63,6 +66,8 @@ public class AdminHome extends AppCompatActivity {
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
         Intent i = this.getIntent();
+
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
         String usuario_s = i.getStringExtra("usuario");
         TextView tvToken;
         tvToken = findViewById(R.id.tvToken);
@@ -70,14 +75,19 @@ public class AdminHome extends AppCompatActivity {
 
         username = getUserLogin("username");
 
+
         request = Volley.newRequestQueue(this);
+
+
         cargarWSgimnasio(username);
+
+        id_gym_n = getGymId("gym_id");
 
         createNotificationChannel();
         getToken();
         subscribeToTopic();
-        tvToken.setText(idgim);
 
+        tvToken.setText(idgim);
 
     }//Fin onCreate
 
@@ -89,8 +99,10 @@ public class AdminHome extends AppCompatActivity {
                     @Override
                     public void onSuccess(InstanceIdResult instanceIdResult) {
                         Log.e("Token", instanceIdResult.getToken());
-                        Toast.makeText(getApplicationContext(), "Se::" + idgim, Toast.LENGTH_LONG).show();
-                        enviarTokenToServer(instanceIdResult.getToken(), usuario_s, idgim);
+                        //Debo obtener el idGym para poder enviarlo adecuadamente.
+
+                        Toast.makeText(getApplicationContext(), "Se::" + idgim + id_gym_n , Toast.LENGTH_LONG).show();
+                        enviarTokenToServer(instanceIdResult.getToken(), usuario_s, id_gym_n);
                     }
                 });
     }
@@ -101,12 +113,12 @@ public class AdminHome extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Se registro exitosamente", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "Se registro exitosamente...113", Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "ERROR EN LA CONEXION", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ERROR: En la conexión a Internet!", Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -114,7 +126,7 @@ public class AdminHome extends AppCompatActivity {
                 Map<String, String> parametros = new Hashtable<String, String>();
                 parametros.put("Token", token);
                 parametros.put("User", usuario);
-                parametros.put("idGym", "12");
+                parametros.put("idGym", idGym);
                 return parametros;
             }
         };
@@ -150,7 +162,7 @@ public class AdminHome extends AppCompatActivity {
                             msg = getString(R.string.msg_subscribe_failed);
                         }
                         Log.d(TAG, msg);*/
-                        Toast.makeText(AdminHome.this, "Suscriotoooo", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(AdminHome.this, "Suscriotoooo al canal", Toast.LENGTH_SHORT).show();
                     }
 
                 });
@@ -158,11 +170,8 @@ public class AdminHome extends AppCompatActivity {
 
 
 
-
-
     //Cuando carga la pantalla me traiga el nombre del gimnasio
-
-    private void cargarWSgimnasio(String username) {
+    public void cargarWSgimnasio(String username) {
         String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
                 new Response.Listener<JSONObject>() {
@@ -171,7 +180,7 @@ public class AdminHome extends AppCompatActivity {
                         //progreso.hide();
                         //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
                         //services_name.setText("");
-                       // services_desc.setText("");
+
                         //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
                         JSONArray json=response.optJSONArray("detail");
                         JSONObject jsonObject=null;
@@ -181,9 +190,13 @@ public class AdminHome extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         String name = jsonObject.optString("name");
-                        idgim =  jsonObject.optString("id");
-//                        gimnasio_nombre.setText(name);
-
+                        String description = jsonObject.optString("description");
+                        id_gym_n =  jsonObject.optString("id");
+                        gimnasio_nombre.setText(id_gym_n);
+                        SharedPreferences pref = getApplicationContext().getSharedPreferences("gym_id", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("gym_id", id_gym_n);  // Saving string
+                        editor.apply();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -191,7 +204,6 @@ public class AdminHome extends AppCompatActivity {
                 //progreso.hide();
                 Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
                 Log.i("Error",error.toString());
-
             }
         });
         request.add(jsonObjectRequest);
@@ -203,6 +215,12 @@ public class AdminHome extends AppCompatActivity {
         String username = sharedPref.getString(key,"");
         return username;
     }
+    private String getGymId(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("gym_id", Context.MODE_PRIVATE);
+        String gymid = sharedPref.getString(key,"");
+        return gymid;
+    }
+
 
     /*INICIO DE TODO EL NAVIGATION DRAWER */
     public void ClickMenu(View view){
