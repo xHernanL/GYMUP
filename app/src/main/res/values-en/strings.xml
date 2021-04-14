@@ -3,7 +3,7 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
-    <string name="gymList">GymList</string>
+    <string name="gymList">List of Gyms</string>
     <string name="aboutUs">About us</string>
     <string name="services">Services</string>
     <string name="contact">Contacts</string>
@@ -17,7 +17,7 @@
     <string name="No">No</string>
 
     <!-- Para AdminHealth-->
-    <string name="health_titulo">Title</string>
+    <string name="health_titulo">Subject</string>
     <string name="health_articulo">Article</string>
     <string name="health_btncargar">Load:</string>
     <string name="health_btnguardar">Save</string>
@@ -34,7 +34,6 @@
 
     <!-- Para AdminOffers-->
     <string name="offer_gim">Here goes the gym\'s name</string>
-    <string name="offer_title">Title</string>
     <string name="offer_content">Add promotion:</string>
     <string name="offer_button">Save</string>
 
@@ -44,18 +43,18 @@
     <string name="userRegister">User Register</string>
     <string name="fullName">Full Name</string>
     <string name="document">Document</string>
-    <string name="cellphone">Cellphone Number</string>
+    <string name="cellphone">Mobile</string>
     <string name="address">Address</string>
     <string name="height">Height (cm)</string>
     <string name="weight">Weight</string>
     <string name="repeatPassword">Repeat Password</string>
     <string name="gender">Gender</string>
     <string name="loginUser">Log in</string>
-    <string name="username">Nombre de usuario</string>
+    <string name="username">Username</string>
     <string name="name">Name</string>
-    <string name="lastName">Last name</string>
+    <string name="lastName">Surname</string>
     <string name="city">City</string>
-    <string name="postalCode">Postal Code</string>
+    <string name="postalCode">ZIP Code</string>
     <string name="country">Country</string>
     <string name="phoneNumber">Phone Number</string>
     <string name="userName">User Name</string>
@@ -131,7 +130,7 @@
 
     <!-- Lista de clientes -->
     <string name="btn_bloquear">Block</string>
-
+    <string name="offer_title">Title</string>
 
 
 </resources>
