@@ -30,6 +30,8 @@ import com.bitgymup.gymup.R;
 
 import org.json.JSONObject;
 
+import static com.bitgymup.gymup.users.UserHome.salir;
+
 public class UserUpdatePassword extends AppCompatActivity {
 
     private Button btnSubmit;
@@ -174,34 +176,6 @@ public class UserUpdatePassword extends AppCompatActivity {
     public void goToUserProfile(View view){
         Intent userProfile = new Intent(this, UserProfile.class);
         startActivity(userProfile);
-    }
-    public static void salir(Activity activity) {
-        //Se coloca el dialogo de alerta
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        //Set Titulo
-        builder.setTitle("Salir");
-        //Set mensaje
-        builder.setMessage("¿Estás seguro que deseas salir?");
-
-        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //finaliza la activity
-                activity.finishAffinity();
-                //Salir de la APP
-                System.exit(0);
-            }
-        });
-        //Respuesta Negativa
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Salida del diálogo
-                dialog.dismiss();
-            }
-        });
-        //Mostrar dialogo
-        builder.show();
     }
 
     public static void redirectActivity(Activity activity, Class aClass) {

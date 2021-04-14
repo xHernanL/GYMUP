@@ -131,6 +131,7 @@
     <!-- Lista de clientes -->
     <string name="btn_bloquear">Block</string>
     <string name="offer_title">Title</string>
+    <string name="Salir">Sign out</string>
 
 
 </resources>

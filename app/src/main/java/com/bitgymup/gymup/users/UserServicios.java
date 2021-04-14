@@ -56,6 +56,7 @@ import extras.getServicesAdapter;
 import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 import static com.bitgymup.gymup.admin.Variables.getUsuario_s;
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
+import static com.bitgymup.gymup.users.UserHome.salir;
 
 public class UserServicios extends AppCompatActivity {
 
@@ -208,35 +209,6 @@ public class UserServicios extends AppCompatActivity {
 
     /*Fin de los LINKS*/
 
-
-    public static void salir(Activity activity) {
-        //Se coloca el dialogo de alerta
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        //Set Titulo
-        builder.setTitle("Salir");
-        //Set mensaje
-        builder.setMessage("¿Estás seguro que deseas salir?");
-
-        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //finaliza la activity
-                activity.finishAffinity();
-                //Salir de la APP
-                System.exit(0);
-            }
-        });
-        //Respuesta Negativa
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Salida del diálogo
-                dialog.dismiss();
-            }
-        });
-        //Mostrar dialogo
-        builder.show();
-    }
 
 
     public static void redirectActivity(Activity activity, Class aClass) {

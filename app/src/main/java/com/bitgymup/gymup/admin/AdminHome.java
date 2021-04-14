@@ -101,7 +101,7 @@ public class AdminHome extends AppCompatActivity {
                         Log.e("Token", instanceIdResult.getToken());
                         //Debo obtener el idGym para poder enviarlo adecuadamente.
 
-                        Toast.makeText(getApplicationContext(), "Se::" + idgim + id_gym_n , Toast.LENGTH_LONG).show();
+                       // Toast.makeText(getApplicationContext(), "Se::" + idgim + id_gym_n , Toast.LENGTH_LONG).show();
                         enviarTokenToServer(instanceIdResult.getToken(), usuario_s, id_gym_n);
                     }
                 });

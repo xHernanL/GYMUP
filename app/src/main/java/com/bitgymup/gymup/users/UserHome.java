@@ -177,7 +177,7 @@ public class UserHome extends AppCompatActivity {
         //Se coloca el dialogo de alerta
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set Titulo
-        builder.setTitle("Salir");
+        builder.setTitle(R.string.Salir);
         //Set mensaje
         builder.setMessage(R.string.estasseguro);
 
