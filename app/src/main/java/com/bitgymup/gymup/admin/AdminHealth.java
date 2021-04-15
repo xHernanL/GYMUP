@@ -88,7 +88,7 @@ public class AdminHealth extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Campo titulo no debe estar varcio", Toast.LENGTH_LONG).show();
                 }else if(TextUtils.isEmpty(health_contenido.getText().toString())){
                     Toast.makeText(getApplicationContext(),"Campo contenido no debe estar varcio", Toast.LENGTH_LONG).show();
-                }else if(health_contenido.length()>500){
+                }else if(health_contenido.length()>1500){
                     Toast.makeText(getApplicationContext(),"No debe haber mas de 500 caracteres", Toast.LENGTH_LONG).show();
                 }else{
                     cargarWebService();
