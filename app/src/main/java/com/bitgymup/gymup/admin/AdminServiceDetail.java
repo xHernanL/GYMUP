@@ -1,7 +1,8 @@
-package com.bitgymup.gymup.users;
+package com.bitgymup.gymup.admin;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.MediaRouteButton;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,6 +29,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.users.UserHome;
+import com.bitgymup.gymup.users.UserPagos;
+import com.bitgymup.gymup.users.UserProfile;
+import com.bitgymup.gymup.users.UserPromo;
+import com.bitgymup.gymup.users.UserReservas;
+import com.bitgymup.gymup.users.UserSalud;
+import com.bitgymup.gymup.users.UserSaludNutricion;
+import com.bitgymup.gymup.users.UserServicios;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -40,13 +51,11 @@ import java.util.TimerTask;
 
 import extras.Schedule;
 import extras.ScheduleAdapter;
-import extras.getServices;
-import extras.getServicesAdapter;
 
-import static com.bitgymup.gymup.admin.Variables.getUsuario_s;
+import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
 
-public class UserSaveReservations extends AppCompatActivity {
+public class AdminServiceDetail extends AppCompatActivity {
     private String domainImage = "http://gymup.zonahosting.net/gymphp/images/";
 
 
@@ -56,7 +65,7 @@ public class UserSaveReservations extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_save_reservations);
+        setContentView(R.layout.activity_admin_detail_services);
         drawerLayout = findViewById(R.id.drawer_layout);
 
         // Variables a Utilizar //
@@ -70,15 +79,17 @@ public class UserSaveReservations extends AppCompatActivity {
 
         TextView srvName, srvDes;
         ImageView imageView;
-        Button btnReservar;
+
         Button btnReservar2;
         ProgressBar progressBar;
 
-        btnReservar = findViewById(R.id.btnNewSchedule);
+
         btnReservar2 = findViewById(R.id.btnReservar2);
         srvName = findViewById(R.id.tvName);
         srvDes = findViewById(R.id.tvDes);
         imageView = findViewById(R.id.imageView);
+
+
 
 
         try {
@@ -102,14 +113,6 @@ public class UserSaveReservations extends AppCompatActivity {
 
         }
 
-        btnReservar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setBooking("http://gymup.zonahosting.net/gymphp/setBooking.php?username="+ username + "&serviceid=" + idService);
-
-                final ProgressDialog dialog = new ProgressDialog(UserSaveReservations.this); dialog.setTitle("Cargando..."); dialog.setMessage("Por Favore espere..."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 3000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-            }
-        });
 
 
 
@@ -132,10 +135,10 @@ public class UserSaveReservations extends AppCompatActivity {
                         String mensaje =jsonObject.optString("mensaje");
                         Boolean status =jsonObject.optBoolean("status");
                         if(status){
-                            final ProgressDialog dialog = new ProgressDialog(UserSaveReservations.this); dialog.setTitle("Exito!"); dialog.setMessage("Se ha registrado la Reserva."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+                            final ProgressDialog dialog = new ProgressDialog(AdminServiceDetail.this); dialog.setTitle("Exito!"); dialog.setMessage("Se ha registrado la Reserva."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
                             Toast.makeText(getApplicationContext(), "Se ha registrado Exitosamente tu reserva", Toast.LENGTH_LONG).show();
                         }else{
-                            final ProgressDialog dialog = new ProgressDialog(UserSaveReservations.this); dialog.setTitle("Upss!"); dialog.setMessage("Parece que ya estas Registrado"); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+                            final ProgressDialog dialog = new ProgressDialog(AdminServiceDetail.this); dialog.setTitle("Upss!"); dialog.setMessage("Parece que ya estas Registrado"); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
                             Toast.makeText(getApplicationContext(), "No se pudo completar a reserva", Toast.LENGTH_LONG).show();
                         }
 
@@ -168,6 +171,54 @@ public class UserSaveReservations extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 JSONObject jsonObject = null;
                 serviceList = new ArrayList<>();
+                FloatingActionButton floatingActionButton4;
+                floatingActionButton4 = findViewById(R.id.fabNewSchedule);
+
+                Button btnNewSchedule;
+                btnNewSchedule = findViewById(R.id.btnNewSchedule);
+
+                TextView tvSinSchedule;
+                tvSinSchedule = findViewById(R.id.tvSinSchedule);
+
+                if(response.length() == 0){
+
+                    tvSinSchedule.setVisibility(View.VISIBLE);
+                    btnNewSchedule.setVisibility(View.VISIBLE);
+                    floatingActionButton4.setVisibility(View.INVISIBLE);
+                    btnNewSchedule.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent goServicios = new Intent(getApplicationContext(), AdminNewSchedule.class);
+                            String idService   = getIntent().getExtras().getString("IdService");
+                            String serviceName = getIntent().getExtras().getString("serviceName");
+
+                            goServicios.putExtra("idService", idService);
+                            goServicios.putExtra("serviceName", serviceName);
+
+                            startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));
+
+                        }
+                    });
+
+
+                }else{
+
+                    floatingActionButton4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent goServicios = new Intent(getApplicationContext(), AdminNewSchedule.class);
+                            String idService   = getIntent().getExtras().getString("IdService");
+                            String serviceName = getIntent().getExtras().getString("serviceName");
+
+                            goServicios.putExtra("idService", idService);
+                            goServicios.putExtra("serviceName", serviceName);
+                            startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));
+
+                        }
+                    });
+
+
+                }
                 for (int i= 0; i < response.length(); i++){
 
                     try {
@@ -212,105 +263,64 @@ public class UserSaveReservations extends AppCompatActivity {
 
     }
     public void ClickMenu(View view){
-        //Abrir drawer
-        openDrawer(drawerLayout);
-    }
-
-    public static void openDrawer(DrawerLayout drawerLayout) {
-        //Open drawer Layout, es un procedimiento público que no necesita ser instanciado, es visible en toda la APP.
-        drawerLayout.openDrawer(GravityCompat.START);
+        //Abrir el drawer
+        AdminHome.openDrawer(drawerLayout);
     }
 
     public void ClickLogo(View view){
-        //Cierre del Drawer
-        closeDrawer(drawerLayout);
+        //Close drawer
+        AdminHome.closeDrawer(drawerLayout);
     }
 
-    public static void closeDrawer(DrawerLayout drawerLayout) {
-        //Close drawer Layout, verificando condición
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            //Cunando el drawer esta abierto, se CIERRA
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
+    /*Listado de todas las funciones de click*/
+    public void ClickHome(View view){
+        //Redirecciona la activity a Home
+        redirectActivity(this, AdminHome.class);
     }
+    public void ClickAgenda(View view){
+        //Recrea la actividad
+        recreate();
+    }
+    public void ClickClientes(View view){
+        //Redirección de la activity Clientes
+        redirectActivity(this,AdminUsers.class);
+    }
+    public void ClickNews(View view){
+        //Redirección de la activity a Notificaciones
+        redirectActivity(this,AdminNews.class);
+    }
+    public void ClickPromo(View view){
+        //Redirección de la activity a Promociones
+        redirectActivity(this,AdminOffers.class);
+    }
+    public void ClickServicios(View view){
+        //Redirección de la activity a Servicios
+        redirectActivity(this,AdminServices.class);
+    }
+    public void CAbout(View view){
+        //Redirección de la activity a Nosotros
+        redirectActivity(this,AdminAboutUs.class);
+    }
+    public void ClickHealth(View view){
+        //Redirección de la activity a Salud y nutrición
+        redirectActivity(this,AdminHealth.class);
+    }
+    public void ClickMyProfile(View view){
+        //Redirección de la activity a Mi Perfil
+        redirectActivity(this,AdminProfile.class);
+    }
+    /*Fin de los enlaces generales*/
 
-    /*Inicio de los LINKS*/
-    public void ClickHomeU(View view){
-        redirectActivity(this, UserHome.class);
-    }
-    public void ClickMiNutri(View view){
-        redirectActivity(this, UserSaludNutricion.class);
-    }
-    public void ClickAgendaU(View view){
-        redirectActivity(this, UserReservas.class);
-    }
-    public void ClickServiciosU(View view){
-        redirectActivity(this, UserServicios.class);
-    }
-    public void ClickMiSalud(View view){ redirectActivity(this, UserSalud.class); }
-    public void ClickPagosU(View view){
-        redirectActivity(this, UserPagos.class);
-    }
-    public void ClickPromoU(View view){
-        redirectActivity(this, UserPromo.class);
-    }
-    public void ClickMyProfileU(View view){
-        redirectActivity(this, UserProfile.class);
-    }
     public void ClickLogout(View view){
-        //Close APP
-        salir(this);
-    }
-
-    /*Fin de los LINKS*/
-
-
-    public static void salir(Activity activity) {
-        //Se coloca el dialogo de alerta
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        //Set Titulo
-        builder.setTitle("Salir");
-        //Set mensaje
-        builder.setMessage("¿Estás seguro que deseas salir?");
-
-        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //finaliza la activity
-                activity.finishAffinity();
-                //Salir de la APP
-                System.exit(0);
-            }
-        });
-        //Respuesta Negativa
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Salida del diálogo
-                dialog.dismiss();
-            }
-        });
-        //Mostrar dialogo
-        builder.show();
-    }
-
-
-    public static void redirectActivity(Activity activity, Class aClass) {
-        //Inicializar intent
-        Intent intent = new Intent(activity, aClass);
-        //Establcer las flags
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //Inicio de la Activity
-        activity.startActivity(intent);
-
+        //Cerrar APP
+        AdminHome.salir(this);
     }
 
     @Override
     protected void onPause(){
         super.onPause();
         //Close drawer
-
-        closeDrawer(drawerLayout);
+        AdminHome.closeDrawer(drawerLayout);
     }
 
 }

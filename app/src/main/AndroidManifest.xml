@@ -39,6 +39,8 @@
         <activity android:name=".admin.AdminNews" />
         <activity android:name=".admin.AdminProfile" />
         <activity android:name=".admin.AdminHome" />
+        <activity android:name=".admin.AdminServiceDetail"/>
+        <activity android:name=".admin.AdminNewSchedule"/>
         <activity android:name=".users.UserRegister" />
         <activity android:name=".users.UserProfile" />
         <activity android:name=".Nutrition" />
