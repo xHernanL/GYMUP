@@ -133,10 +133,15 @@
     <string name="ingresar">Ingresar</string>
     <!-- End Reservation -->
 
-    <!-- Lista de clientes -->
+    <!-- Start Lista de clientes -->
     <string name="btn_bloquear">Bloquear</string>
     <string name="Salir">Salir</string>
     <string name="baccesook">Bienvenido - Acceso correcto.</string>
+    <!-- End Lista de clientes -->
+
+    <!-- Start Lista de Promociones-->
+    <string name="gymPromotion">Promociones</string>
+    <!-- End Lista de Promociones -->
 
 
 </resources>

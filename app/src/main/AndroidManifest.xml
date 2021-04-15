@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bitgymup.gymup">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -16,24 +22,37 @@
         android:roundIcon="@mipmap/logo_circular"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
-        <activity android:name=".users.UserUpdatePassword"/>
-        <activity android:name=".RecuperarPass"></activity>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".users.UserUpdatePassword" />
+        <activity android:name=".RecuperarPass" />
         <activity android:name=".users.UserSaludNutricion" />
         <activity android:name=".users.UserPromo" />
         <activity android:name=".users.UserSalud" />
         <activity android:name=".users.UserPagos" />
         <activity android:name=".users.UserServicios" />
         <activity android:name=".users.UserReservas" />
-        <activity android:name=".users.UserBookingDetail"/>
+        <activity android:name=".users.UserBookingDetail" />
         <activity android:name=".users.EditUserProfile" />
-        <activity android:name=".users.UserSaveReservations"/>
+        <activity android:name=".users.UserSaveReservations" />
         <activity android:name=".admin.AdminServices" />
         <activity android:name=".users.UserHome" />
         <activity android:name=".admin.AdminAboutUs" />
-        <activity android:name=".admin.AdminHealth"/>
+        <activity android:name=".admin.AdminHealth" />
         <activity android:name=".admin.AdminAgenda" />
         <activity android:name=".admin.AdminOffers" />
-        <activity android:name=".admin.AdminUserDetail"/>
+        <activity android:name=".admin.AdminUserDetail" />
         <activity android:name=".admin.AdminUsers" />
         <activity android:name=".admin.AdminAddUser" />
         <activity android:name=".admin.AdminNews" />
@@ -46,9 +65,7 @@
         <activity android:name=".users.Services" />
         <activity android:name=".AboutUs" />
         <activity android:name=".GymList" />
-        <activity android:name=".LogIn">
-
-        </activity>
+        <activity android:name=".LogIn"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

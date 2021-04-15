@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.admin.AdminHome;
+import com.bitgymup.gymup.users.MapsFragment;
 import com.bitgymup.gymup.users.UserRegister;
 import com.bitgymup.gymup.users.UserHome;
 import com.google.android.gms.tasks.OnCompleteListener;

@@ -29,7 +29,7 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 
-public class UserHome extends AppCompatActivity {
+public class UserHome extends AppCompatActivity implements MapsFragment.MapsFragmentListener {
     //Inicializar las variables
     DrawerLayout drawerLayout;
     private String username, vUsername;
@@ -37,6 +37,7 @@ public class UserHome extends AppCompatActivity {
     private RequestQueue request;
     ProgressDialog progreso;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
+    private MapsFragment mapsFragment;
 
 
     @Override
@@ -45,6 +46,11 @@ public class UserHome extends AppCompatActivity {
         setContentView(R.layout.activity_user_home);
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        mapsFragment = new MapsFragment();
+
+        /*getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_a, mapsFragment)
+                .commit();*/
 
         //tvUserEmail        = findViewById(R.id.tvUserEmail);
         //tvUserPhone        = findViewById(R.id.tvUserPhone);

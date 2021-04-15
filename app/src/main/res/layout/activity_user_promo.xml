@@ -12,14 +12,68 @@
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
 
-
         <TextView
+            android:id="@+id/tvPromotionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/gymPromotion"
+            android:fontFamily="@font/poppinsmedium"
+            />
+
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Promos que puede ver el cliente"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <RelativeLayout
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".GymList">
+
+
+                <RelativeLayout
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/tvGymList"
+                    tools:context=".GymList">
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:rowCount="7"
+                        android:columnCount="2"
+                        android:layout_margin="20dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/recyclerPromotion"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+                    </GridLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
 
 
     </LinearLayout>

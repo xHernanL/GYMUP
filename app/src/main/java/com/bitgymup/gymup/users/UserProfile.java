@@ -53,8 +53,6 @@ public class UserProfile extends AppCompatActivity  {
     ProgressDialog progreso;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
