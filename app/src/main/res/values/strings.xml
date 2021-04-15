@@ -135,7 +135,7 @@
 
     <!-- Start Lista de clientes -->
     <string name="btn_bloquear">Bloquear</string>
-    <string name="Salir">Salir</string>
+    <string name="Salir">Cerrar sesión</string>
     <string name="baccesook">Bienvenido - Acceso correcto.</string>
     <!-- End Lista de clientes -->
 
