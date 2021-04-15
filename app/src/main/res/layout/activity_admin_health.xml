@@ -25,16 +25,6 @@
                 android:gravity="center"/>
 
             <!-- EditText con Material Designs-->
-            <TextView
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="15dp"
-                android:gravity="center"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:id="@+id/gimnasio_nombre"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="@string/offer_gim" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +79,7 @@
 
                 <Button
                     android:id="@+id/btnCargarImg"
-                    android:layout_width="fill_parent"
+                    android:layout_width="179dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="130dp"
                     android:layout_marginRight="30dp"

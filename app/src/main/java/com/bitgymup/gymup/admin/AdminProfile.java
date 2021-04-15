@@ -3,11 +3,14 @@ package com.bitgymup.gymup.admin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,6 +37,7 @@ import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 public class AdminProfile extends AppCompatActivity {
     //Inicializar las variables
     EditText txtNombre, txtDireccion, txtTelefono, txtMovil, txtMailGym, txtCiudad, txtEstado, txtRUT, txtPropietario, txtMovilProp, txtMailProp, txtPass;
+    private TextView gimnasio_nombre;
     Button  btnActualizar;
     String idGym = "";
     DrawerLayout drawerLayout;
@@ -43,6 +47,9 @@ public class AdminProfile extends AppCompatActivity {
         setContentView(R.layout.activity_admin_profile);
         //Asignamos la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
+
         //Vinculamos los objetos con los controles creados
         txtNombre = (EditText)findViewById(R.id.nombregimnasio);
         txtDireccion = (EditText)findViewById(R.id.direccionPrincipal);
@@ -74,6 +81,12 @@ public class AdminProfile extends AppCompatActivity {
             }
         });
     }//Fin de OnCreate
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
 
     private void buscarAdmin(String URL){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {

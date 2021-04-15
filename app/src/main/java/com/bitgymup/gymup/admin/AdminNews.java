@@ -9,12 +9,15 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +39,7 @@ public class AdminNews extends AppCompatActivity {
     Button  btn_Notificaciones;
     EditText txt_titulo, txt_mensaje;
     PendingIntent   pendingIntent;
+    private TextView gimnasio_nombre;
     private final static String CHANNEL_ID = "NOTIFICACION";
     private final static int  NOTIFICACION_ID = 0;
     DrawerLayout drawerLayout;
@@ -45,6 +49,8 @@ public class AdminNews extends AppCompatActivity {
         setContentView(R.layout.activity_admin_news);
         //Asignamos la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
         txt_titulo = (EditText)findViewById(R.id.txt_titulo);
         txt_mensaje = (EditText)findViewById(R.id.txt_mensaje);
         btn_Notificaciones = findViewById(R.id.btn_Notificaciones);
@@ -58,6 +64,11 @@ public class AdminNews extends AppCompatActivity {
         });
     }//fin de onCreate
 
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
     private void enviarPush(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override

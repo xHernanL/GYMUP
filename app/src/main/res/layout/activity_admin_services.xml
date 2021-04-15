@@ -20,16 +20,6 @@
             android:gravity="center"/>
 
         <!-- EditText con Material Design -->
-        <TextView
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="15dp"
-            android:gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:id="@+id/gimnasio_nombre"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="@string/offer_gim" />
 
 
         <TextView
@@ -38,6 +28,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/services_tipo" />

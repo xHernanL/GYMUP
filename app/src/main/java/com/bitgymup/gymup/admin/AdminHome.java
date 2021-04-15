@@ -192,7 +192,7 @@ public class AdminHome extends AppCompatActivity {
                         String name = jsonObject.optString("name");
                         String description = jsonObject.optString("description");
                         id_gym_n =  jsonObject.optString("id");
-                        gimnasio_nombre.setText(id_gym_n);
+                        gimnasio_nombre.setText( getUserLogin("namegym"));
                         SharedPreferences pref = getApplicationContext().getSharedPreferences("gym_id", MODE_PRIVATE);
                         SharedPreferences.Editor editor = pref.edit();
                         editor.putString("gym_id", id_gym_n);  // Saving string
