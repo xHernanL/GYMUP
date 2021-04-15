@@ -61,6 +61,7 @@ public class AdminOffers extends AppCompatActivity {
 
         //username = "nanoman07";
         //cargarWSgimnasio(username);
+        idgim = getUserLogin("idgym");
         gimnasio_nombre.setText(getUserLogin("namegym"));
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +135,7 @@ public class AdminOffers extends AppCompatActivity {
                 "&promotion="+promo_contenido.getText().toString();
 
         url = url.replace(" ","%20");
+        Log.d("url",url);
 
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
