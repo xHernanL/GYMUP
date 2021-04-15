@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/main_toolbar"/>
+        <include layout="@layout/main_toolbar" />
 
 
         <TextView
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:background="#5E35B1"
             android:fontFamily="@font/poppinsbold"
-            android:text="Detalle Servicio"
+            android:text="Horarios de Mi Servicio"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
@@ -30,7 +30,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="271dp"
+            android:layout_height="286dp"
             android:layout_margin="8dp"
             android:layout_marginTop="8dp"
             android:visibility="visible"
@@ -40,8 +40,6 @@
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             app:layout_constraintVertical_bias="0.19"
             tools:ignore="MissingConstraints">
-
-
 
 
             <LinearLayout
@@ -61,7 +59,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="187dp"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -75,7 +73,7 @@
 
                     <androidx.core.widget.NestedScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="121dp"
                         android:fillViewport="true">
 
                         <LinearLayout
@@ -91,6 +89,26 @@
                                 android:text="Descripcion delservicio"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
+
+                            <Button
+                                android:id="@+id/btnNewSchedule"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="65dp"
+                                android:text="Agregar Nuevo Horario"
+                                android:visibility="visible"
+                                app:iconTint="#FFFFFF"
+                                tools:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tvSinSchedule"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Este servicio no tiene ningún horario asignado por lo que será  Invisible para tus clientes"
+                                android:textAlignment="center"
+                                android:visibility="visible"
+                                tools:visibility="visible" />
+
                         </LinearLayout>
                     </androidx.core.widget.NestedScrollView>
 
@@ -111,12 +129,6 @@
             android:orientation="vertical"
             android:textAlignment="center">
 
-            <Button
-                android:id="@+id/btnNewSchedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnReservaAction2" />
-
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -129,12 +141,35 @@
 
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabNewSchedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="320dp"
+            android:backgroundTint="#5E35B1"
+            android:clickable="true"
+            android:foregroundTint="#FFF4F4"
+            android:tint="#FFFAFA"
+            android:translationX="20dp"
+            app:backgroundTint="#1E88E5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.98"
+            app:rippleColor="#FFFFFF"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/white">
 
-        <include layout="@layout/main_nav_users" />
+        <include layout="@layout/main_nav_admin" />
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

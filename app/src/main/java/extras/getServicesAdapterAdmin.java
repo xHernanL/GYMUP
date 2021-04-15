@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.admin.AdminServiceDetail;
 import com.bitgymup.gymup.users.UserSaveReservations;
 import com.squareup.picasso.Picasso;
 
@@ -45,7 +46,7 @@ public class getServicesAdapterAdmin extends RecyclerView.Adapter<getServicesAda
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.cardview_reservas, null);
+        View view = mInflater.inflate(R.layout.cardview_admin_servicios, null);
         return new ViewHolder(view);
     }
 
@@ -75,7 +76,7 @@ public class getServicesAdapterAdmin extends RecyclerView.Adapter<getServicesAda
 
 
         void bindData(final getServices item) {
-            name.setText("SERVICIO : " + item.getServiceName());
+            name.setText("MI SERVICIO : " + item.getServiceName());
             nameGym.setText("Gym : " + item.getNameGym());
             Picasso.get().load(domainImage + item.getServiceName()+".jpg").into(imGymLogo);
 
@@ -83,14 +84,14 @@ public class getServicesAdapterAdmin extends RecyclerView.Adapter<getServicesAda
                                             @Override
                                             public void onClick(View v) {
                                                 listener.onItemClick(item);
-                                                Intent goUserSaveReservations = new Intent(context.getApplicationContext(), UserSaveReservations.class);
+                                                Intent goAdminServiceDetail = new Intent(context.getApplicationContext(), AdminServiceDetail.class);
 
 
-                                                goUserSaveReservations.putExtra("serviceName", item.getServiceName());
-                                                goUserSaveReservations.putExtra("serviceDes", item.getServiceDes());
-                                                goUserSaveReservations.putExtra("IdService", item.getIdService());
-                                                context.startActivity(goUserSaveReservations.setFlags(goUserSaveReservations.FLAG_ACTIVITY_NEW_TASK));
-                                                //context.startActivity(goUserSaveReservations);
+                                                goAdminServiceDetail.putExtra("serviceName", item.getServiceName());
+                                                goAdminServiceDetail.putExtra("serviceDes", item.getServiceDes());
+                                                goAdminServiceDetail.putExtra("IdService", item.getIdService());
+                                                context.startActivity(goAdminServiceDetail.setFlags(goAdminServiceDetail.FLAG_ACTIVITY_NEW_TASK));
+
                                             }
                                         }
             );
