@@ -96,9 +96,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="65dp"
                                 android:text="Agregar Nuevo Horario"
-                                android:visibility="visible"
+                                android:visibility="gone"
                                 app:iconTint="#FFFFFF"
-                                tools:visibility="visible" />
+                                tools:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/tvSinSchedule"
@@ -106,8 +106,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="Este servicio no tiene ningún horario asignado por lo que será  Invisible para tus clientes"
                                 android:textAlignment="center"
-                                android:visibility="visible"
-                                tools:visibility="visible" />
+                                android:visibility="gone"
+                                tools:visibility="gone" />
 
                         </LinearLayout>
                     </androidx.core.widget.NestedScrollView>

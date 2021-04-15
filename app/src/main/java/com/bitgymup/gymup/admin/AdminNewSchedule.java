@@ -124,13 +124,13 @@ public class AdminNewSchedule extends AppCompatActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 tHour = hourOfDay;
                                 tMinute = minute;
-                                String hora = "hora : ";
+
 
                                 Calendar calendar = Calendar.getInstance();
                                 calendar.set(0, 0, 0, tHour, tMinute, 0);
                                 //tvTimePicker.setText(hora + DateFormat.format("HH:mm", calendar) );
-                                tv_time.setText(hora + DateFormat.format("HH:mm:ss", calendar)); // aqui mostramos la fecha seleccionada
-                                time = hora + DateFormat.format("HH:mm:ss", calendar);
+                                tv_time.setText(DateFormat.format("HH:mm", calendar)); // aqui mostramos la fecha seleccionada
+                                time = DateFormat.format("HH:mm:ss", calendar).toString();
                             }
                         },12, 0, true
                 );
@@ -142,8 +142,8 @@ public class AdminNewSchedule extends AppCompatActivity {
         btnSaveSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveSchedule("http://gymup.zonahosting.net/gymphp/setBooking.php?username="+ username + "&serviceid=" + idService + "&time=" + time + "&date=" + date);
-
+                SaveSchedule("http://gymup.zonahosting.net/gymphp/AdminServices.php?username="+ username + "&serviceid=" + idService + "&time=" + time + "&date=" + date);
+                Toast.makeText(getApplicationContext(), time + " " + date, Toast.LENGTH_LONG).show();
                 final ProgressDialog dialog = new ProgressDialog(AdminNewSchedule.this); dialog.setTitle("Cargando..."); dialog.setMessage("Por Favore espere..."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 2500; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
             }
         });
