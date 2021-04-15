@@ -37,7 +37,7 @@ public class UserUpdatePassword extends AppCompatActivity {
     private Button btnSubmit;
     private String password1, password2, username;
     private EditText etcPassword, etcPassword2;
-    private TextView etcUserName;
+    private TextView etcUserName,gimnasio_nombre;
     private RequestQueue request;
     ProgressDialog progreso;
     DrawerLayout drawerLayout;
@@ -50,6 +50,8 @@ public class UserUpdatePassword extends AppCompatActivity {
         SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         username = userId1.getString("username", "");
         request = Volley.newRequestQueue(this);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
 
         etcUserName  = findViewById(R.id.tvUsername);
         etcUserName.setText("Usuario: "+username);
@@ -99,6 +101,12 @@ public class UserUpdatePassword extends AppCompatActivity {
              }
         );
 
+    }
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
     }
 
     private boolean validatePassword() {

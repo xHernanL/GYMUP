@@ -15,6 +15,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -39,6 +40,7 @@ public class UserSaludNutricion extends AppCompatActivity {
     //Inicializar las variables
     private RecyclerView recyclerViewSalud;
     private RecyclerViewAdapterSalud adapter;
+    private TextView gimnasio_nombre;
     private List<Salud> salud;
 
     private static RequestQueue request;
@@ -51,6 +53,8 @@ public class UserSaludNutricion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_salud_nutricion);
         request = Volley.newRequestQueue(this);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
         salud = new ArrayList<>();
@@ -63,6 +67,7 @@ public class UserSaludNutricion extends AppCompatActivity {
         getSaludWS(url);
 
     }
+
 
     private String getUserLogin(String key) {
         SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);

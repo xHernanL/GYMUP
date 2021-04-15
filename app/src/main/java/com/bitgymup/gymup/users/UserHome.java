@@ -33,7 +33,7 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
     //Inicializar las variables
     DrawerLayout drawerLayout;
     private String username, vUsername;
-    private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight;
+    private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight, gimnasio_nombre;;
     private RequestQueue request;
     ProgressDialog progreso;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
@@ -60,6 +60,8 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
         tvUserWeight       = findViewById(R.id.tvUserWeight);
         //btnEditProfile     = findViewById(R.id.btnEditProfile);
         //btnEditPassword    = findViewById(R.id.btnEditPassword);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
 
         SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         username = userId1.getString("username", "");
@@ -72,7 +74,11 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
 
 
 
-
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
 
 
     private void loadUserData(String username) {

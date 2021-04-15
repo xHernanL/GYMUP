@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -44,6 +45,7 @@ public class UserPromo extends AppCompatActivity {
     //ProgressDialog progreso;
     List<Promotion> elements;
     private RequestQueue request;
+    private TextView gimnasio_nombre;
     JsonObjectRequest jsonObjectRequest;
     ProgressDialog progress;
     RecyclerView recyclerPromotion;
@@ -56,12 +58,20 @@ public class UserPromo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_promo);
+        request = Volley.newRequestQueue(this);
         //Asignación de la variable
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
         drawerLayout = findViewById(R.id.drawer_layout);
         userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String userId = userId1.getString("username", "");
         getGymId(userId);
 
+    }
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
     }
 
     private void getGymId(String username) {

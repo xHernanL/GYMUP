@@ -63,7 +63,7 @@ public class UserServicios extends AppCompatActivity {
     DrawerLayout drawerLayout;
     SharedPreferences userId1;
     List<getServices> serviceList;
-    TextView  day, time, status;
+    TextView  day, time, status,gimnasio_nombre;
     ListView listView;
     RecyclerView mRecyclerView;
 
@@ -76,6 +76,8 @@ public class UserServicios extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String userId = userId1.getString("username", "");
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
         try {
             String mensaje = getIntent().getExtras().getString("mensaje");
             if(mensaje != ""){
@@ -97,6 +99,12 @@ public class UserServicios extends AppCompatActivity {
 
         }
 
+    }
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
     }
 
     private void getServices(String URL){

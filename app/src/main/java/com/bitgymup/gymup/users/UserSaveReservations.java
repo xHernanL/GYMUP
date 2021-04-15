@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -49,7 +50,7 @@ import static com.bitgymup.gymup.users.UserHome.salir;
 
 public class UserSaveReservations extends AppCompatActivity {
     private String domainImage = "http://gymup.zonahosting.net/gymphp/images/";
-
+    private TextView gimnasio_nombre;
 
     List<Schedule> serviceList;
     DrawerLayout drawerLayout;
@@ -62,6 +63,8 @@ public class UserSaveReservations extends AppCompatActivity {
 
         // Variables a Utilizar //
 
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
 
         SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String username    = userId1.getString("username", "");
@@ -116,6 +119,12 @@ public class UserSaveReservations extends AppCompatActivity {
 
 
     }    // end onCreate
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
 
     private void setBooking(String URL){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {

@@ -6,10 +6,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.bitgymup.gymup.R;
 
@@ -18,13 +21,23 @@ import static com.bitgymup.gymup.users.UserHome.salir;
 public class UserPagos extends AppCompatActivity {
     //Inicializar las variables
     DrawerLayout drawerLayout;
+    private TextView gimnasio_nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_pagos);
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
+
     }
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
+
     public void ClickMenu(View view){
         //Abrir drawer
         openDrawer(drawerLayout);

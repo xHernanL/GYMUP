@@ -46,7 +46,7 @@ import static com.bitgymup.gymup.users.UserHome.salir;
 public class EditUserProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private EditText etName, etSurname, etDocument, etAddress, etCity, etCountry, etPhone, etEmail, etMobile, etHeight, etWeight, etBirthday, etGender;
-    private TextView etcUsername;
+    private TextView etcUsername,gimnasio_nombre;
     private String selectedGender, selectedDate, selected_spinner, username;
     private Button dateButton, btnUpdateData;
     private DatePickerDialog datePickerDialog;
@@ -66,6 +66,8 @@ public class EditUserProfile extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_edit_user_profile);
         drawerLayout = findViewById(R.id.drawer_layout);
         request = Volley.newRequestQueue(this);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
 
         etName        = findViewById(R.id.etNameEdit);
         etSurname     = findViewById(R.id.etSurnameEdit);
@@ -107,6 +109,12 @@ public class EditUserProfile extends AppCompatActivity implements AdapterView.On
                                          }
         );
 
+    }
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
     }
 
     public void ClickMenu(View view){

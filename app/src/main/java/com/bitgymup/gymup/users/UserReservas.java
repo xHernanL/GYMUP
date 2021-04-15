@@ -63,7 +63,7 @@ public class UserReservas extends AppCompatActivity {
     DrawerLayout drawerLayout;
     SharedPreferences userId1;
     List<Booking> serviceList;
-    TextView  day, time, status, tvSinReservas;
+    TextView  day, time, status, tvSinReservas,gimnasio_nombre;
     ListView listView;
     RecyclerView mRecyclerView;
     Button btnnuevaReserva;
@@ -82,6 +82,8 @@ public class UserReservas extends AppCompatActivity {
         floatingActionButton3 = findViewById(R.id.floatingActionButton3);
         userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String userId = userId1.getString("username", "");
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
 
         // la activity comienza con este intento de obtener los servicios.
         try
@@ -94,6 +96,12 @@ public class UserReservas extends AppCompatActivity {
         }
 
     }
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
+
 
     private void getServices(String URL){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {

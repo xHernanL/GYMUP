@@ -46,6 +46,7 @@ public class UserBookingDetail extends AppCompatActivity {
 
     List<Schedule> serviceList;
     DrawerLayout drawerLayout;
+    private TextView gimnasio_nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class UserBookingDetail extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
 
         // Variables a Utilizar //
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText( getUserLogin("namegym"));
 
         SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String user        = userId1.getString("username", "");
@@ -106,6 +109,11 @@ public class UserBookingDetail extends AppCompatActivity {
 
     }    // end onCreate
 
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
 
 
     private void DeleteBooking(String URL){
