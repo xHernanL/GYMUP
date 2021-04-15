@@ -59,7 +59,7 @@ public class UserSaludNutricion extends AppCompatActivity {
         String url = "http://gymup.zonahosting.net/gymphp/getHealthWS.php?id=";
 
         url = url + idgim;
-
+        Log.d("url",url);
         getSaludWS(url);
 
     }
@@ -83,16 +83,20 @@ public class UserSaludNutricion extends AppCompatActivity {
                         String titulo  = jsonObject.optString("title");
                         String contenido = jsonObject.optString("content");
                         String fecha = jsonObject.optString("creationdate");
-                        Log.d("fechaza",fecha);
-
+                        //Log.d("fechaza",fecha);
 
                         salud.add(new Salud(id,titulo, contenido, fecha));
 
+                        if (!titulo.equals("")){
+                            recyclerViewSalud =(RecyclerView)findViewById(R.id.recyclerSaludNutri);
+                            recyclerViewSalud.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                            adapter = new RecyclerViewAdapterSalud(salud);
+                            recyclerViewSalud.setAdapter(adapter);
+                        }
 
-                        recyclerViewSalud =(RecyclerView)findViewById(R.id.recyclerSaludNutri);
-                        recyclerViewSalud.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        adapter = new RecyclerViewAdapterSalud(salud);
-                        recyclerViewSalud.setAdapter(adapter);
+
+
+
 
 
                     } catch (JSONException e) {

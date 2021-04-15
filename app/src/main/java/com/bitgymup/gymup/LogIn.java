@@ -133,6 +133,8 @@ public class LogIn extends AppCompatActivity {
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
 
                                         //Ahora se creará SharedPreferences
+                                        cargarWSgimnasioCliente(username);
+                                        Log.d("login user",username);
                                         SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = pref.edit();
                                         editor.putString("username", username);  // Saving string
@@ -158,6 +160,7 @@ public class LogIn extends AppCompatActivity {
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
                                                     //Ahora se creará SharedPreferences
                                                     cargarWSgimnasio(username);
+                                                    Log.d("login admin",username);
                                                     SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                                     SharedPreferences.Editor editor = pref.edit();
                                                     editor.putString("username", username);  // Saving string
@@ -254,6 +257,47 @@ public class LogIn extends AppCompatActivity {
     }
     private void cargarWSgimnasio(String username) {
         String url = "http://gymup.zonahosting.net/gymphp/getGimnasioWS.php?username=" +username;
+        Log.d("username", username);
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("login",username);
+                        //Toast.makeText(getApplicationContext(),"ca"+ response.toString(), Toast.LENGTH_LONG).show();
+
+                        //Parseo el json que viene por WS y me quedo solo con el detail y el atributo nombre
+                        JSONArray json=response.optJSONArray("detail");
+                        JSONObject jsonObject=null;
+                        try {
+                            jsonObject=json.getJSONObject(0);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        nombregim = jsonObject.optString("name");
+                        idgim =  jsonObject.optString("id");
+                        SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("idgym", idgim);
+                        editor.putString("namegym", nombregim);
+                        editor.apply();
+                        //Log.d("Response", "onResponse: "+ nombregim);
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //progreso.hide();
+                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                Log.i("Error",error.toString());
+
+            }
+        });
+        request.add(jsonObjectRequest);
+    }
+    private void cargarWSgimnasioCliente(String username) {
+        String url = "http://gymup.zonahosting.net/gymphp/getGimnasioClientWS.php?username=" +username;
+        Log.d("username", username);
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
