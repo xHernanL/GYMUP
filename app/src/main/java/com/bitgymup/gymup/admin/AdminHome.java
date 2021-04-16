@@ -100,7 +100,6 @@ public class AdminHome extends AppCompatActivity {
                     public void onSuccess(InstanceIdResult instanceIdResult) {
                         Log.e("Token", instanceIdResult.getToken());
                         //Debo obtener el idGym para poder enviarlo adecuadamente.
-
                        // Toast.makeText(getApplicationContext(), "Se::" + idgim + id_gym_n , Toast.LENGTH_LONG).show();
                         enviarTokenToServer(instanceIdResult.getToken(), usuario_s, id_gym_n);
                     }
@@ -153,7 +152,7 @@ public class AdminHome extends AppCompatActivity {
     }
 
     private void subscribeToTopic(){
-        FirebaseMessaging.getInstance().subscribeToTopic("newsletter")
+        FirebaseMessaging.getInstance().subscribeToTopic("newsletter"+id_gym_n)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -162,7 +161,7 @@ public class AdminHome extends AppCompatActivity {
                             msg = getString(R.string.msg_subscribe_failed);
                         }
                         Log.d(TAG, msg);*/
-                       // Toast.makeText(AdminHome.this, "Suscriotoooo al canal", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminHome.this, "Suscriotoooo al canal: " +id_gym_n, Toast.LENGTH_SHORT).show();
                     }
 
                 });

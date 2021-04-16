@@ -169,7 +169,8 @@ public class AdminNews extends AppCompatActivity {
     }
     /*Fin de los enlaces generales*/
 
-    public void ClickLogout(View view){  AdminHome.salir(this); }
+    public void ClickLogout(View view){AdminHome.salir(this);}
+
     @Override
     protected void onPause(){
         super.onPause();
