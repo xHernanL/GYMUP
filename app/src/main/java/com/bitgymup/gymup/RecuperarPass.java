@@ -93,7 +93,10 @@ public class RecuperarPass extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "¡Nombre de usuario incorrecto!", Toast.LENGTH_LONG).show();
 
                 }else{
-                    Toast.makeText(getApplicationContext(), "Correo enviado correctamente, revise carpeta spam.", Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.CorreoEnviado, Toast.LENGTH_SHORT);
+                    toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                    toast.show();
+                    //Toast.makeText(getApplicationContext(), "Correo enviado correctamente, revise carpeta spam.", Toast.LENGTH_LONG).show();
                 }
 
                 //Caso del Intent, paso por variables.

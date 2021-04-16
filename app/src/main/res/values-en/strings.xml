@@ -137,7 +137,8 @@
 
     <!-- Start Lista de Promociones-->
     <string name="gymPromotion">Promotions</string>
-    <string name="Elcampoemailnovacio">¡El campo correo electrónico no puede estar vacio!</string>
+    <string name="Elcampoemailnovacio">The email field cannot be empty!</string>
+    <string name="CorreoEnviado">Mail sent successfully, check spam folder.</string>
     <!-- End Lista de Promociones -->
 
 
