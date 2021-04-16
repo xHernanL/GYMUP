@@ -91,13 +91,13 @@ public class RecuperarPass extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 if (response.contains("Nombre de usuario")){
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.UsrEmailWrong, Toast.LENGTH_SHORT);
-                    toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                     toast.show();
 
                 }
                 else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.CorreoEnviado, Toast.LENGTH_SHORT);
-                    toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
                     toast.show();
                     //Toast.makeText(getApplicationContext(), "Correo enviado correctamente, revise carpeta spam.", Toast.LENGTH_LONG).show();
                 }

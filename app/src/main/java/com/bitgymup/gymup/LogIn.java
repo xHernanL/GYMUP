@@ -132,7 +132,7 @@ public class LogIn extends AppCompatActivity {
 
                                     if (result.equals("Login Success")){
                                         Toast toast = Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT);
-                                        toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                                       //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
                                         toast.show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
@@ -162,7 +162,7 @@ public class LogIn extends AppCompatActivity {
                                                 if (result2.equals("Login Success")){
 
                                                     Toast toast = Toast.makeText(getApplicationContext(), R.string.BienvenidoAdmin, Toast.LENGTH_SHORT);
-                                                    toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                                                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
                                                     toast.show();
                                                     //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
@@ -191,7 +191,7 @@ public class LogIn extends AppCompatActivity {
                                         if (AccesoOK == false)
                                         {
                                         Toast toast = Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT);
-                                        toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                                        //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                                         toast.show();
                                         }
                                     }
