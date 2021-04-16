@@ -145,6 +145,7 @@
     <string name="CorreoEnviado">Correo enviado correctamente, revise carperta spam.</string>
     <string name="usrwrongordisabled">Usuario o contraseña incorrecto, o deshabilitado.</string>
     <string name="BienvenidoAdmin">Bienvenido al Administrador</string>
+    <string name="UsrEmailWrong">¡Nombre de usuario o email incorrecto!</string>
     <!-- End Lista de Promociones -->
 
 

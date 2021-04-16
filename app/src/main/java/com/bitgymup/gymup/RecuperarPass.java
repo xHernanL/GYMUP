@@ -90,7 +90,7 @@ public class RecuperarPass extends AppCompatActivity {
             public void onResponse(String response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.toString().contains("Nombre de usuario")){
-                    Toast.makeText(getApplicationContext(), "¡Nombre de usuario incorrecto!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.UsrEmailWrong, Toast.LENGTH_LONG).show();
 
                 }else{
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.CorreoEnviado, Toast.LENGTH_SHORT);
