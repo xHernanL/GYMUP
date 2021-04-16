@@ -94,7 +94,8 @@ public class RecuperarPass extends AppCompatActivity {
                     toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                     toast.show();
 
-                }else{
+                }
+                else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.CorreoEnviado, Toast.LENGTH_SHORT);
                     toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
                     toast.show();
