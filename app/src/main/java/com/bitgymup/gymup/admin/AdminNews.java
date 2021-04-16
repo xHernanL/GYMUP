@@ -93,7 +93,7 @@ public class AdminNews extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parametros = new HashMap<String, String>();
                 String idGym = "Algo";
-                parametros.put("idGym", idGym);
+                parametros.put("idGym", id_gym_n);
                 parametros.put("Asunto", txt_titulo.getText().toString());
                 parametros.put("Contenido", txt_mensaje.getText().toString());
                 parametros.put("Gimnasio", id_gym_n);//aquí a el id del Gym
