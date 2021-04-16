@@ -32,6 +32,7 @@ import com.bitgymup.gymup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -58,11 +59,13 @@ public class AdminHome extends AppCompatActivity {
     private static final String CHANNEL_ID = "101";
     //Inicializar las variables
     DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
 
+        FirebaseApp.initializeApp(this);
         //Asignación de la variable
         drawerLayout = findViewById(R.id.drawer_layout);
         Intent i = this.getIntent();
@@ -161,7 +164,7 @@ public class AdminHome extends AppCompatActivity {
                             msg = getString(R.string.msg_subscribe_failed);
                         }
                         Log.d(TAG, msg);*/
-                        Toast.makeText(AdminHome.this, "Suscriotoooo al canal: " +id_gym_n, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(AdminHome.this, "Suscriotoooo al canal: " +id_gym_n, Toast.LENGTH_SHORT).show();
                     }
 
                 });

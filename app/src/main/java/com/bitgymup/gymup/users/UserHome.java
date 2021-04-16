@@ -1,40 +1,65 @@
 package com.bitgymup.gymup.users;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.admin.AdminHome;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.Hashtable;
+import java.util.Map;
+
+import static com.bitgymup.gymup.admin.Variables.id_gym_n;
+import static com.bitgymup.gymup.admin.Variables.usuario_s;
 
 public class UserHome extends AppCompatActivity implements MapsFragment.MapsFragmentListener {
     //Inicializar las variables
+    private RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+    private static final String CHANNEL_ID = "101";
     DrawerLayout drawerLayout;
     private String username, vUsername;
     private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight, gimnasio_nombre;;
-    private RequestQueue request;
+
     ProgressDialog progreso;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     private MapsFragment mapsFragment;
@@ -45,6 +70,7 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
         //Asignación de la variable
+        FirebaseApp.initializeApp(this);
         drawerLayout = findViewById(R.id.drawer_layout);
         mapsFragment = new MapsFragment();
 
@@ -65,10 +91,17 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
 
         SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         username = userId1.getString("username", "");
-        //   Toast.makeText(getApplicationContext(), "username: " + username  , Toast.LENGTH_LONG).show();
+        id_gym_n = userId1.getString("idgym", "");
+        //Toast.makeText(getApplicationContext(), "Usuario: " + username , Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "ID: " + id_gym_n , Toast.LENGTH_LONG).show();
+
         request = Volley.newRequestQueue(this);
         loadUserData(username);
 
+
+        createNotificationChannel();
+        getToken();
+        subscribeToTopic();
 
     }//Fin OnCreate
 
@@ -126,6 +159,86 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
         requestQueue.add(jsonArrayRequest);
 
     }
+
+
+    //Inicio Parte de las Notificaciones
+    //get de application token
+    private void getToken(){
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                    @Override
+                    public void onSuccess(InstanceIdResult instanceIdResult) {
+                        Log.e("Token", instanceIdResult.getToken());
+                        //Debo obtener el idGym para poder enviarlo adecuadamente.
+                        //Toast.makeText(getApplicationContext(), "Token:"+ instanceIdResult.getToken() + " Usuario: " + username + " ID" + id_gym_n , Toast.LENGTH_LONG).show();
+                        enviarTokenToServer(instanceIdResult.getToken(), username, id_gym_n);
+                    }
+                });
+    }
+
+    public void enviarTokenToServer(final String token, String usuario, String idGym) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                "http://gymup.zonahosting.net/GYMPHP/Notification_Add.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //Toast.makeText(getApplicationContext(), "Se registro exitosamente...184" + response, Toast.LENGTH_LONG).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "ERROR: En la conexión a Internet!", Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parametros = new Hashtable<String, String>();
+                parametros.put("Token", token);
+                parametros.put("User", usuario);
+                parametros.put("idGym", idGym);
+                return parametros;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    //create a notif channel
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "firebaseNotifChannel";
+            String description = "Este es el canal para recibir las notificaciones";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void subscribeToTopic(){
+        FirebaseMessaging.getInstance().subscribeToTopic("newsletter"+id_gym_n)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                       /* String msg = getString(R.string.msg_subscribed);
+                        if (!task.isSuccessful()) {
+                            msg = getString(R.string.msg_subscribe_failed);
+                        }
+                        Log.d(TAG, msg);*/
+                        //Toast.makeText(UserHome.this, "Suscriotoooo al canal: " +id_gym_n, Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+    }
+
+
+    //Cierre de las Notificaciones
 
 
 

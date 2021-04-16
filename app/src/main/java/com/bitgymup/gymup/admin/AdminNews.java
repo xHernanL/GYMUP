@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
+import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 
 public class AdminNews extends AppCompatActivity {
     //Inicializar las variables
@@ -54,6 +55,8 @@ public class AdminNews extends AppCompatActivity {
         txt_titulo = (EditText)findViewById(R.id.txt_titulo);
         txt_mensaje = (EditText)findViewById(R.id.txt_mensaje);
         btn_Notificaciones = findViewById(R.id.btn_Notificaciones);
+        id_gym_n = getGymId("gym_id");
+        //txt_titulo.setText( id_gym_n);
         btn_Notificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +71,11 @@ public class AdminNews extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String username = sharedPref.getString(key,"");
         return username;
+    }
+    private String getGymId(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("gym_id", Context.MODE_PRIVATE);
+        String gymid = sharedPref.getString(key,"");
+        return gymid;
     }
     private void enviarPush(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -88,7 +96,7 @@ public class AdminNews extends AppCompatActivity {
                 parametros.put("idGym", idGym);
                 parametros.put("Asunto", txt_titulo.getText().toString());
                 parametros.put("Contenido", txt_mensaje.getText().toString());
-                parametros.put("Gimnasio", "");//aquí a el id del Gym
+                parametros.put("Gimnasio", id_gym_n);//aquí a el id del Gym
                 return parametros;
             }
         };
