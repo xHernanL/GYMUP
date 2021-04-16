@@ -74,7 +74,7 @@ public class RecuperarPass extends AppCompatActivity {
                 }//fin del Ii
                 else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.Elcampoemailnovacio, Toast.LENGTH_SHORT);
-                    toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                     toast.show();
                     //Toast.makeText(getApplicationContext(),"Todos los campos son requeridos.",Toast.LENGTH_SHORT).show();
                 }
