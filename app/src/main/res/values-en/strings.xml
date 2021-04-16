@@ -140,6 +140,7 @@
     <string name="Elcampoemailnovacio">The email field cannot be empty!</string>
     <string name="CorreoEnviado">Mail sent successfully, check spam folder.</string>
     <string name="usrwrongordisabled">User or password wrong or disabled.</string>
+    <string name="BienvenidoAdmin">Welcome to Administration Panel</string>
     <!-- End Lista de Promociones -->
 
 

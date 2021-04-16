@@ -8,6 +8,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -129,7 +131,9 @@ public class LogIn extends AppCompatActivity {
                                     String result = enviarDatos.getResult();
 
                                     if (result.equals("Login Success")){
-                                        Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT).show();
+                                        Toast toast = Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT);
+                                        toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                                        toast.show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
                                         AccesoOK = true;
@@ -156,7 +160,10 @@ public class LogIn extends AppCompatActivity {
                                                 String result2 = enviarDatos2.getResult();
 
                                                 if (result2.equals("Login Success")){
-                                                    Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
+
+                                                    Toast toast = Toast.makeText(getApplicationContext(), R.string.BienvenidoAdmin, Toast.LENGTH_SHORT);
+                                                    toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                                                    toast.show();
                                                     //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
                                                     AccesoOK = true;
@@ -182,7 +189,11 @@ public class LogIn extends AppCompatActivity {
                                             }
                                         }
                                         if (AccesoOK == false)
-                                        Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT).show();
+                                        {
+                                        Toast toast = Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT);
+                                        toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                                        toast.show();
+                                        }
                                     }
                                 }
                             }//End Write and Read data with URL
