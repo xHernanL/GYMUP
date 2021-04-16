@@ -52,6 +52,7 @@ public class LogIn extends AppCompatActivity {
     private static final String CHANNEL_ID = "102";
     TextInputEditText textInputEditTextUserName, textInputEditTextPassword;
     Button buttonLogin;
+    public boolean AccesoOK;
     TextView textViewSignUp, textViewForgotPass;
     ProgressBar progressBar;
     private String idgim, nombregim;
@@ -62,7 +63,7 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        AccesoOK = false;
         textInputEditTextUserName = findViewById(R.id.username);
         textInputEditTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_LoginUser);//usa buttonSignUp
@@ -131,10 +132,10 @@ public class LogIn extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT).show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
-
+                                        AccesoOK = true;
                                         //Ahora se creará SharedPreferences
                                         cargarWSgimnasioCliente(username);
-                                        Log.d("login user",username);
+                                        //Log.d("login user",username);
                                         SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = pref.edit();
                                         editor.putString("username", username);  // Saving string
@@ -158,9 +159,10 @@ public class LogIn extends AppCompatActivity {
                                                     Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
                                                     //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
+                                                    AccesoOK = true;
                                                     //Ahora se creará SharedPreferences
                                                     cargarWSgimnasio(username);
-                                                    Log.d("login admin",username);
+                                                    //Log.d("login admin",username);
                                                     SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                                     SharedPreferences.Editor editor = pref.edit();
                                                     editor.putString("username", username);  // Saving string
@@ -174,11 +176,13 @@ public class LogIn extends AppCompatActivity {
                                                 }
                                                 else
                                                 {
-                                                    Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
+                                                    //if (AccesoOK == false)
+                                                    //Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         }
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                        if (AccesoOK == false)
+                                        Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }//End Write and Read data with URL
@@ -281,7 +285,6 @@ public class LogIn extends AppCompatActivity {
                         editor.putString("namegym", nombregim);
                         editor.apply();
                         //Log.d("Response", "onResponse: "+ nombregim);
-
 
                     }
                 }, new Response.ErrorListener() {

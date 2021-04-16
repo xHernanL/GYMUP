@@ -143,6 +143,7 @@
     <string name="gymPromotion">Promociones</string>
     <string name="Elcampoemailnovacio">¡El campo correo electrónico no puede estar vacio!</string>
     <string name="CorreoEnviado">Correo enviado correctamente, revise carperta spam.</string>
+    <string name="usrwrongordisabled">Usuario o contraseña incorrecto, o deshabilitado.</string>
     <!-- End Lista de Promociones -->
 
 

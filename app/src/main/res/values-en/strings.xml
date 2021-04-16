@@ -139,6 +139,7 @@
     <string name="gymPromotion">Promotions</string>
     <string name="Elcampoemailnovacio">The email field cannot be empty!</string>
     <string name="CorreoEnviado">Mail sent successfully, check spam folder.</string>
+    <string name="usrwrongordisabled">User or password wrong or disabled.</string>
     <!-- End Lista de Promociones -->
 
 
