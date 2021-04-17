@@ -132,7 +132,7 @@ public class LogIn extends AppCompatActivity {
 
                                     if (result.equals("Login Success")){
                                         Toast toast = Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT);
-                                       //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                                        //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
                                         toast.show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
@@ -190,12 +190,12 @@ public class LogIn extends AppCompatActivity {
                                         }
                                         if (AccesoOK == false)
                                         {
-                                        Toast toast = Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT);
-                                        //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                                            Toast toast = Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT);
+                                            //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                                             //View view = toast.getView();
                                             //view.setBackgroundColor(Color.RED);
-                                       //toast.view.background.setTintList(ContextCompat.getColorStateList(context, android.R.color.darker_gray))
-                                        toast.show();
+                                            //toast.view.background.setTintList(ContextCompat.getColorStateList(context, android.R.color.darker_gray))
+                                            toast.show();
                                         }
                                     }
                                 }

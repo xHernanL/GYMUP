@@ -47,6 +47,7 @@ public class AdminNewSchedule extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     int tHour, tMinute;
+    private TextView gimnasio_nombre;
     String time, date;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,9 @@ public class AdminNewSchedule extends AppCompatActivity {
 
         String idService = getIntent().getExtras().getString("IdService");
         String serviceName = getIntent().getExtras().getString("serviceName");
+
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText(getUserLogin("namegym"));
 
         SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String username    = userId1.getString("username", "");
@@ -151,6 +155,13 @@ public class AdminNewSchedule extends AppCompatActivity {
 
 
     } //end of create
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login",Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
+
 
 
     private void SaveSchedule(String URL){

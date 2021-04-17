@@ -68,8 +68,8 @@
 
                 <ImageView
                     android:id="@+id/imagenId"
-                    android:layout_width="230dp"
-                    android:layout_height="230dp"
+                    android:layout_width="241dp"
+                    android:layout_height="150dp"
 
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="20dp"
@@ -81,8 +81,9 @@
                     android:id="@+id/btnCargarImg"
                     android:layout_width="179dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="130dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="60dp"
                     android:layout_weight="1"
                     android:text="@string/health_btncargar" />
             </LinearLayout>

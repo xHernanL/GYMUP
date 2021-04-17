@@ -11,8 +11,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +36,8 @@ public class AdminOffers extends AppCompatActivity {
     private EditText promo_titulo, promo_contenido;
     private TextView gimnasio_nombre;
     private Button btnSubmit;
-    String username;
+    private Spinner alcance;
+    String username, offer_selected;
     private String idgim;
 
     ProgressDialog progreso;
@@ -56,6 +59,11 @@ public class AdminOffers extends AppCompatActivity {
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
 
         username = getUserLogin("username");
+        alcance = (Spinner) findViewById(R.id.sp_alcance);
+
+        String [] opciones = {"Privado","Público"};
+        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
+        alcance.setAdapter(adapter);
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         request = Volley.newRequestQueue(this);
@@ -131,9 +139,12 @@ public class AdminOffers extends AppCompatActivity {
         progreso.setMessage("Cargando...");
         progreso.show();
 
+        offer_selected = alcance.getSelectedItem().toString();
+
         String url = "http://gymup.zonahosting.net/gymphp/PromotionsWS.php?gim="+idgim+
                 "&title="+promo_titulo.getText().toString()+
-                "&promotion="+promo_contenido.getText().toString();
+                "&promotion="+promo_contenido.getText().toString()+
+                "&alcance="+offer_selected;
 
         url = url.replace(" ","%20");
         Log.d("url",url);
