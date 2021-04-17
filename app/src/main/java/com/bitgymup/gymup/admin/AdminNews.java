@@ -14,7 +14,9 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,9 +35,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
+import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 
 public class AdminNews extends AppCompatActivity {
+    private static final String TAG = "AdminNews";
     //Inicializar las variables
     Button  btn_Notificaciones;
     EditText txt_titulo, txt_mensaje;
@@ -65,6 +69,18 @@ public class AdminNews extends AppCompatActivity {
               //createNotification();
             }
         });
+
+        /*Lo de abajo genera un crash cuando no esta activado el Focus.
+        drawerLayout.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    hideSoftKeyboard(AdminNews.this);
+                }
+            }
+        });*/
+
+
     }//fin de onCreate
 
     private String getUserLogin(String key) {
@@ -129,9 +145,21 @@ public class AdminNews extends AppCompatActivity {
     }
 
 
-    /*ABAJO VAN TODOS LOS MENUS*/
+
+        /*ABAJO VAN TODOS LOS MENUS*/
     public void ClickMenu(View view){
         AdminHome.openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, ex.toString());
+        }
+
     }
     public void ClickLogo(View view){
         AdminHome.closeDrawer(drawerLayout);

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -224,6 +225,16 @@ public class UserSaveReservations extends AppCompatActivity {
     public void ClickMenu(View view){
         //Abrir drawer
         openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            //Log.e(TAG, ex.toString());
+        }
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {

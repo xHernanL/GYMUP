@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -197,6 +198,16 @@ public class AdminHealth extends AppCompatActivity {
     public void ClickMenu(View view){
         //Abrir el drawer
         AdminHome.openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            //Log.e(TAG, ex.toString());
+        }
     }
 
     public void ClickLogo(View view){

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,8 +30,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
+import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 
 public class AdminAboutUs extends AppCompatActivity {
+    private static final String TAG ="AboutUs" ;
     private EditText content_mision, content_vision;
     private TextView gimnasio_nombre;
     private Button btnSubmit;
@@ -62,9 +65,6 @@ public class AdminAboutUs extends AppCompatActivity {
 
         cargarWSgimnasio(username);
         getMisionVision(idgim);
-
-
-
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,8 +205,17 @@ public class AdminAboutUs extends AppCompatActivity {
 
 
     public void ClickMenu(View view){
-        //Abrir el drawer
         AdminHome.openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, ex.toString());
+        }
     }
 
     public void ClickLogo(View view){

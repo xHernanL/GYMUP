@@ -192,6 +192,9 @@ public class LogIn extends AppCompatActivity {
                                         {
                                         Toast toast = Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT);
                                         //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                                            //View view = toast.getView();
+                                            //view.setBackgroundColor(Color.RED);
+                                       //toast.view.background.setTintList(ContextCompat.getColorStateList(context, android.R.color.darker_gray))
                                         toast.show();
                                         }
                                     }

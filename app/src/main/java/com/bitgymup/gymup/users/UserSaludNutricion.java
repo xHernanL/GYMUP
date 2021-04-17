@@ -15,6 +15,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -126,6 +127,16 @@ public class UserSaludNutricion extends AppCompatActivity {
     public void ClickMenu(View view){
         //Abrir drawer
         openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            //Log.e(TAG, ex.toString());
+        }
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {

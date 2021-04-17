@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 
+import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 import static com.bitgymup.gymup.admin.Variables.usuario_s;
 
@@ -104,7 +106,7 @@ public class AdminHome extends AppCompatActivity {
                         Log.e("Token", instanceIdResult.getToken());
                         //Debo obtener el idGym para poder enviarlo adecuadamente.
                        // Toast.makeText(getApplicationContext(), "Se::" + idgim + id_gym_n , Toast.LENGTH_LONG).show();
-                        enviarTokenToServer(instanceIdResult.getToken(), usuario_s, id_gym_n);
+                        enviarTokenToServer(instanceIdResult.getToken(), username, id_gym_n);
                     }
                 });
     }
@@ -233,7 +235,10 @@ public class AdminHome extends AppCompatActivity {
     public static void openDrawer(DrawerLayout drawerLayout) {
         //Open drawer Layout, es un procedimiento público que no necesita ser instanciado, es visible en toda la APP.
         drawerLayout.openDrawer(GravityCompat.START);
+        //hideSoftKeyboard (AdminHome.this);
     }
+
+
 
     public void ClickLogo(View view){
         //Cierre del Drawer

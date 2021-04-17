@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -120,6 +121,16 @@ public class EditUserProfile extends AppCompatActivity implements AdapterView.On
     public void ClickMenu(View view){
         //Abrir drawer
         openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            //Log.e(TAG, ex.toString());
+        }
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {

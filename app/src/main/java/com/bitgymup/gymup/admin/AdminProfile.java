@@ -7,9 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,12 +35,14 @@ import java.util.Map;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 import static com.bitgymup.gymup.admin.Variables.getUsuario_s;
+import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 
 public class AdminProfile extends AppCompatActivity {
     //Inicializar las variables
     EditText txtNombre, txtDireccion, txtTelefono, txtMovil, txtMailGym, txtCiudad, txtEstado, txtRUT, txtPropietario, txtMovilProp, txtMailProp, txtPass;
     private TextView gimnasio_nombre;
+    ScrollView scrollView;
     Button  btnActualizar;
     String idGym = "";
     DrawerLayout drawerLayout;
@@ -65,6 +70,8 @@ public class AdminProfile extends AppCompatActivity {
         txtPass = (EditText)findViewById(R.id.passwordDueno);
         //Intent i = this.getIntent();
         //String usuario = i.getStringExtra("usuario");
+        scrollView = findViewById(R.id.parentScroll);
+
         getUsuario_s();
         try
         {
@@ -80,6 +87,26 @@ public class AdminProfile extends AppCompatActivity {
                 actualizarAdmin("http://gymup.zonahosting.net/GYMPHP/admin_update.php");
             }
         });
+
+
+        drawerLayout.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    hideSoftKeyboard(AdminProfile.this);
+                }
+            }
+        });
+        /*scrollView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    hideSoftKeyboard(AdminProfile.this);
+                }
+            }
+        });*/
+
+
     }//Fin de OnCreate
 
     private String getUserLogin(String key) {
@@ -164,8 +191,17 @@ public class AdminProfile extends AppCompatActivity {
 //*Abajo todo el Navaigation Drawer*/
 
     public void ClickMenu(View view){
-        //Abrir el drawer
         AdminHome.openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            //Log.e(TAG, ex.toString());
+        }
     }
 
     public void ClickLogo(View view){
