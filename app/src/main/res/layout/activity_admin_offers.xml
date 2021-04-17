@@ -29,13 +29,13 @@
 
             <ImageView
                 android:id="@+id/gimnasio_imagen"
-                android:layout_width="match_parent"
+                android:layout_width="174dp"
                 android:layout_height="150dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/purple_500"
-                android:foreground="@drawable/gym_pesas"
+                android:layout_marginRight="30dp"
+                android:foreground="@drawable/promos"
                 android:text="Imagen" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -69,6 +69,15 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Spinner
+                android:id="@+id/sp_alcance"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btnSubmit"

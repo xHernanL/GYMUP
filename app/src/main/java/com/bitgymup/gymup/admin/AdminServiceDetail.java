@@ -62,6 +62,7 @@ public class AdminServiceDetail extends AppCompatActivity {
 
     List<Schedule> serviceList;
     DrawerLayout drawerLayout;
+    private TextView gimnasio_nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,9 @@ public class AdminServiceDetail extends AppCompatActivity {
         String idService   = getIntent().getExtras().getString("IdService");
         String serviceName = getIntent().getExtras().getString("serviceName");
         String serviceDes  = getIntent().getExtras().getString("serviceDes");
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText(getUserLogin("namegym"));
+
 
         TextView srvName, srvDes;
         ImageView imageView;
@@ -119,6 +123,12 @@ public class AdminServiceDetail extends AppCompatActivity {
 
 
     }    // end onCreate
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login",Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
+    }
 
     private void setBooking(String URL){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {

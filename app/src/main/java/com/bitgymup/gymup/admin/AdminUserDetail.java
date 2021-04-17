@@ -33,6 +33,7 @@ import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 public class AdminUserDetail extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight;
+    private TextView gimnasio_nombre;
 
     private RequestQueue request;
     private  String username;
@@ -45,6 +46,8 @@ public class AdminUserDetail extends AppCompatActivity {
         request = Volley.newRequestQueue(this);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText(getUserLogin("namegym"));
 
         Intent i = this.getIntent();
         String id_cliente = i.getStringExtra("id");
@@ -62,6 +65,12 @@ public class AdminUserDetail extends AppCompatActivity {
         loadUserData(id_cliente);
 
 
+    }
+
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login",Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
     }
 
     private void loadUserData(String username) {

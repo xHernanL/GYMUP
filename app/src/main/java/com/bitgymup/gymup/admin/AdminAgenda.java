@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -37,6 +38,7 @@ public class AdminAgenda extends AppCompatActivity {
     List<getServices> serviceList;
     DrawerLayout drawerLayout;
     SharedPreferences userId1;
+    private TextView gimnasio_nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class AdminAgenda extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         userId1 = getSharedPreferences("user_login",Context.MODE_PRIVATE);
         String userId = userId1.getString("username", "");
+        gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        gimnasio_nombre.setText(getUserLogin("namegym"));
 
 
         try
@@ -57,6 +61,11 @@ public class AdminAgenda extends AppCompatActivity {
 
         }
 
+    }
+    private String getUserLogin(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("user_login",Context.MODE_PRIVATE);
+        String username = sharedPref.getString(key,"");
+        return username;
     }
 
     private void getServicesAdmin(String URL){
