@@ -90,6 +90,14 @@
 
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white">
+
+        <include layout="@layout/main_nav_users" />
+    </RelativeLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
