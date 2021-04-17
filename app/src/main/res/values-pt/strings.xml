@@ -145,9 +145,11 @@
     <!-- End Lista de Promociones -->
 
     <!-- Start Main Activity-->
-    <string name="seeAllGym">Ver Todos</string>
+    <string name="seeAll">Ver todos</string>
     <string name="affiliatedGym">Gimnasios Socios</string>
     <string name="affiliatedGymList">Lista de Gimnasios Asociados</string>
+    <string name="readMore">Leer más</string>
+    <string name="seeAllA">Ver todas</string>
     <!-- End Main Activity -->
 
 </resources>

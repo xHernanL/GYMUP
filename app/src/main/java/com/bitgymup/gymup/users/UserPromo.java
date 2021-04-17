@@ -1,16 +1,8 @@
 package com.bitgymup.gymup.users;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,15 +11,19 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.bitgymup.gymup.Gym;
-import com.bitgymup.gymup.GymListAdapter;
-import com.bitgymup.gymup.LogIn;
+import com.bitgymup.gymup.GymPromotion;
 import com.bitgymup.gymup.R;
 
 import org.json.JSONArray;
@@ -44,13 +40,13 @@ public class UserPromo extends AppCompatActivity {
     private String userId;
     private SharedPreferences userId1;
     //ProgressDialog progreso;
-    List<Promotion> elements;
+    List<GymPromotion> elements;
     private RequestQueue request;
     private TextView gimnasio_nombre;
     JsonObjectRequest jsonObjectRequest;
     ProgressDialog progress;
     RecyclerView recyclerPromotion;
-    ArrayList<Promotion> listPromotion;
+    ArrayList<GymPromotion> listPromotion;
 
     //Inicializar las variables
     DrawerLayout drawerLayout;
@@ -119,13 +115,14 @@ public class UserPromo extends AppCompatActivity {
                         String title     = jsonObject.optString("title");
                         String promotion = jsonObject.optString("promotion");
 
-                        elements.add(new Promotion(id, title, promotion));
-                        PromotionAdapter listAdapter = new PromotionAdapter(elements, getApplicationContext(), new PromotionAdapter.OnItemClickListener() {
+                        elements.add(new GymPromotion(id, title, promotion));
+                        GymPromotionAdapter listAdapter = new GymPromotionAdapter(elements, getApplicationContext(), new GymPromotionAdapter.OnItemClickListener() {
 
                             @Override
-                            public void onItemClick(Promotion item) {
+                            public void onItemClick(GymPromotion item) {
                                 // acá si se hace click en alguna tarjeta
                             }
+
                         });
                         RecyclerView recyclerView = findViewById(R.id.recyclerPromotion);
                         recyclerView.setHasFixedSize(true);

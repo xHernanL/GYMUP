@@ -16,14 +16,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    private Button btnAllGymList;
+    private Button btnAllGymList, btnNutritionAndHealth, btnHomePromotions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAllGymList = findViewById(R.id.btnAllGymList);
+        btnAllGymList         = findViewById(R.id.btnAllGymList);
+        btnNutritionAndHealth = findViewById(R.id.btnNutritionAndHealth);
+        btnHomePromotions     = findViewById(R.id.btnHomePromotions);
 
         bottomNavigationView = findViewById(R.id.menuinf);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,6 +51,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent newActivity = new Intent(getApplicationContext(), PublicGymList.class);
+                startActivity(newActivity);
+            }
+
+        });
+
+        btnNutritionAndHealth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), PublicGymList.class);
+                startActivity(newActivity);
+            }
+
+        });
+
+        btnHomePromotions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), AllPromotions.class);
                 startActivity(newActivity);
             }
 

@@ -1,18 +1,16 @@
-package com.bitgymup.gymup.users;
+package com.bitgymup.gymup;
 
 import java.io.Serializable;
 
-public class Promotion implements Serializable{
+public class GymPromotion implements Serializable{
     private String id;
     private String title;
     private String promotion;
-    private String gymName;
 
-    public Promotion(String id, String title, String promotion, String gymName) {
+    public GymPromotion(String id, String title, String promotion) {
         this.id        = id;
         this.title     = title;
         this.promotion = promotion;
-        this.gymName   = gymName;
     }
 
     public String getId() {
@@ -37,13 +35,5 @@ public class Promotion implements Serializable{
 
     public void setPromotion(String promotion) {
         this.promotion = promotion;
-    }
-
-    public String getGymName() {
-        return gymName;
-    }
-
-    public void setGymName(String gymname) {
-        this.gymName = gymname;
     }
 }
