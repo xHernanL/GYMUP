@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.bitgymup.gymup.users.UserHome;
 import com.bitgymup.gymup.users.UserRegister;
@@ -13,10 +16,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    private Button btnAllGymList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnAllGymList = findViewById(R.id.btnAllGymList);
 
         bottomNavigationView = findViewById(R.id.menuinf);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -38,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnAllGymList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), PublicGymList.class);
+                startActivity(newActivity);
+            }
+
+        });
 
     }//Fin OnCreate
 

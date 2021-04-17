@@ -44,18 +44,19 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppinsmedium"
                         android:padding="10dp"
-                        android:text="GYM SOCIOS"
+                        android:text="@string/affiliatedGym"
                         android:textColor="#ffffff"
                         android:textSize="20dp" />
 
                     <Button
+                        android:id="@+id/btnAllGymList"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:background="#00000000"
                         android:fontFamily="@font/poppinsmedium"
                         android:padding="10dp"
-                        android:text="Ver todos" />
+                        android:text="@string/seeAllGym" />
                 </RelativeLayout>
 
                 <ImageView

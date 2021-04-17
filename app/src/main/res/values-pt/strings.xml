@@ -144,4 +144,10 @@
     <string name="UsrEmailWrong">¡Nombre de usuario o email incorrecto!</string>
     <!-- End Lista de Promociones -->
 
+    <!-- Start Main Activity-->
+    <string name="seeAllGym">Ver Todos</string>
+    <string name="affiliatedGym">Gimnasios Socios</string>
+    <string name="affiliatedGymList">Lista de Gimnasios Asociados</string>
+    <!-- End Main Activity -->
+
 </resources>
