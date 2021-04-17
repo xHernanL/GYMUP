@@ -43,7 +43,7 @@ public class Promotion implements Serializable{
         return gymName;
     }
 
-    public void setGymName(String gymname) {
-        this.gymName = gymname;
+    public void setGymName(String gymName) {
+        this.gymName = gymName;
     }
 }

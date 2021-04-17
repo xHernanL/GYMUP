@@ -32,11 +32,15 @@ public class AllPromotions extends AppCompatActivity {
     JsonObjectRequest jsonObjectRequest;
     RecyclerView recyclerPromotion;
     ArrayList<Promotion> listPromotion;
+    TextView tvNoPromotion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_promotions);
+
+        tvNoPromotion = findViewById(R.id.tvNoPromotion);
+        tvNoPromotion.setVisibility(TextView.INVISIBLE);
 
         String url = "http://gymup.zonahosting.net/gymphp/getAllPromos.php";
         loadWebService(url);
@@ -77,7 +81,9 @@ public class AllPromotions extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                tvNoPromotion.setVisibility(TextView.VISIBLE);
+                tvNoPromotion.setText(R.string.noPromotion);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);

@@ -47,6 +47,7 @@ public class UserPromo extends AppCompatActivity {
     ProgressDialog progress;
     RecyclerView recyclerPromotion;
     ArrayList<GymPromotion> listPromotion;
+    TextView tvNoGymPromotion;
 
     //Inicializar las variables
     DrawerLayout drawerLayout;
@@ -56,6 +57,10 @@ public class UserPromo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_promo);
         request = Volley.newRequestQueue(this);
+
+        tvNoGymPromotion = findViewById(R.id.tvNoGymPromotion);
+        tvNoGymPromotion.setVisibility(TextView.INVISIBLE);
+
         //Asignación de la variable
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
         gimnasio_nombre.setText( getUserLogin("namegym"));
@@ -95,7 +100,8 @@ public class UserPromo extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+              Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -137,7 +143,9 @@ public class UserPromo extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                tvNoGymPromotion.setVisibility(TextView.VISIBLE);
+                tvNoGymPromotion.setText(R.string.noPromotion);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);

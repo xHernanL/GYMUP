@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bitgymup.gymup.users.Promotion;
 import com.bitgymup.gymup.users.PromotionAdapter;
 import com.bitgymup.gymup.R;
@@ -38,7 +37,7 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionAdapter.View
 
     @Override
     public PromotionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = mInflater.inflate(R.layout.gym_promotions_card, null);
+        View view = mInflater.inflate(R.layout.promotions_card, null);
         return new PromotionAdapter.ViewHolder(view);
     }
 
@@ -50,16 +49,18 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionAdapter.View
     public void setItems(List<Promotion> items){ mData = items;}
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView title, promotion;
+        public TextView title, promotion, gymName;
 
         ViewHolder(View itemView){
             super(itemView);
-            title     = itemView.findViewById(R.id.tvPromotionTitle);
-            promotion = itemView.findViewById(R.id.tvPromotionDescription);
+            gymName   = itemView.findViewById(R.id.tvPromoGym);
+            title     = itemView.findViewById(R.id.tvPromoTitle);
+            promotion = itemView.findViewById(R.id.tvPromoDescription);
 
         }
 
         void bindData(final Promotion item){
+            gymName.setText(item.getGymName());
             title.setText(item.getTitle());
             promotion.setText(item.getPromotion());
             itemView.setOnClickListener(new View.OnClickListener() {
