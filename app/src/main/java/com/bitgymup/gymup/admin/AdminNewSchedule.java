@@ -1,8 +1,10 @@
 package com.bitgymup.gymup.admin;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -32,7 +34,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -55,6 +60,7 @@ public class AdminNewSchedule extends AppCompatActivity {
 
         String idService = getIntent().getExtras().getString("IdService");
         String serviceName = getIntent().getExtras().getString("serviceName");
+        String serviceDes  = getIntent().getExtras().getString("serviceDes");
 
         SharedPreferences userId1 = getSharedPreferences("user_login", Context.MODE_PRIVATE);
         String username    = userId1.getString("username", "");
@@ -103,11 +109,19 @@ public class AdminNewSchedule extends AppCompatActivity {
             }
         });
 
+
+
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+
+
             @Override
             public void onPositiveButtonClick(Object selection) {
-                tv_date.setText(materialDatePicker.getHeaderText());  // aqui mostramos el dia seleccionado
                 date = materialDatePicker.getHeaderText();
+                //int year = calendar.get(calendar.YEAR);
+                //int month = calendar.get(calendar.MONTH);
+                //int day = calendar.get(calendar.DAY_OF_MONTH);
+
+                tv_date.setText(date);  // aqui mostramos el dia seleccionado
             }
 
         });
@@ -129,7 +143,7 @@ public class AdminNewSchedule extends AppCompatActivity {
                                 Calendar calendar = Calendar.getInstance();
                                 calendar.set(0, 0, 0, tHour, tMinute, 0);
                                 //tvTimePicker.setText(hora + DateFormat.format("HH:mm", calendar) );
-                                tv_time.setText(DateFormat.format("HH:mm", calendar)); // aqui mostramos la fecha seleccionada
+                                tv_time.setText(DateFormat.format("HH:mm", calendar)); // aqui mostramos la hora seleccionada
                                 time = DateFormat.format("HH:mm:ss", calendar).toString();
                             }
                         },12, 0, true
@@ -140,11 +154,15 @@ public class AdminNewSchedule extends AppCompatActivity {
         });
 
         btnSaveSchedule.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                SaveSchedule("http://gymup.zonahosting.net/gymphp/AdminServices.php?username="+ username + "&serviceid=" + idService + "&time=" + time + "&date=" + date);
-                Toast.makeText(getApplicationContext(), time + " " + date, Toast.LENGTH_LONG).show();
+                String Lenguaje = Locale.getDefault().getLanguage().toString();
+                SaveSchedule("http://192.168.43.181/wsgymup/SetAdminSchedules.php?username="+ username + "&serviceid=" + idService + "&time=" + time + "&date=" + date + "&lengua=" + Lenguaje, idService, serviceName, serviceDes );
+
                 final ProgressDialog dialog = new ProgressDialog(AdminNewSchedule.this); dialog.setTitle("Cargando..."); dialog.setMessage("Por Favore espere..."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 2500; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
+                Toast.makeText(getApplicationContext(), time + "  " + date + " " + Lenguaje, Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -152,7 +170,7 @@ public class AdminNewSchedule extends AppCompatActivity {
     } //end of create
 
 
-    private void SaveSchedule(String URL){
+    private void SaveSchedule(String URL, String idService, String serviceName, String serviceDes){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
 
             @Override
@@ -167,12 +185,17 @@ public class AdminNewSchedule extends AppCompatActivity {
 
                         String mensaje =jsonObject.optString("mensaje");
                         Boolean status =jsonObject.optBoolean("status");
-                        if(status){
+                        if(status == true){
                             final ProgressDialog dialog = new ProgressDialog(AdminNewSchedule.this); dialog.setTitle("Exito!"); dialog.setMessage("Se ha registrado el horario."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-                            Toast.makeText(getApplicationContext(), "Se ha registrado Exitosamente tu reserva", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Se ha registrado Exitosamente tu Horario", Toast.LENGTH_LONG).show();
+                            Intent goback = new Intent(getApplicationContext() , AdminServiceDetail.class);
+                            goback.putExtra("idService", idService);
+                            goback.putExtra("serviceName", serviceName);
+                            goback.putExtra("serviceDes", serviceDes);
+                            startActivity(goback.setFlags(goback.FLAG_ACTIVITY_NEW_TASK));
                         }else{
                             final ProgressDialog dialog = new ProgressDialog(AdminNewSchedule.this); dialog.setTitle("Upss!"); dialog.setMessage("Parece que ya Existe este horario para tu servicio"); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-                            Toast.makeText(getApplicationContext(), "No se pudo completar a reserva", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "No se pudo completar el horario", Toast.LENGTH_LONG).show();
                         }
 
                     } catch (JSONException e) {

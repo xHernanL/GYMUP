@@ -79,14 +79,8 @@ public class AdminServiceDetail extends AppCompatActivity {
 
         TextView srvName, srvDes;
         ImageView imageView;
-
-        Button btnReservar2;
-        ProgressBar progressBar;
-
-
-        btnReservar2 = findViewById(R.id.btnReservar2);
-        srvName = findViewById(R.id.tvName);
-        srvDes = findViewById(R.id.tvDes);
+        srvName   = findViewById(R.id.tvName);
+        srvDes    = findViewById(R.id.tvDes);
         imageView = findViewById(R.id.imageView);
 
 
@@ -119,51 +113,6 @@ public class AdminServiceDetail extends AppCompatActivity {
 
     }    // end onCreate
 
-    private void setBooking(String URL){
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-
-                for (int i= 0; i < response.length(); i++){
-
-                    try {
-
-                        jsonObject = response.getJSONObject(i);
-
-                        String mensaje =jsonObject.optString("mensaje");
-                        Boolean status =jsonObject.optBoolean("status");
-                        if(status){
-                            final ProgressDialog dialog = new ProgressDialog(AdminServiceDetail.this); dialog.setTitle("Exito!"); dialog.setMessage("Se ha registrado la Reserva."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-                            Toast.makeText(getApplicationContext(), "Se ha registrado Exitosamente tu reserva", Toast.LENGTH_LONG).show();
-                        }else{
-                            final ProgressDialog dialog = new ProgressDialog(AdminServiceDetail.this); dialog.setTitle("Upss!"); dialog.setMessage("Parece que ya estas Registrado"); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-                            Toast.makeText(getApplicationContext(), "No se pudo completar a reserva", Toast.LENGTH_LONG).show();
-                        }
-
-                    } catch (JSONException e) {
-
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-
-                    }
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-
-
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jsonArrayRequest);
-
-    }
-
-
     private void getShedule(String URL){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
 
@@ -191,10 +140,11 @@ public class AdminServiceDetail extends AppCompatActivity {
                             Intent goServicios = new Intent(getApplicationContext(), AdminNewSchedule.class);
                             String idService   = getIntent().getExtras().getString("IdService");
                             String serviceName = getIntent().getExtras().getString("serviceName");
+                            String serviceDes  = getIntent().getExtras().getString("serviceDes");
 
                             goServicios.putExtra("idService", idService);
                             goServicios.putExtra("serviceName", serviceName);
-
+                            goServicios.putExtra("serviceDes", serviceDes);
                             startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));
 
                         }
@@ -209,9 +159,11 @@ public class AdminServiceDetail extends AppCompatActivity {
                             Intent goServicios = new Intent(getApplicationContext(), AdminNewSchedule.class);
                             String idService   = getIntent().getExtras().getString("IdService");
                             String serviceName = getIntent().getExtras().getString("serviceName");
+                            String serviceDes  = getIntent().getExtras().getString("serviceDes");
 
                             goServicios.putExtra("idService", idService);
                             goServicios.putExtra("serviceName", serviceName);
+                            goServicios.putExtra("serviceDes", serviceDes);
                             startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));
 
                         }
