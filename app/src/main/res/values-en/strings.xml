@@ -137,6 +137,11 @@
 
     <!-- Start Lista de Promociones-->
     <string name="gymPromotion">Promotions</string>
+    <string name="Elcampoemailnovacio">The email field cannot be empty!</string>
+    <string name="CorreoEnviado">Mail sent successfully, check spam folder.</string>
+    <string name="usrwrongordisabled">User or password wrong or disabled.</string>
+    <string name="BienvenidoAdmin">Welcome to Administration Panel</string>
+    <string name="UsrEmailWrong">Username or email wrong!</string>
     <!-- End Lista de Promociones -->
 
 

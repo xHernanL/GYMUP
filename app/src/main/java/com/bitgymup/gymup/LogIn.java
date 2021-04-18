@@ -8,6 +8,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -52,6 +54,7 @@ public class LogIn extends AppCompatActivity {
     private static final String CHANNEL_ID = "102";
     TextInputEditText textInputEditTextUserName, textInputEditTextPassword;
     Button buttonLogin;
+    public boolean AccesoOK;
     TextView textViewSignUp, textViewForgotPass;
     ProgressBar progressBar;
     private String idgim, nombregim;
@@ -62,7 +65,7 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        AccesoOK = false;
         textInputEditTextUserName = findViewById(R.id.username);
         textInputEditTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_LoginUser);//usa buttonSignUp
@@ -128,13 +131,15 @@ public class LogIn extends AppCompatActivity {
                                     String result = enviarDatos.getResult();
 
                                     if (result.equals("Login Success")){
-                                        Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT).show();
+                                        Toast toast = Toast.makeText(getApplicationContext(), baccesook, Toast.LENGTH_SHORT);
+                                       //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                                        toast.show();
                                         //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                         //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
-
+                                        AccesoOK = true;
                                         //Ahora se creará SharedPreferences
                                         cargarWSgimnasioCliente(username);
-                                        Log.d("login user",username);
+                                        //Log.d("login user",username);
                                         SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = pref.edit();
                                         editor.putString("username", username);  // Saving string
@@ -155,12 +160,16 @@ public class LogIn extends AppCompatActivity {
                                                 String result2 = enviarDatos2.getResult();
 
                                                 if (result2.equals("Login Success")){
-                                                    Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
+
+                                                    Toast toast = Toast.makeText(getApplicationContext(), R.string.BienvenidoAdmin, Toast.LENGTH_SHORT);
+                                                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                                                    toast.show();
                                                     //No hay que olvidar que como esto ha sido exitoso, entonces hay que guardar por lo menos el nombre de usuario
                                                     //para poder enviarlo al siguiente Intent y poder hacer algunas cosas extras.
+                                                    AccesoOK = true;
                                                     //Ahora se creará SharedPreferences
                                                     cargarWSgimnasio(username);
-                                                    Log.d("login admin",username);
+                                                    //Log.d("login admin",username);
                                                     SharedPreferences pref = getApplicationContext().getSharedPreferences("user_login", MODE_PRIVATE);
                                                     SharedPreferences.Editor editor = pref.edit();
                                                     editor.putString("username", username);  // Saving string
@@ -174,11 +183,17 @@ public class LogIn extends AppCompatActivity {
                                                 }
                                                 else
                                                 {
-                                                    Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
+                                                    //if (AccesoOK == false)
+                                                    //Toast.makeText(getApplicationContext(), result2, Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         }
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                        if (AccesoOK == false)
+                                        {
+                                        Toast toast = Toast.makeText(getApplicationContext(), R.string.usrwrongordisabled, Toast.LENGTH_SHORT);
+                                        //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                                        toast.show();
+                                        }
                                     }
                                 }
                             }//End Write and Read data with URL
@@ -281,7 +296,6 @@ public class LogIn extends AppCompatActivity {
                         editor.putString("namegym", nombregim);
                         editor.apply();
                         //Log.d("Response", "onResponse: "+ nombregim);
-
 
                     }
                 }, new Response.ErrorListener() {

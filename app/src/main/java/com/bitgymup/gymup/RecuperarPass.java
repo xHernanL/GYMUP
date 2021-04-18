@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -46,7 +48,7 @@ public class RecuperarPass extends AppCompatActivity {
         textInputEditTextUserName = findViewById(R.id.username);
         buttonLogin = findViewById(R.id.btn_LoginUser);
         progressBar = findViewById(R.id.progress);
-        Toolbar miActionbar = (Toolbar) findViewById(R.id.miActionbarBack);
+        Toolbar miActionbar = findViewById(R.id.miActionbarBack);
         setSupportActionBar(miActionbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -71,7 +73,10 @@ public class RecuperarPass extends AppCompatActivity {
 
                 }//fin del Ii
                 else {
-                    Toast.makeText(getApplicationContext(),"Todos los campos son requeridos.",Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.Elcampoemailnovacio, Toast.LENGTH_SHORT);
+                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                    toast.show();
+                    //Toast.makeText(getApplicationContext(),"Todos los campos son requeridos.",Toast.LENGTH_SHORT).show();
                 }
             }
         });//Parte final
@@ -84,10 +89,17 @@ public class RecuperarPass extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 progressBar.setVisibility(View.GONE);
-                if (response.toString().contains("Nombre de usuario")){
-                    Toast.makeText(getApplicationContext(), "¡Nombre de usuario incorrecto!", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Correo enviado correctamente, revise carpeta spam.", Toast.LENGTH_LONG).show();
+                if (response.contains("Nombre de usuario")){
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.UsrEmailWrong, Toast.LENGTH_SHORT);
+                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                    toast.show();
+
+                }
+                else {
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.CorreoEnviado, Toast.LENGTH_SHORT);
+                    //toast.getView().setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                    toast.show();
+                    //Toast.makeText(getApplicationContext(), "Correo enviado correctamente, revise carpeta spam.", Toast.LENGTH_LONG).show();
                 }
 
                 //Caso del Intent, paso por variables.

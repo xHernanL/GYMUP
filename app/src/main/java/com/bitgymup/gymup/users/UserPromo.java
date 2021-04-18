@@ -88,7 +88,7 @@ public class UserPromo extends AppCompatActivity {
                         String idGym     = jsonObject.optString("idGym");
 
                    //     Toast.makeText(getApplicationContext(), idGym.trim(), Toast.LENGTH_LONG).show();
-                        String url = "http://gymup.zonahosting.net/gymphp/getPromotionList.php?idgym= " + idGym.trim();
+                        String url = "http://gymup.zonahosting.net/gymphp/getPromotionList.php?idgym=" + idGym.trim();
                         loadWebService(url);
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
