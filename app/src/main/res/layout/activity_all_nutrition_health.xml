@@ -20,7 +20,7 @@
             android:fontFamily="@font/poppinsbold"
             android:text="Salud y nutrición"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

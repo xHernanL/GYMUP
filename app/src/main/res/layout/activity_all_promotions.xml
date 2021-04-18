@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     tools:context=".users.UserPromo">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,16 +16,13 @@
             android:id="@+id/tvPromotionList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:layout_centerHorizontal="true"
+            android:background="#DFDBDB"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Promociones"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/gymPromotion"
-            android:fontFamily="@font/poppinsmedium"
-            />
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
 
         <TextView
             android:id="@+id/tvNoPromotion"
