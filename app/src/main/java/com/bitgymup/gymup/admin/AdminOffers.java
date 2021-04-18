@@ -61,7 +61,7 @@ public class AdminOffers extends AppCompatActivity {
         username = getUserLogin("username");
         alcance = (Spinner) findViewById(R.id.sp_alcance);
 
-        String [] opciones = {"Privado","Público"};
+        String [] opciones = {"Privado","Publico"};
         ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
         alcance.setAdapter(adapter);
 
