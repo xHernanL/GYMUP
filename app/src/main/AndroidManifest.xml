@@ -21,6 +21,7 @@
         android:roundIcon="@mipmap/logo_circular"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
+        <activity android:name=".AllNutritionHealth"></activity>
         <activity android:name=".AllPromotions" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -68,7 +69,7 @@
         <activity android:name=".GymList" />
         <activity android:name=".PublicGymList" />
         <activity android:name=".LogIn" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

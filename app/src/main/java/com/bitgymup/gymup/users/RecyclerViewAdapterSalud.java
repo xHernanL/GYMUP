@@ -34,9 +34,6 @@ public class RecyclerViewAdapterSalud extends RecyclerView.Adapter<RecyclerViewA
             titulo = (TextView) itemView.findViewById(R.id.textTitle) ;
             contenido = (TextView) itemView.findViewById(R.id.tx_contenido) ;
             fecha = (TextView) itemView.findViewById(R.id.tx_creationdate) ;
-
-
-
         }
 
     }
@@ -44,6 +41,7 @@ public class RecyclerViewAdapterSalud extends RecyclerView.Adapter<RecyclerViewA
     @NonNull
     @Override
     public RecyclerViewAdapterSalud.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_saludnutricion,parent,false);
         RecyclerViewAdapterSalud.ViewHolder viewHolder = new RecyclerViewAdapterSalud.ViewHolder(view);
         return viewHolder;

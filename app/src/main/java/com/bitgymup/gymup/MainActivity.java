@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         btnNutritionAndHealth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), PublicGymList.class);
+                Intent newActivity = new Intent(getApplicationContext(), AllNutritionHealth.class);
                 startActivity(newActivity);
             }
 

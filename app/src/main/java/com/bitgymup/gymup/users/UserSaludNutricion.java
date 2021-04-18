@@ -91,7 +91,7 @@ public class UserSaludNutricion extends AppCompatActivity {
                         String fecha = jsonObject.optString("creationdate");
                         //Log.d("fechaza",fecha);
 
-                        salud.add(new Salud(id,titulo, contenido, fecha));
+                        salud.add(new Salud(id,titulo, contenido, fecha, "gym"));
 
                         if (!titulo.equals("")){
                             recyclerViewSalud =(RecyclerView)findViewById(R.id.recyclerSaludNutri);
@@ -99,11 +99,6 @@ public class UserSaludNutricion extends AppCompatActivity {
                             adapter = new RecyclerViewAdapterSalud(salud);
                             recyclerViewSalud.setAdapter(adapter);
                         }
-
-
-
-
-
 
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
