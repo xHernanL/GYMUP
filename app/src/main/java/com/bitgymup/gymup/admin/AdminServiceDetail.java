@@ -62,6 +62,7 @@ public class AdminServiceDetail extends AppCompatActivity {
     List<Schedule> serviceList;
     DrawerLayout drawerLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,7 +143,7 @@ public class AdminServiceDetail extends AppCompatActivity {
                             String serviceName = getIntent().getExtras().getString("serviceName");
                             String serviceDes  = getIntent().getExtras().getString("serviceDes");
 
-                            goServicios.putExtra("idService", idService);
+                            goServicios.putExtra("IdService", idService);
                             goServicios.putExtra("serviceName", serviceName);
                             goServicios.putExtra("serviceDes", serviceDes);
                             startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));
@@ -161,7 +162,7 @@ public class AdminServiceDetail extends AppCompatActivity {
                             String serviceName = getIntent().getExtras().getString("serviceName");
                             String serviceDes  = getIntent().getExtras().getString("serviceDes");
 
-                            goServicios.putExtra("idService", idService);
+                            goServicios.putExtra("IdService", idService);
                             goServicios.putExtra("serviceName", serviceName);
                             goServicios.putExtra("serviceDes", serviceDes);
                             startActivity(goServicios.setFlags(goServicios.FLAG_ACTIVITY_NEW_TASK));

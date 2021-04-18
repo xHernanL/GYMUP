@@ -158,10 +158,9 @@ public class AdminNewSchedule extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String Lenguaje = Locale.getDefault().getLanguage().toString();
-                SaveSchedule("http://192.168.43.181/wsgymup/SetAdminSchedules.php?username="+ username + "&serviceid=" + idService + "&time=" + time + "&date=" + date + "&lengua=" + Lenguaje, idService, serviceName, serviceDes );
+                SaveSchedule("http://gymup.zonahosting.net/gymphp/SetAdminSchedules.php?username="+ username + "&serviceid=" + idService + "&time=" + time + "&date=" + date + "&lengua=" + Lenguaje, idService, serviceName, serviceDes );
 
                 final ProgressDialog dialog = new ProgressDialog(AdminNewSchedule.this); dialog.setTitle("Cargando..."); dialog.setMessage("Por Favore espere..."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 2500; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
-                Toast.makeText(getApplicationContext(), time + "  " + date + " " + Lenguaje, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -189,7 +188,7 @@ public class AdminNewSchedule extends AppCompatActivity {
                             final ProgressDialog dialog = new ProgressDialog(AdminNewSchedule.this); dialog.setTitle("Exito!"); dialog.setMessage("Se ha registrado el horario."); dialog.setIndeterminate(true); dialog.setCancelable(false); dialog.show(); long delayInMillis = 4000; Timer timer = new Timer(); timer.schedule(new TimerTask() { @Override public void run() { dialog.dismiss(); } }, delayInMillis);
                             Toast.makeText(getApplicationContext(), "Se ha registrado Exitosamente tu Horario", Toast.LENGTH_LONG).show();
                             Intent goback = new Intent(getApplicationContext() , AdminServiceDetail.class);
-                            goback.putExtra("idService", idService);
+                            goback.putExtra("IdService", idService);
                             goback.putExtra("serviceName", serviceName);
                             goback.putExtra("serviceDes", serviceDes);
                             startActivity(goback.setFlags(goback.FLAG_ACTIVITY_NEW_TASK));
