@@ -2,6 +2,7 @@ package com.bitgymup.gymup.users;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -59,6 +60,7 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
     DrawerLayout drawerLayout;
     private String username, vUsername;
     private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight, gimnasio_nombre;;
+    CardView cardView1, cardView2, cardView3, cardView4;
 
     ProgressDialog progreso;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
@@ -74,6 +76,10 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
         drawerLayout = findViewById(R.id.drawer_layout);
         mapsFragment = new MapsFragment();
 
+        cardView1 = findViewById(R.id.btnusr1);
+        cardView2 = findViewById(R.id.btnusr2);
+        cardView3 = findViewById(R.id.btnusr3);
+        cardView4 = findViewById(R.id.btnusr4);
         /*getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_a, mapsFragment)
                 .commit();*/
@@ -102,6 +108,39 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
         createNotificationChannel();
         getToken();
         subscribeToTopic();
+
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserReservas.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserSalud.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserPagos.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }//Fin OnCreate
 

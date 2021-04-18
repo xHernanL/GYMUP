@@ -2,6 +2,7 @@ package com.bitgymup.gymup.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -30,6 +31,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.users.UserPagos;
+import com.bitgymup.gymup.users.UserProfile;
+import com.bitgymup.gymup.users.UserReservas;
+import com.bitgymup.gymup.users.UserSalud;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -57,7 +62,7 @@ public class AdminHome extends AppCompatActivity {
     private TextView gimnasio_nombre;
     private RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
-
+    CardView cardView1, cardView2, cardView3, cardView4;
     private static final String CHANNEL_ID = "101";
     //Inicializar las variables
     DrawerLayout drawerLayout;
@@ -69,13 +74,17 @@ public class AdminHome extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         //Asignación de la variable
+        cardView1 = findViewById(R.id.btnadmin1);
+        cardView2 = findViewById(R.id.btnadmin2);
+        cardView3 = findViewById(R.id.btnadmin3);
+        cardView4 = findViewById(R.id.btnadmin4);
         drawerLayout = findViewById(R.id.drawer_layout);
         Intent i = this.getIntent();
 
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
         String usuario_s = i.getStringExtra("usuario");
         TextView tvToken;
-        tvToken = findViewById(R.id.tvToken);
+
         //tvToken.setText(FirebaseInstanceId.getInstance().getToken());
 
         username = getUserLogin("username");
@@ -92,7 +101,38 @@ public class AdminHome extends AppCompatActivity {
         getToken();
         subscribeToTopic();
 
-        tvToken.setText(idgim);
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminAgenda.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminUsers.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminNews.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminOffers.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }//Fin onCreate
 
