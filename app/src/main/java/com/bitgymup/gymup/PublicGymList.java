@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.users.UserHome;
+import com.bitgymup.gymup.users.UserRegister;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,6 +74,10 @@ public class PublicGymList extends AppCompatActivity implements Response.Listene
 
                             @Override
                             public void onItemClick(Gym item) {
+                                Intent newActivity = new Intent(getApplicationContext(), AboutUs.class);
+                                newActivity.putExtra("gymId"  , item.getId()  );
+                                newActivity.putExtra("gymName", item.getName());
+                                startActivity(newActivity);
 
                             }
                         });
