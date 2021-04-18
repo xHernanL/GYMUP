@@ -63,7 +63,6 @@
                     android:layout_height="match_parent"
                     android:paddingTop="5dp"
                     android:paddingLeft="10dp"
-                    android:textAlignment="center"
                     android:text="Calle Imaginaria 1324"
                     />
                 <TextView
