@@ -158,5 +158,10 @@
     <string name="pagos_pendientes">Pagos Pendientes</string>
     <!-- End Main Activity -->
 
+    <!-- Start About Us-->
+    <string name="location">Ubicación</string>
+
+    <!-- End About Us -->
+
 
 </resources>

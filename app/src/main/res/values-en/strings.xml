@@ -155,4 +155,9 @@
     <string name="pagos_pendientes">Payment Due</string>
     <!-- End Main Activity -->
 
+    <!-- Start About Us-->
+    <string name="location">Location</string>
+
+    <!-- End About Us -->
+
 </resources>

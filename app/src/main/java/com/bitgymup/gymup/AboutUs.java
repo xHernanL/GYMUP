@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class AboutUs extends AppCompatActivity {
 
     private String gymId, gymName;
-    private TextView tvAboutUsGymName, tvAboutUs, tvAboutUsVision, tvAboutUsMission, tvAboutUsPhone;
+    private TextView tvAboutUsGymName, tvAboutUs, tvAboutUsVision, tvAboutUsMission, tvAboutUsPhone, tvAboutUsLocation, tvAboutUsEmail, tvAboutUsMobile, tvAboutUsAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +35,31 @@ public class AboutUs extends AppCompatActivity {
         gymId   = getIntent().getStringExtra("gymId");
         gymName = getIntent().getStringExtra("gymName");
 
-        tvAboutUsGymName = findViewById(R.id.tvAboutUsGymName);
-        tvAboutUs        = findViewById(R.id.tvAboutUs);
-        tvAboutUsVision  = findViewById(R.id.tvAboutUsVision);
-        tvAboutUsMission = findViewById(R.id.tvAboutUsMission);
-        tvAboutUsPhone   = findViewById(R.id.tvAboutUsPhone);
+        tvAboutUsGymName  = findViewById(R.id.tvAboutUsGymName);
+        tvAboutUs         = findViewById(R.id.tvAboutUs);
+        tvAboutUsVision   = findViewById(R.id.tvAboutUsVision);
+        tvAboutUsMission  = findViewById(R.id.tvAboutUsMission);
+        tvAboutUsPhone    = findViewById(R.id.tvAboutUsPhone);
+        tvAboutUsLocation = findViewById(R.id.tvAboutUsLocation);
+        tvAboutUsEmail    = findViewById(R.id.tvAboutUsEmail);
+        tvAboutUsMobile   = findViewById(R.id.tvAboutUsMobile);
+        tvAboutUsAddress  = findViewById(R.id.tvAboutUsAddress);
 
         tvAboutUsGymName.setText(gymName);
 
-        Toast.makeText(getApplicationContext(), gymName, Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), gymName, Toast.LENGTH_LONG).show();
         String url = "http://gymup.zonahosting.net/gymphp/getGymAboutUs.php?idgym=" + gymId;
         loadData(url);
+
+
+        tvAboutUsLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+              //  Toast.makeText(getApplicationContext(), "HOLA LOCA", Toast.LENGTH_LONG).show();
+            }
+
+        });
 
 
     }
@@ -83,6 +98,10 @@ public class AboutUs extends AppCompatActivity {
                     tvAboutUsVision.setText(vision);
                     tvAboutUsMission.setText(mission);
                     tvAboutUsPhone.setText(phone);
+                    tvAboutUsLocation.setText(city + ", "+ country);
+                    tvAboutUsEmail.setText(email);
+                    tvAboutUsMobile.setText(mobile);
+                    tvAboutUsAddress.setText(street + " " + portNumber);
 
 
                 } catch (JSONException e) {
