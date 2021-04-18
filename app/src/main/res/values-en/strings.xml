@@ -151,8 +151,8 @@
     <string name="readMore">Read more</string>
     <string name="seeAllA">See All</string>
     <string name="noPromotion">No promotions right now.</string>
-    <string name="accesos_principales">Accesos Principales</string>
-    <string name="pagos_pendientes">Pagos Pendientes</string>
+    <string name="accesos_principales">Quick Access</string>
+    <string name="pagos_pendientes">Payment Due</string>
     <!-- End Main Activity -->
 
 </resources>
