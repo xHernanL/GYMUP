@@ -14,18 +14,14 @@
 
         <include layout="@layout/main_toolbar" />
 
-
         <TextView
             android:id="@+id/tvDetalleServicio"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#5E35B1"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Horarios de Mi Servicio"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="normal" />
+            android:layout_height="38sp"
+            android:text="Horarios del servicio"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"

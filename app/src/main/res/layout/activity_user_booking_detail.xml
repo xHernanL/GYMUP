@@ -14,18 +14,16 @@
 
         <include layout="@layout/main_toolbar" />
 
-
         <TextView
             android:id="@+id/tvDetalleServicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#5E35B1"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Detalle Reserva"
+            android:text="Detalle de reserva"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="normal" />
+            android:background="@drawable/gradientbackground"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppinsmedium"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
