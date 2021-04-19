@@ -72,12 +72,19 @@ public class GymList extends AppCompatActivity implements Response.Listener<JSON
                 for (int i= 0; i < response.length(); i++){
                     try {
                         jsonObject   = response.getJSONObject(i);
-                        String id    = jsonObject.optString("id");
-                        String name  = jsonObject.optString("name");
-                        String email = jsonObject.optString("email");
-                        String rut   = jsonObject.optString("rut");
+                        String id         = jsonObject.optString("id");
+                        String name       = jsonObject.optString("name");
+                        String email      = jsonObject.optString("email");
+                        String rut        = jsonObject.optString("rut");
+                        String phone      = jsonObject.optString("phone");
+                        String mobile     = jsonObject.optString("mobile");
+                        String street     = jsonObject.optString("street");
+                        String portNumber = jsonObject.optString("portNumber");
+                        String city       = jsonObject.optString("city");
+                        String country    = jsonObject.optString("country");
+                        String postalCode = jsonObject.optString("postalCode");
 
-                        elements.add(new Gym(id, name, email, "123456789","096456132",  rut));
+                        elements.add(new Gym(id, name, email, phone, mobile, rut, street, portNumber, city, country, street + " " + portNumber, city + ", " + country));
                         GymListAdapter listAdapter = new GymListAdapter(elements, getApplicationContext(), new GymListAdapter.OnItemClickListener() {
 
                             @Override

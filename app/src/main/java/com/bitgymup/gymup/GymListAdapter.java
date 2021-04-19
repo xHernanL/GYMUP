@@ -47,13 +47,15 @@ public class GymListAdapter extends RecyclerView.Adapter<GymListAdapter.ViewHold
     public void setItems(List<Gym> items){ mData = items;}
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView name, phoneNumber, email;
+        public TextView name, phoneNumber, email, address, location;
 
         ViewHolder(View itemView){
             super(itemView);
             name        = itemView.findViewById(R.id.tvGymName);
             phoneNumber = itemView.findViewById(R.id.tvGymPhone);
             email       = itemView.findViewById(R.id.tvGymEmail);
+            address     = itemView.findViewById(R.id.tvGymAddress);
+            location    = itemView.findViewById(R.id.tvGymLocation);
 
         }
 
@@ -61,6 +63,8 @@ public class GymListAdapter extends RecyclerView.Adapter<GymListAdapter.ViewHold
             name.setText(item.getName());
             phoneNumber.setText(item.getPhoneNumber());
             email.setText(item.getEmail());
+            address.setText(item.getFullAddress());
+            location.setText(item.getLocation());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v){

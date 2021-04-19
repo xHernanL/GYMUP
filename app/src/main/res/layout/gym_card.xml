@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginLeft="10dp"
                 android:layout_toEndOf="@id/imGymLogo"
                 android:layout_toRightOf="@id/imGymLogo"
@@ -58,14 +58,6 @@
                     android:textStyle="bold"
                     android:text="NOMBRE GIMNASIO"/>
                 <TextView
-                    android:id="@+id/tvGymAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:text="Calle Imaginaria 1324"
-                    />
-                <TextView
                     android:id="@+id/tvGymPhone"
                     android:paddingTop="5dp"
                     android:paddingLeft="10dp"
@@ -80,6 +72,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="hola@gmail.com"
+                    />
+                <TextView
+                    android:id="@+id/tvGymAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:text="Calle Imaginaria 1324"
+                    />
+                <TextView
+                    android:id="@+id/tvGymLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:text="Calle Imaginaria 1324"
                     />
             </LinearLayout>
         </RelativeLayout>
