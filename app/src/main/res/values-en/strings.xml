@@ -16,6 +16,10 @@
     <string name="Si">Yes</string>
     <string name="No">No</string>
 
+    <!-- Screen -->
+    <string name="sreen_name">GYM UP!</string>
+    <string name="screen_text">Your gym at a click!</string>
+
     <!-- Para AdminHealth-->
     <string name="health_titulo">Title</string>
     <string name="health_articulo">Article</string>

@@ -22,6 +22,10 @@
     <string name="health_btncargar">Cargar:</string>
     <string name="health_btnguardar">Guardar</string>
 
+    <!-- Screen -->
+    <string name="sreen_name">GYM UP!</string>
+    <string name="screen_text">Tu gimnasio a un click!</string>
+
     <!-- Para AdminServices-->
     <string name="services_tipo">Seleccione tipo de servicio:</string>
 
