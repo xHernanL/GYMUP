@@ -14,17 +14,16 @@
 
         <include layout="@layout/main_toolbar"/>
 
-
         <TextView
             android:id="@+id/textHealthNutri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#DFDBDB"
-            android:fontFamily="@font/poppinsbold"
             android:text="Salud y nutrición"
             android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF"
+            android:background="@drawable/gradientbackground"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppinsmedium"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerSaludNutri"

@@ -127,6 +127,7 @@
     <string name="guardarReserva">Guardar Reserva</string>
     <string name="registrarse">Sign in</string>
     <string name="ingresar">Login</string>
+    <string name="mis_reservas">My reservations</string>
     <!-- End Reservation -->
 
     <!-- Start Lista de clientes -->
@@ -159,12 +160,14 @@
 
     <!-- Start About Us-->
     <string name="location">Location</string>
+    <!-- End About Us -->
 
+    <!-- Start User Servicios-->
+    <string name="lista_servicios">List of services</string>
     <!-- End About Us -->
 
     <!-- Start Agenda-->
     <string name="mis_servicios">My services</string>
-
     <!-- End Agenda -->
 
 </resources>

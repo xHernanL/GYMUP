@@ -16,16 +16,12 @@
             android:id="@+id/tvPromotionList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:text="@string/gymPromotion"
-            android:fontFamily="@font/poppinsmedium"
-            />
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/gradientbackground"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppinsmedium"/>
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"

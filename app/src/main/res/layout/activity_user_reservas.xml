@@ -39,11 +39,12 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#5E35B1"
-            android:text="Mis Reservas"
+            android:text="@string/mis_reservas"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:background="@drawable/gradientbackground"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppinsmedium"/>
 
         <TextView
             android:id="@+id/tvSinReservas"
