@@ -25,6 +25,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+
+
             <TextView
                 android:id="@+id/tvNameGym"
                 android:layout_width="match_parent"

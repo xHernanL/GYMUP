@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,12 +38,16 @@ public class GymList extends AppCompatActivity implements Response.Listener<JSON
     ProgressDialog progress;
     RecyclerView recyclerGym;
     ArrayList<Gym> listGym;
+    private ImageView ivBackGym;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gym_list);
+
+        ivBackGym = findViewById(R.id.ivBackGym);
+        ivBackGym.setVisibility(View.INVISIBLE);
 
         String url = "http://gymup.zonahosting.net/gymphp/getGimnasiosWS.php";
         userId  = getIntent().getStringExtra("userId");

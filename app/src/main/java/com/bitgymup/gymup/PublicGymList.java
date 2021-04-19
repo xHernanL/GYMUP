@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class PublicGymList extends AppCompatActivity implements Response.Listene
     RecyclerView recyclerGym;
     ArrayList<Gym> listGym;
     private TextView tvGymList;
+    private ImageView ivBackGym;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +50,21 @@ public class PublicGymList extends AppCompatActivity implements Response.Listene
 
         tvGymList = findViewById(R.id.tvGymList);
         tvGymList.setText(R.string.affiliatedGymList);
+        ivBackGym = findViewById(R.id.ivBackGym);
 
         String url = "http://gymup.zonahosting.net/gymphp/getGimnasiosWS.php";
         request = Volley.newRequestQueue(this);
         loadWebService(url);
+
+        ivBackGym.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(newActivity);
+
+            }
+
+        });
 
     }
 

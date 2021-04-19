@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,18 +35,28 @@ public class AllPromotions extends AppCompatActivity {
     JsonObjectRequest jsonObjectRequest;
     RecyclerView recyclerPromotion;
     ArrayList<Promotion> listPromotion;
-//    TextView tvNoPromotion;
+    private ImageView ivBackPromotionList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_promotions);
 
-  //      tvNoPromotion = findViewById(R.id.tvNoPromotion);
- //       tvNoPromotion.setVisibility(TextView.INVISIBLE);
+       ivBackPromotionList = findViewById(R.id.ivBackPromotionList);
 
         String url = "http://gymup.zonahosting.net/gymphp/getAllPromos.php";
         loadWebService(url);
+
+
+        ivBackPromotionList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(newActivity);
+
+            }
+
+        });
     }
 
     private void loadWebService(String url) {
