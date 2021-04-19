@@ -24,7 +24,7 @@ import com.bitgymup.gymup.R;
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 
-public class AdminDevContact extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class AdminDevContact extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String TAG = "";
     //Inicializar las variables
     Button btn_Notificaciones;

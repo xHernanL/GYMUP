@@ -38,7 +38,7 @@ import org.json.JSONObject;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminHealth extends AppCompatActivity {
+public class AdminHealth extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final int GALLERY_REQUEST = 10;
     private EditText health_titulo, health_contenido;
     private TextView gimnasio_nombre;

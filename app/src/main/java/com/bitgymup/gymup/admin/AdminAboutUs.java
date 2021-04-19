@@ -35,7 +35,7 @@ import org.json.JSONObject;
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 
-public class AdminAboutUs extends AppCompatActivity {
+public class AdminAboutUs extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String TAG ="AboutUs" ;
     private EditText content_mision, content_vision;
     private TextView gimnasio_nombre;

@@ -37,7 +37,7 @@ import org.json.JSONObject;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminServices extends AppCompatActivity {
+public class AdminServices extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private EditText services_desc;
     private Spinner services_name;
     private TextView gimnasio_nombre;

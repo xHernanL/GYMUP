@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
 
-public class AdminUserDetail extends AppCompatActivity {
+public class AdminUserDetail extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     DrawerLayout drawerLayout;
     private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight;
     private TextView gimnasio_nombre;

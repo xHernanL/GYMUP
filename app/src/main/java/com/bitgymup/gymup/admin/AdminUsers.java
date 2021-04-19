@@ -43,7 +43,7 @@ import java.util.List;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminUsers extends AppCompatActivity  {
+public class AdminUsers extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     //Inicializar las variables
     private RecyclerView recyclerViewClients;
     private RecyclerViewAdaptador adapter;

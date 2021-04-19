@@ -13,7 +13,7 @@ import com.bitgymup.gymup.R;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminAddUser extends AppCompatActivity {
+public class AdminAddUser extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     //Inicializar las variables
     DrawerLayout drawerLayout;
     @Override

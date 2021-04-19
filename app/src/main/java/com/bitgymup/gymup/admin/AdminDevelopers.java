@@ -21,7 +21,7 @@ import com.bitgymup.gymup.R;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminDevelopers extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class AdminDevelopers extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String TAG = "";
     //Inicializar las variables
     private Toolbar toolbar;

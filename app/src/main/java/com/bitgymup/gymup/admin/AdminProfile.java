@@ -40,7 +40,7 @@ import static com.bitgymup.gymup.admin.Variables.getUsuario_s;
 import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 import static com.bitgymup.gymup.admin.Variables.setUsuario_s;
 
-public class AdminProfile extends AppCompatActivity {
+public class AdminProfile extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     //Inicializar las variables
     EditText txtNombre, txtDireccion, txtTelefono, txtMovil, txtMailGym, txtCiudad, txtEstado, txtRUT, txtPropietario, txtMovilProp, txtMailProp, txtPass;
     private TextView gimnasio_nombre;

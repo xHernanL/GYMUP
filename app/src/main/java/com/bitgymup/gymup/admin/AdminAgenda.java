@@ -36,7 +36,7 @@ import extras.getServicesAdapterAdmin;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminAgenda extends AppCompatActivity {
+public class AdminAgenda extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     //Inicializar las variables
     List<getServices> serviceList;
     DrawerLayout drawerLayout;

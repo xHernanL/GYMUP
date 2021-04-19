@@ -57,7 +57,7 @@ import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 import static com.bitgymup.gymup.admin.Variables.usuario_s;
 
-public class AdminHome extends AppCompatActivity {
+public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     public static String idgim;
     String username;

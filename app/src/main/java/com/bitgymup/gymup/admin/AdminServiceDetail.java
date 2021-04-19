@@ -58,7 +58,7 @@ import extras.ScheduleAdapter;
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
 
-public class AdminServiceDetail extends AppCompatActivity {
+public class AdminServiceDetail extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private String domainImage = "http://gymup.zonahosting.net/gymphp/images/";
 
 

@@ -49,7 +49,7 @@ import extras.DateValidatorWeekdays;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminNewSchedule extends AppCompatActivity {
+public class AdminNewSchedule extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     DrawerLayout drawerLayout;
 
