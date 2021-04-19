@@ -24,20 +24,6 @@
             android:textStyle="bold" />
 
 
-        <TextView
-            android:id="@+id/tvNoPromotion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppinsmedium"
-            />
-
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

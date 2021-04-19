@@ -32,15 +32,15 @@ public class AllPromotions extends AppCompatActivity {
     JsonObjectRequest jsonObjectRequest;
     RecyclerView recyclerPromotion;
     ArrayList<Promotion> listPromotion;
-    TextView tvNoPromotion;
+//    TextView tvNoPromotion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_promotions);
 
-        tvNoPromotion = findViewById(R.id.tvNoPromotion);
-        tvNoPromotion.setVisibility(TextView.INVISIBLE);
+  //      tvNoPromotion = findViewById(R.id.tvNoPromotion);
+ //       tvNoPromotion.setVisibility(TextView.INVISIBLE);
 
         String url = "http://gymup.zonahosting.net/gymphp/getAllPromos.php";
         loadWebService(url);
@@ -82,8 +82,23 @@ public class AllPromotions extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-                tvNoPromotion.setVisibility(TextView.VISIBLE);
-                tvNoPromotion.setText(R.string.noPromotion);
+
+                elements = new ArrayList<>();
+                elements.add(new Promotion("0", getString(R.string.noPromotions2), getString(R.string.noPromotions3), getString(R.string.noPromotions1)));
+                PromotionAdapter listAdapter = new PromotionAdapter(elements, getApplicationContext(), new PromotionAdapter.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(Promotion item) {
+                        // acá si se hace click en alguna tarjeta
+                    }
+                });
+                RecyclerView recyclerView = findViewById(R.id.recyclerPromotion);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                recyclerView.setAdapter(listAdapter);
+
+                // tvNoPromotion.setVisibility(TextView.VISIBLE);
+              //  tvNoPromotion.setText(R.string.noPromotion);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
