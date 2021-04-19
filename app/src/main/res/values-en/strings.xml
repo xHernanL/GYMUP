@@ -163,4 +163,9 @@
 
     <!-- End About Us -->
 
+    <!-- Start Agenda-->
+    <string name="mis_servicios">My services</string>
+
+    <!-- End Agenda -->
+
 </resources>

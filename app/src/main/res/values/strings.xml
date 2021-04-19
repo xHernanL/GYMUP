@@ -166,5 +166,10 @@
 
     <!-- End About Us -->
 
+    <!-- Start Agenda-->
+    <string name="mis_servicios">Mis servicios</string>
+
+    <!-- End Agenda -->
+
 
 </resources>

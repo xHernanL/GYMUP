@@ -12,18 +12,13 @@
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
 
-
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#5E35B1"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Mis Servicios Actuales"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="normal" />
+            android:layout_height="40dp"
+            android:text="@string/mis_servicios"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
