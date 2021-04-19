@@ -25,7 +25,7 @@
                     android:id="@+id/layoutAboutUsColor"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:background="@drawable/gradient_background_light"
+                    android:background="@drawable/gradientbackground"
                     android:orientation="vertical">
 
                     <ImageView
