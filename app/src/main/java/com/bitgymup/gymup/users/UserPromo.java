@@ -49,7 +49,6 @@ public class UserPromo extends AppCompatActivity {
     ProgressDialog progress;
     RecyclerView recyclerPromotion;
     ArrayList<GymPromotion> listPromotion;
-    TextView tvNoGymPromotion;
 
     //Inicializar las variables
     DrawerLayout drawerLayout;
@@ -60,8 +59,6 @@ public class UserPromo extends AppCompatActivity {
         setContentView(R.layout.activity_user_promo);
         request = Volley.newRequestQueue(this);
 
-        tvNoGymPromotion = findViewById(R.id.tvNoGymPromotion);
-        tvNoGymPromotion.setVisibility(TextView.INVISIBLE);
 
         //Asignación de la variable
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
@@ -145,9 +142,19 @@ public class UserPromo extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-                tvNoGymPromotion.setVisibility(TextView.VISIBLE);
-                tvNoGymPromotion.setText(R.string.noPromotion);
+                elements = new ArrayList<>();
+                elements.add(new GymPromotion("0", getString(R.string.noPromotion), getString(R.string.noPromotions2)));
+                GymPromotionAdapter listAdapter = new GymPromotionAdapter(elements, getApplicationContext(), new GymPromotionAdapter.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(GymPromotion item) {
+
+                    }
+                });
+                RecyclerView recyclerView = findViewById(R.id.recyclerPromotion);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                recyclerView.setAdapter(listAdapter);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);

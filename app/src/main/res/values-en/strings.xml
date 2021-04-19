@@ -142,7 +142,6 @@
     <string name="usrwrongordisabled">User or password wrong or disabled.</string>
     <string name="BienvenidoAdmin">Welcome to Administration Panel</string>
     <string name="UsrEmailWrong">Username or email wrong!</string>
-    <string name="noPromotions1">NO PROMOTIONS AVAIABLE</string>
     <string name="noPromotions2">Currently there are no promotions avaiable.</string>
     <string name="noPromotions3">Check on later.</string>
     <!-- End Lista de Promociones -->

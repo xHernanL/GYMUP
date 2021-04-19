@@ -142,7 +142,6 @@
     <string name="usrwrongordisabled">Usuario o contraseña incorrecto, o deshabilitado.</string>
     <string name="BienvenidoAdmin">Bienvenido al Administrador</string>
     <string name="UsrEmailWrong">¡Nombre de usuario o email incorrecto!</string>
-    <string name="noPromotions1">NO HAY PROMOCIONES</string>
     <string name="noPromotions2">No hay promociones activas en este momento.</string>
     <string name="noPromotions3">Vuelve a consultar más adelante.</string>
     <!-- End Lista de Promociones -->

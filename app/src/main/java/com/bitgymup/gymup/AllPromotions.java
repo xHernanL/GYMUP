@@ -84,7 +84,7 @@ public class AllPromotions extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
 
                 elements = new ArrayList<>();
-                elements.add(new Promotion("0", getString(R.string.noPromotions2), getString(R.string.noPromotions3), getString(R.string.noPromotions1)));
+                elements.add(new Promotion("0", getString(R.string.noPromotions2), getString(R.string.noPromotions3), getString(R.string.noPromotion)));
                 PromotionAdapter listAdapter = new PromotionAdapter(elements, getApplicationContext(), new PromotionAdapter.OnItemClickListener() {
 
                     @Override
