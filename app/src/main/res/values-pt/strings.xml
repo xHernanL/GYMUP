@@ -172,6 +172,8 @@
     <string name="mis_servicios">Mis servicios</string>
     <string name="sobre_zona_software">Sobre Zona Software</string>
     <string name="enviar_mensaje">Enviar Mensaje</string>
+    <string name="texto_2_developers">Disponemos de un grupo de profesionales de la industria TI, expertos en programación web y móvil, adaptables a todos las necesidades de nuestros clientes.</string>
+    <string name="texto_1_developers">Somos un grupo de desarrolladores de Software, abocados en la vanguardia tecnológica como principal objetivo.</string>
     <!-- End Agenda -->
 
 </resources>

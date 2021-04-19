@@ -43,12 +43,25 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:singleLine="false"
-            android:text="Somos un grupo de desarrolladores de Software, abocados en la vanguardia tecnológica como principal objetivo."
+            android:text="@string/texto_1_developers"
             android:textAlignment="viewStart">
-
         </TextView>
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:elegantTextHeight="false"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center_horizontal|fill_horizontal"
+            android:lineSpacingExtra="10sp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="false"
+            android:text="@string/texto_2_developers"
+            android:textAlignment="viewStart">
+        </TextView>
 
 
     </LinearLayout>
