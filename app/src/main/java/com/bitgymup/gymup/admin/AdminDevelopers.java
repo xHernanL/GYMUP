@@ -2,29 +2,40 @@ package com.bitgymup.gymup.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bitgymup.gymup.R;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 
-public class AdminAddUser extends AppCompatActivity {
+public class AdminDevelopers extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+    private static final String TAG = "";
     //Inicializar las variables
+    private Toolbar toolbar;
     DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_user);
+        setContentView(R.layout.activity_admin_developers);
         //Asignamos la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+
+
     }
-
-
 
     public void ClickMenuOptions(View v) {
         PopupMenu popup = new PopupMenu(this, v);
@@ -32,6 +43,9 @@ public class AdminAddUser extends AppCompatActivity {
         popup.inflate(R.menu.menu_admin_3);
         popup.show();
     }
+
+
+
 
     public boolean onMenuItemClick(MenuItem item){
         switch (item.getItemId()){
@@ -45,45 +59,58 @@ public class AdminAddUser extends AppCompatActivity {
                 return false;
         }
     }
+
+
+    /*ABAJO VAN TODOS LOS MENUS*/
+    public void ClickMenu(View view){
+        AdminHome.openDrawer(drawerLayout);
+        try
+        {
+            InputMethodManager im = (InputMethodManager)
+                    getSystemService(INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, ex.toString());
+        }
+    }
+    public void ClickLogo(View view){
+        AdminHome.closeDrawer(drawerLayout);
+    }
+
     /*Inicio de los enlaces*/
+    /*Listado de todas las funciones de click*/
     public void ClickHome(View view){
-        //Redirección de la activity Home
-        redirectActivity(this,AdminHome.class);
+        redirectActivity(this, AdminHome.class);
     }
     public void ClickAgenda(View view){
-        //Redirecciona la activity Agenda
-        redirectActivity(this, AdminAgenda.class);
+        redirectActivity(this,AdminAgenda.class);
+    }
+    public void ClickClientes(View view){
+        redirectActivity(this,AdminUsers.class);
     }
     public void ClickNews(View view){
-        //Redirección de la activity News
         redirectActivity(this,AdminNews.class);
     }
     public void ClickPromo(View view){
-        //Redirección de la activity a Offers
         redirectActivity(this,AdminOffers.class);
     }
     public void ClickServicios(View view){
-        //Redirección de la activity a Services
         redirectActivity(this,AdminServices.class);
     }
     public void CAbout(View view){
-        //Redirección de la activity About
         redirectActivity(this,AdminAboutUs.class);
     }
-    public void ClickMyProfile(View view){
-        //Redirección de la activity a Profile
-        redirectActivity(this,AdminProfile.class);
+    public void ClickHealth(View view){
+        redirectActivity(this,AdminHealth.class);
     }
-    public void ClickClientes(View view){
-        //Redirección de la activity a Users
-        redirectActivity(this,AdminUsers.class);
+    public void ClickMyProfile(View view){
+        redirectActivity(this,AdminProfile.class);
     }
     /*Fin de los enlaces generales*/
 
-    public void ClickLogout(View view){
-        //Cerrar APP
-        AdminHome.salir(this);
-    }
+    public void ClickLogout(View view){AdminHome.salir(this);}
 
     @Override
     protected void onPause(){
@@ -91,5 +118,8 @@ public class AdminAddUser extends AppCompatActivity {
         //Close drawer
         AdminHome.closeDrawer(drawerLayout);
     }
+
+
+
 
 }

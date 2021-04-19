@@ -25,8 +25,10 @@
         android:textColor="#636363"></TextView>
 
     <ImageView
+        android:id="@+id/TresDot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="ClickMenuOptions"
         android:src="@drawable/ic_more"/>
 
 </LinearLayout>

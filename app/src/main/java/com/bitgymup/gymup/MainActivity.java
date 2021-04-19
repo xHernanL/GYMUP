@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(registro);
                     //finish();
                 }
-
                 return true;
             }
         });

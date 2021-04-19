@@ -1,6 +1,9 @@
 package com.bitgymup.gymup.admin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,15 +13,20 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,12 +46,14 @@ import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 import static com.bitgymup.gymup.admin.Variables.hideSoftKeyboard;
 import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 
-public class AdminNews extends AppCompatActivity {
+public class AdminNews extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
     private static final String TAG = "AdminNews";
     //Inicializar las variables
     Button  btn_Notificaciones;
     EditText txt_titulo, txt_mensaje;
     PendingIntent   pendingIntent;
+    ImageView imageView;
+    private Toolbar toolbar;
     private TextView gimnasio_nombre;
     private final static String CHANNEL_ID = "NOTIFICACION";
     private final static int  NOTIFICACION_ID = 0;
@@ -54,6 +64,8 @@ public class AdminNews extends AppCompatActivity {
         setContentView(R.layout.activity_admin_news);
         //Asignamos la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+
+
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
         gimnasio_nombre.setText( getUserLogin("namegym"));
         txt_titulo = (EditText)findViewById(R.id.txt_titulo);
@@ -61,6 +73,7 @@ public class AdminNews extends AppCompatActivity {
         btn_Notificaciones = findViewById(R.id.btn_Notificaciones);
         id_gym_n = getGymId("gym_id");
         //txt_titulo.setText( id_gym_n);
+        imageView = findViewById(R.id.TresDot);
         btn_Notificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +82,9 @@ public class AdminNews extends AppCompatActivity {
               //createNotification();
             }
         });
+
+
+
 
         /*Lo de abajo genera un crash cuando no esta activado el Focus.
         drawerLayout.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -82,6 +98,40 @@ public class AdminNews extends AppCompatActivity {
 
 
     }//fin de onCreate
+
+
+
+    public void ClickMenuOptions(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+    /*    MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu_admin_3, popup.getMenu());
+        popup.show();
+
+        PopupMenu popup = new PopupMenu(this, v);
+        // This activity implements OnMenuItemClickListener
+        popup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        popup.inflate(R.menu.menu_admin_3);
+        popup.show();*/
+
+        popup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        popup.inflate(R.menu.menu_admin_3);
+        popup.show();
+
+    }
+
+    public boolean onMenuItemClick(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.acerca_de:
+                startActivity(new Intent(this, AdminDevelopers.class));
+                return true;
+            case R.id.contacto:
+                startActivity(new Intent(this, AdminDevContact.class));
+                return true;
+            default:
+                return false;
+        }
+    }
+
 
     private String getUserLogin(String key) {
         SharedPreferences sharedPref = getSharedPreferences("user_login", Context.MODE_PRIVATE);

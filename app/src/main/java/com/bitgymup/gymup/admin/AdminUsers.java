@@ -1,6 +1,7 @@
 package com.bitgymup.gymup.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -173,6 +175,27 @@ public class AdminUsers extends AppCompatActivity  {
         });
         request.add(jsonObjectRequest);
 
+    }
+
+
+    public void ClickMenuOptions(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        popup.inflate(R.menu.menu_admin_3);
+        popup.show();
+    }
+
+    public boolean onMenuItemClick(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.acerca_de:
+                startActivity(new Intent(this, AdminDevelopers.class));
+                return true;
+            case R.id.contacto:
+                startActivity(new Intent(this, AdminDevContact.class));
+                return true;
+            default:
+                return false;
+        }
     }
 
     public void ClickMenu(View view){

@@ -156,6 +156,8 @@
     <string name="noPromotion">No promotions right now.</string>
     <string name="accesos_principales">Quick Access</string>
     <string name="pagos_pendientes">Payment Due</string>
+    <string name="acerca_de">AcercaDe</string>
+    <string name="contacto">Contacto</string>
     <!-- End Main Activity -->
 
     <!-- Start About Us-->
@@ -168,6 +170,8 @@
 
     <!-- Start Agenda-->
     <string name="mis_servicios">My services</string>
+    <string name="sobre_zona_software">Sobre Zona Software</string>
+    <string name="enviar_mensaje">Enviar Mensaje</string>
     <!-- End Agenda -->
 
 </resources>
