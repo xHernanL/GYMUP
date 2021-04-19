@@ -43,7 +43,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:singleLine="false"
-            android:text="Somos un grupo de desarrolladores de Software, abocados en la vanguardos tecnlógica como principal objetivo."
+            android:text="Somos un grupo de desarrolladores de Software, abocados en la vanguardia tecnológica como principal objetivo."
             android:textAlignment="viewStart">
 
         </TextView>
