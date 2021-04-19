@@ -49,6 +49,7 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-
+    implementation 'com.sun.mail:android-mail:1.6.5'
+    implementation 'com.sun.mail:android-activation:1.6.5'
 
 }
