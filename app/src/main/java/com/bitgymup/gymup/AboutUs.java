@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bitgymup.gymup.users.MapsFragment;
+import com.bitgymup.gymup.users.UserRegister;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,10 +29,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AboutUs extends AppCompatActivity {
+public class AboutUs extends AppCompatActivity implements OnMapReadyCallback {
 
     private String gymId, gymName;
-    private TextView tvAboutUsGymName, tvAboutUs, tvAboutUsVision, tvAboutUsMission, tvAboutUsPhone, tvAboutUsLocation, tvAboutUsEmail, tvAboutUsMobile, tvAboutUsAddress;
+    private TextView tvAboutUsGymName, tvAboutUs, tvAboutUsVision, tvAboutUsMission, tvAboutUsPhone, tvAboutUsLocation, tvAboutUsEmail, tvAboutUsMobile, tvAboutUsAddress, tvAboutUsCountry, tvAboutUsCity;
+    private ImageView ivAboutUsLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,27 +48,45 @@ public class AboutUs extends AppCompatActivity {
         tvAboutUsVision   = findViewById(R.id.tvAboutUsVision);
         tvAboutUsMission  = findViewById(R.id.tvAboutUsMission);
         tvAboutUsPhone    = findViewById(R.id.tvAboutUsPhone);
-        tvAboutUsLocation = findViewById(R.id.tvAboutUsLocation);
+//      tvAboutUsLocation = findViewById(R.id.tvAboutUsLocation);
+        tvAboutUsCountry  = findViewById(R.id.tvAboutUsCountry);
+        tvAboutUsCity     = findViewById(R.id.tvAboutUsCity);
         tvAboutUsEmail    = findViewById(R.id.tvAboutUsEmail);
         tvAboutUsMobile   = findViewById(R.id.tvAboutUsMobile);
         tvAboutUsAddress  = findViewById(R.id.tvAboutUsAddress);
+        ivAboutUsLocation = findViewById(R.id.ivAboutUsLocation);
 
         tvAboutUsGymName.setText(gymName);
 
-       // Toast.makeText(getApplicationContext(), gymName, Toast.LENGTH_LONG).show();
         String url = "http://gymup.zonahosting.net/gymphp/getGymAboutUs.php?idgym=" + gymId;
         loadData(url);
 
-
-        tvAboutUsLocation.setOnClickListener(new View.OnClickListener() {
+       ivAboutUsLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            //    String location = tvAboutUsLocation.getText().toString().trim();
+                String city     = tvAboutUsCity.getText().toString().trim();
+                String country  = tvAboutUsCountry.getText().toString().trim();
+                String address  = tvAboutUsAddress.getText().toString().trim();
+                DisplayTrack(address, city, country);
+//                Intent newActivity = new Intent(getApplicationContext(), MapsFragment.class);
+//                startActivity(newActivity);
 
               //  Toast.makeText(getApplicationContext(), "HOLA LOCA", Toast.LENGTH_LONG).show();
             }
 
         });
 
+
+    }
+
+    private void DisplayTrack(String address, String city, String country) {
+
+        Uri uri = Uri.parse("https://www.google.co.in/maps/place/" + address.trim()+ "+" +city.trim()+ "+"+ country);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.setPackage("com.google.android.apps.maps");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
 
     }
 
@@ -98,7 +124,9 @@ public class AboutUs extends AppCompatActivity {
                     tvAboutUsVision.setText(vision);
                     tvAboutUsMission.setText(mission);
                     tvAboutUsPhone.setText(phone);
-                    tvAboutUsLocation.setText(city + ", "+ country);
+                  //  tvAboutUsLocation.setText(city + ", "+ country);
+                    tvAboutUsCity.setText(city + ",");
+                    tvAboutUsCountry.setText(country);
                     tvAboutUsEmail.setText(email);
                     tvAboutUsMobile.setText(mobile);
                     tvAboutUsAddress.setText(street + " " + portNumber);
@@ -117,6 +145,11 @@ public class AboutUs extends AppCompatActivity {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
 
     }
 }
