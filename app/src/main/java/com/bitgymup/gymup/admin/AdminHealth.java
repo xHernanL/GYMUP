@@ -152,7 +152,7 @@ public class AdminHealth extends AppCompatActivity implements PopupMenu.OnMenuIt
             @Override
             public void onErrorResponse(VolleyError error) {
                 //progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
                 Log.i("Error",error.toString());
 
             }
@@ -177,7 +177,7 @@ public class AdminHealth extends AppCompatActivity implements PopupMenu.OnMenuIt
                     @Override
                     public void onResponse(JSONObject response) {
                         progreso.hide();
-                        Toast.makeText(getApplicationContext(),"Exito al guardar :) "+ response.toString(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"Guardado con exito", Toast.LENGTH_LONG).show();
                         health_titulo.setText("");
                         health_contenido.setText("");
 
@@ -187,7 +187,7 @@ public class AdminHealth extends AppCompatActivity implements PopupMenu.OnMenuIt
             @Override
             public void onErrorResponse(VolleyError error) {
                 progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Error, Verificar datos", Toast.LENGTH_SHORT).show();
                 Log.i("Error",error.toString());
 
             }

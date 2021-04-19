@@ -42,7 +42,7 @@ public class AdminServices extends AppCompatActivity implements PopupMenu.OnMenu
     private Spinner services_name;
     private TextView gimnasio_nombre;
     private Button btnSubmit;
-    String username, service_selected;
+    String username, service_selected,id;
     private Boolean isFirtstime = true, isExist = true;
     private String idgim;
 
@@ -64,6 +64,7 @@ public class AdminServices extends AppCompatActivity implements PopupMenu.OnMenu
         services_name = (Spinner) findViewById(R.id.services_name);
         services_desc = (EditText) findViewById(R.id.services_desc);
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
+        id = getUserLogin("idgym");
 
         String [] opciones = {"Zumba", "Yoga", "Crossfit", "Funcional", "OpenBox", "Pilates", "Musculacion", "Natacion","Spinning","Aparatos","Remo","GAP","Localizado","Boxeo","Kick-Boxing","Cross-Trainning","Step"};
         ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
@@ -75,6 +76,10 @@ public class AdminServices extends AppCompatActivity implements PopupMenu.OnMenu
 
         //username = "nanoman07";
         cargarWSgimnasio(username);
+
+        service_selected = services_name.getSelectedItem().toString();
+
+        getDescriptionService(service_selected, id);
 
         //Evento del spinner
         services_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -161,7 +166,7 @@ public class AdminServices extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public void onErrorResponse(VolleyError error) {
                 //progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
                 Log.i("Error",error.toString());
 
             }
@@ -187,7 +192,7 @@ public class AdminServices extends AppCompatActivity implements PopupMenu.OnMenu
                     @Override
                     public void onResponse(JSONObject response) {
                         progreso.hide();
-                        Toast.makeText(getApplicationContext(),"Exito al guardar :) "+ response.toString(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"Exito al Guardar ", Toast.LENGTH_LONG).show();
                         //services_name.setText("");
                         services_desc.setText("");
 
@@ -197,7 +202,7 @@ public class AdminServices extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public void onErrorResponse(VolleyError error) {
                 progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Error, Verificar datos", Toast.LENGTH_SHORT).show();
                 Log.i("Error",error.toString());
 
             }

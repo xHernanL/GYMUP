@@ -123,7 +123,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Promociones"
+                    android:text="@string/promotion"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>
                 <ImageView
@@ -185,7 +185,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Salud y nutrición"
+                    android:text="@string/nutrition"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>
                 <ImageView
