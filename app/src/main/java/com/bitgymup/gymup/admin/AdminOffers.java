@@ -76,6 +76,7 @@ public class AdminOffers extends AppCompatActivity implements PopupMenu.OnMenuIt
         idgim = getUserLogin("idgym");
         gimnasio_nombre.setText(getUserLogin("namegym"));
 
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,7 +159,7 @@ public class AdminOffers extends AppCompatActivity implements PopupMenu.OnMenuIt
                     @Override
                     public void onResponse(JSONObject response) {
                         progreso.hide();
-                        Toast.makeText(getApplicationContext(),"Exito al guardar :) "+ response.toString(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"Guardado con exito", Toast.LENGTH_LONG).show();
                         promo_titulo.setText("");
                         promo_contenido.setText("");
 
@@ -168,7 +169,7 @@ public class AdminOffers extends AppCompatActivity implements PopupMenu.OnMenuIt
             @Override
             public void onErrorResponse(VolleyError error) {
                 progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Error, Verificar datos", Toast.LENGTH_SHORT).show();
                 Log.i("Error",error.toString());
 
             }
