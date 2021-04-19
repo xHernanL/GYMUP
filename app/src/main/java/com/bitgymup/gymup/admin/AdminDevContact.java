@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.email.Configuracion;
+import com.bitgymup.gymup.email.EnviarMail;
 
 import static com.bitgymup.gymup.admin.AdminHome.redirectActivity;
 import static com.bitgymup.gymup.admin.Variables.id_gym_n;
@@ -33,8 +35,7 @@ public class AdminDevContact extends AppCompatActivity implements PopupMenu.OnMe
     ImageView imageView;
     private Toolbar toolbar;
     private TextView gimnasio_nombre;
-    private final static String CHANNEL_ID = "NOTIFICACION";
-    private final static int  NOTIFICACION_ID = 0;
+
     DrawerLayout drawerLayout;
 
     @Override
@@ -43,8 +44,6 @@ public class AdminDevContact extends AppCompatActivity implements PopupMenu.OnMe
         setContentView(R.layout.activity_admin_contact_dev);
         //Asignamos la variable
         drawerLayout = findViewById(R.id.drawer_layout);
-
-
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
         gimnasio_nombre.setText( getUserLogin("namegym"));
         txt_titulo = (EditText)findViewById(R.id.txt_titulo);
@@ -57,10 +56,10 @@ public class AdminDevContact extends AppCompatActivity implements PopupMenu.OnMe
             @Override
             public void onClick(View v) {
                 //enviarPush("https://www.zonahosting.com/NotifyFCM.php");
-                //createNotificationChannel();//funciona para versión 8 y superior...
-                //createNotification();
+                sendEmail();
             }
         });
+
 
     }
 
@@ -96,6 +95,15 @@ public class AdminDevContact extends AppCompatActivity implements PopupMenu.OnMe
         return gymid;
     }
 
+    private void sendEmail() {
+
+        EditText asunto = (EditText) findViewById(R.id.txt_titulo);
+        //EditText correoc = (EditText) findViewById(R.id.intxt_Correo);
+        String correoc = "origen@gmail.com";//Este correo debería ser obtenido desde la base de datos.
+        EditText comentario = (EditText) findViewById(R.id.txt_mensaje);
+        EnviarMail envialMail = new EnviarMail(this, Configuracion.EMAIL, correoc, asunto.getText().toString() + "\n" + comentario.getText().toString());
+        envialMail.execute();
+    }
 
 
     /*ABAJO VAN TODOS LOS MENUS*/
