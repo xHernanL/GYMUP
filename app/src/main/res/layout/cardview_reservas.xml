@@ -62,8 +62,9 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
-                    android:text="NOMBRE SERVICIO"
-                    android:textSize="18sp"
+                    android:text="Nombre servicio"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
