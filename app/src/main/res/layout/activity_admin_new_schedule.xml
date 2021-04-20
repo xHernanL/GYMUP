@@ -12,18 +12,14 @@
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
 
-
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#5E35B1"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Nombre del Servicio"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="normal" />
+            android:layout_height="38sp"
+            android:text="Nombre del servicio"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"

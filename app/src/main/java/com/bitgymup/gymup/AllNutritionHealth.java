@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ public class AllNutritionHealth extends AppCompatActivity {
     private NutritionHealthAdapter adapter;
     private TextView gimnasio_nombre;
     private List<Salud> salud;
+    private ImageView ivBackNutrition;
 
     private static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
@@ -40,6 +44,7 @@ public class AllNutritionHealth extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //Asignación de la variable
         setContentView(R.layout.activity_all_nutrition_health);
+        ivBackNutrition= findViewById(R.id.ivBackNutrition);
         request = Volley.newRequestQueue(this);
 
         salud = new ArrayList<>();
@@ -47,6 +52,16 @@ public class AllNutritionHealth extends AppCompatActivity {
         String url = "http://gymup.zonahosting.net/gymphp/getAllNutritition.php";
 
         getSaludWS(url);
+
+        ivBackNutrition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(newActivity);
+
+            }
+
+        });
     }
 
     private void getSaludWS(String url) {
