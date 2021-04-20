@@ -1,6 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
@@ -180,7 +180,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <com.google.android.material.textfield.TextInputLayout
+            <TextInputLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -193,8 +193,8 @@
                     android:inputType="phone"
                     android:background="@color/FondoTxtBox"
                     android:hint="@string/phoneNumber"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
+            </TextInputLayout>
+            <TextInputLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -206,10 +206,10 @@
                     android:inputType="phone"
                     android:background="@color/FondoTxtBox"
                     android:hint="@string/cellphone"/>
-            </com.google.android.material.textfield.TextInputLayout>
+            </TextInputLayout>
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp">
@@ -220,7 +220,7 @@
                 android:inputType="textEmailAddress"
                 android:background="@color/FondoTxtBox"
                 android:hint="@string/email"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </TextInputLayout>
 
         <Spinner
             android:id="@+id/spnGender"
@@ -228,7 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
@@ -239,9 +239,9 @@
                 android:inputType="text"
                 android:background="@color/FondoTxtBox"
                 android:hint="@string/userName"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -253,9 +253,9 @@
                 android:inputType="textPassword"
                 android:background="@color/FondoTxtBox"
                 android:hint="@string/password"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -267,7 +267,7 @@
                 android:inputType="textPassword"
                 android:background="@color/FondoTxtBox"
                 android:hint="@string/repeatPassword"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </TextInputLayout>
 
 
         <!-- Btn - Guardar -->
@@ -276,6 +276,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
             android:text="@string/register2" />
 
     </LinearLayout>
