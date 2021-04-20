@@ -31,7 +31,9 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bitgymup.gymup.MainActivity;
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.RecuperarPass;
 import com.bitgymup.gymup.admin.AdminHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -59,7 +61,7 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
     private static final String CHANNEL_ID = "101";
     DrawerLayout drawerLayout;
     private String username, vUsername;
-    private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight, gimnasio_nombre;;
+    private TextView tvUserEmail, tvUserPhone, tvUserCompleteName, tvUserIMC, tvUserHeight, tvUserWeight, gimnasio_nombre;
     CardView cardView1, cardView2, cardView3, cardView4;
 
     ProgressDialog progreso;
@@ -349,9 +351,13 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //finaliza la activity
-                activity.finishAffinity();
+                //activity.finishAffinity();
                 //Salir de la APP
-                System.exit(0);
+                //System.exit(0);}
+                //Se puede usar de ambar formas con la Activity o usando un Context, pero con Activity se puede usar finish como NewTask.
+                Intent intent = new Intent(activity, MainActivity.class);
+                activity.startActivity(intent);
+                activity.finish();
             }
         });
         //Respuesta Negativa

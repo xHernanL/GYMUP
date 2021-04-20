@@ -34,7 +34,7 @@
                     android:src="@drawable/icon_user" />
 
                 <TextView
-                    android:id="@+id/tvUserCompleteName"
+                    android:id="@+id/tvAdminCompleteName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

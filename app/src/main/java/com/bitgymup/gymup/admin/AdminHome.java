@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,10 +30,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bitgymup.gymup.MainActivity;
 import com.bitgymup.gymup.R;
+import com.bitgymup.gymup.users.UserHome;
 import com.bitgymup.gymup.users.UserPagos;
 import com.bitgymup.gymup.users.UserProfile;
 import com.bitgymup.gymup.users.UserReservas;
@@ -58,16 +62,17 @@ import static com.bitgymup.gymup.admin.Variables.id_gym_n;
 import static com.bitgymup.gymup.admin.Variables.usuario_s;
 
 public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-
+//Inicializar las variables
     public static String idgim;
     String username;
     private TextView gimnasio_nombre;
-    TextView NombreCompleto;
+    private TextView tvUserEmail, tvUserPhone, tvAdminCompleteName;
     private RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
     CardView cardView1, cardView2, cardView3, cardView4;
+    ProgressDialog progreso;
     private static final String CHANNEL_ID = "101";
-    //Inicializar las variables
+
     DrawerLayout drawerLayout;
 
     @Override
@@ -81,20 +86,20 @@ public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItem
         cardView2 = findViewById(R.id.btnadmin2);
         cardView3 = findViewById(R.id.btnadmin3);
         cardView4 = findViewById(R.id.btnadmin4);
+        tvAdminCompleteName = findViewById(R.id.tvAdminCompleteName);
         drawerLayout = findViewById(R.id.drawer_layout);
         Intent i = this.getIntent();
 
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
         String usuario_s = i.getStringExtra("usuario");
-        TextView tvUserCompleteName = findViewById(R.id.tvUserCompleteName);
 
-        tvUserCompleteName.setText("Nombre Apellido");
+
 
         username = getUserLogin("username");
 
 
         request = Volley.newRequestQueue(this);
-
+        LoadAdminData(username);
 
         cargarWSgimnasio(username);
 
@@ -216,6 +221,49 @@ public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItem
     }
 
 
+    private void LoadAdminData(String username) {
+        String url = "http://gymup.zonahosting.net/gymphp/admin_get_home.php?username=" + username.trim();
+        progreso = new ProgressDialog(AdminHome.this);
+        progreso.setMessage("Cargando...");
+        progreso.show();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject  = response.getJSONObject(0);
+
+                    String id      = jsonObject.optString("id");
+                    String username = jsonObject.optString("user");
+                    String name    = jsonObject.optString("oname");
+
+                    String completeName = name + "" ;
+                    //tvAdminCompleteName.setText("BLBALABL");
+                    //tvAdminCompleteName.setText(completeName);
+                    //tvUserHeight.setText(height);
+                    //tvUserWeight.setText(weight);
+                    //tvUserEmail.setText(email);
+                    //tvUserPhone.setText(phone);
+
+                      //Toast.makeText(getApplicationContext(), "email: " + completeName  , Toast.LENGTH_LONG).show();
+                      if (completeName != ""){
+                          tvAdminCompleteName.setText(completeName);
+                      }
+                    progreso.hide();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } ;
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
 
     //Cuando carga la pantalla me traiga el nombre del gimnasio
     public void cargarWSgimnasio(String username) {
@@ -369,9 +417,12 @@ public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItem
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //finaliza la activity
-                activity.finishAffinity();
+                //activity.finishAffinity();
                 //Salir de la APP
-                System.exit(0);
+                //System.exit(0);
+                Intent intent = new Intent(activity, MainActivity.class);
+                activity.startActivity(intent);
+                activity.finish();
             }
         });
         //Respuesta Negativa
