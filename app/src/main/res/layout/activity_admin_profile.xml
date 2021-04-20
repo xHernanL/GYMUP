@@ -25,7 +25,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="38sp"
-            android:text="Perfil del Gimnasio"
+            android:text="@string/perfil_del_gimnasio"
+            android:textColor="@color/TitulosAdmin"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"/>
@@ -89,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:background="#FDFDFD"
+                android:background="@color/FondoTxtBox"
                 android:drawableEnd="@drawable/ic_username"
                 android:fontFamily="@font/poppinsmedium"
                 />

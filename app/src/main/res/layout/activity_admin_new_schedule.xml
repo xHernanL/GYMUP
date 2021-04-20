@@ -16,7 +16,8 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="38sp"
-            android:text="Nombre del servicio"
+            android:text="@string/nombre_del_servicio"
+            android:textColor="@color/TitulosAdmin"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"/>

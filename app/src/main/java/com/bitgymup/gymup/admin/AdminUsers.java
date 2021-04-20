@@ -53,7 +53,6 @@ public class AdminUsers extends AppCompatActivity implements PopupMenu.OnMenuIte
     private TextView id_gim,gimnasio_nombre;
     private static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
-
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

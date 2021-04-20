@@ -237,7 +237,6 @@ public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItem
                     String id      = jsonObject.optString("id");
                     String username = jsonObject.optString("user");
                     String name    = jsonObject.optString("oname");
-
                     String completeName = name + "" ;
                     //tvAdminCompleteName.setText("BLBALABL");
                     //tvAdminCompleteName.setText(completeName);

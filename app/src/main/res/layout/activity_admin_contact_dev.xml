@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="38sp"
             android:text="Contactar con Desarrollo"
+            android:textColor="@color/TitulosAdmin"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center_horizontal"/>
@@ -38,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="#FDFDFD"
+                android:background="@color/FondoTxtBox"
                 android:drawableEnd="@drawable/ic_admin_titulo"
                 android:fontFamily="@font/poppinsmedium"
                 />
@@ -64,7 +65,7 @@
                 android:maxLines="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FDFDFD"
+                android:background="@color/FondoTxtBox"
                 android:drawableEnd="@drawable/ic_admin_mensaje"
                 android:fontFamily="@font/poppinsmedium"
                 />

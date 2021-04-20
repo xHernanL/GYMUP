@@ -10,4 +10,7 @@
     <color name="navyblue">#002284</color>
     <color name="greenblue">#103b5c</color>
     <color name="paleblue">#4d81a2</color>
+    <color name="TitulosAdmin">#FBC02D</color>
+    <color name="TitulosUser">#FBC02D</color>
+    <color name="FondoTxtBox">#FDFDFD</color>
 </resources>

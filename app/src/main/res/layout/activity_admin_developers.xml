@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="38sp"
             android:text="@string/sobre_zona_software"
+            android:textColor="@color/TitulosAdmin"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center_horizontal"/>

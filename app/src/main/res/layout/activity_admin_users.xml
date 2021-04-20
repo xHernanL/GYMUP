@@ -18,6 +18,7 @@
             android:layout_height="40dp"
             android:text="@string/clientes"
             android:textSize="25sp"
+            android:textColor="@color/TitulosAdmin"
             android:textStyle="bold"
             android:gravity="center"/>
 
