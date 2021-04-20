@@ -13,4 +13,5 @@
     <color name="TitulosAdmin">#FBC02D</color>
     <color name="TitulosUser">#FBC02D</color>
     <color name="FondoTxtBox">#FDFDFD</color>
+    <color name="Nombre_Gimnasio">#636363</color>
 </resources>

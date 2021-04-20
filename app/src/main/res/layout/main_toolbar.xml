@@ -22,7 +22,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textColor="#636363"></TextView>
+        android:textColor="@color/Nombre_Gimnasio"></TextView>
 
     <ImageView
         android:id="@+id/TresDot"
