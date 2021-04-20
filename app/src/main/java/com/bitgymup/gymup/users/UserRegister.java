@@ -100,11 +100,8 @@ public class UserRegister<userId> extends AppCompatActivity implements AdapterVi
                     getLastUserId(v);
                     //  Toast.makeText(getApplicationContext(), "TA BIEN", Toast.LENGTH_LONG).show();
                 }
-
             }
-
         });
-
     }
 
     private void insertUser() {
@@ -136,7 +133,7 @@ public class UserRegister<userId> extends AppCompatActivity implements AdapterVi
                     @Override
                     public void onResponse(JSONObject response) {
                         progreso.hide();
-                        Toast.makeText(getApplicationContext(), "Exito al guardar :) " , Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.Usr_Registro_Ok , Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override

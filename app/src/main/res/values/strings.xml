@@ -185,7 +185,8 @@
     <string name="perfil_del_gimnasio">Perfil del Gimnasio</string>
     <string name="detalle_del_servicio">Detalle del servicio</string>
     <string name="home">Home</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="Usr_Registro_Ok">Usuario registrado correctamente.</string>
     <!-- End Agenda -->
 
 
