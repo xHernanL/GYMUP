@@ -110,7 +110,7 @@ public class UserRegister<userId> extends AppCompatActivity implements AdapterVi
         progreso.setMessage("Cargando...");
         progreso.show();
 
-        String url = "http://gymup.zonahosting.net/gymphp/RegistroClientsWS2.php?name=" + etName.getText().toString() +
+        String url = "http://gymup.zonahosting.net/gymphp/RegistroClientsWS.php?name=" + etName.getText().toString() +
                 "&surname="   + etSurname.getText().toString() +
                 "&document="  + etDocument.getText().toString() +
                 "&address="   + etAddress.getText().toString() +
