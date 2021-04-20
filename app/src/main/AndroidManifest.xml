@@ -21,9 +21,9 @@
         android:roundIcon="@mipmap/logo_circular"
         android:supportsRtl="true"
         android:theme="@style/Theme.GYMUP">
-        <activity android:name=".admin.AdminDevContact"></activity>
+        <activity android:name=".admin.AdminDevContact"/>
         <activity android:name=".admin.AdminDevelopers" />
-        <activity android:name=".AllNutritionHealth" />
+        <activity android:name=".AllNutritionHealth"/>
         <activity android:name=".AllPromotions" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
