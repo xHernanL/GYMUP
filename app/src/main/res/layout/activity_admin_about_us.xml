@@ -48,6 +48,7 @@
                     android:layout_height="138dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
+                    android:background="@color/FondoTxtBox"
                     android:hint="@string/about_content_mision"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -71,6 +72,7 @@
                     android:layout_height="138dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
+                    android:background="@color/FondoTxtBox"
                     android:hint="@string/about_content_vision"
                     />
             </com.google.android.material.textfield.TextInputLayout>

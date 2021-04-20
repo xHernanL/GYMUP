@@ -10,8 +10,8 @@
     <color name="navyblue">#002284</color>
     <color name="greenblue">#103b5c</color>
     <color name="paleblue">#4d81a2</color>
-    <color name="TitulosAdmin">#FBC02D</color>
+    <color name="TitulosAdmin">#FFA000</color>
     <color name="TitulosUser">#FBC02D</color>
     <color name="FondoTxtBox">#FDFDFD</color>
-    <color name="Nombre_Gimnasio">#636363</color>
+    <color name="Nombre_Gimnasio">#222E80</color>
 </resources>
