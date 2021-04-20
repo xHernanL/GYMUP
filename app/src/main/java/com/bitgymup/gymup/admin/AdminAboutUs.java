@@ -187,7 +187,7 @@ public class AdminAboutUs extends AppCompatActivity implements PopupMenu.OnMenuI
                     @Override
                     public void onResponse(JSONObject response) {
                         progreso.hide();
-                        Toast.makeText(getApplicationContext(),"Exito al guardar :) "+ response.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Exito al guardar", Toast.LENGTH_LONG).show();
                         content_mision.setText("");
                         content_vision.setText("");
 
@@ -197,7 +197,7 @@ public class AdminAboutUs extends AppCompatActivity implements PopupMenu.OnMenuI
             @Override
             public void onErrorResponse(VolleyError error) {
                 progreso.hide();
-                Toast.makeText(getApplicationContext(),"Error :( "+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
                 Log.i("Error",error.toString());
 
             }
