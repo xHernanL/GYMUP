@@ -62,6 +62,7 @@ public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItem
     public static String idgim;
     String username;
     private TextView gimnasio_nombre;
+    TextView NombreCompleto;
     private RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
     CardView cardView1, cardView2, cardView3, cardView4;
@@ -85,9 +86,9 @@ public class AdminHome extends AppCompatActivity implements PopupMenu.OnMenuItem
 
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
         String usuario_s = i.getStringExtra("usuario");
-        TextView tvToken;
+        TextView tvUserCompleteName = findViewById(R.id.tvUserCompleteName);
 
-        //tvToken.setText(FirebaseInstanceId.getInstance().getToken());
+        tvUserCompleteName.setText("Nombre Apellido");
 
         username = getUserLogin("username");
 
