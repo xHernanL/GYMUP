@@ -20,9 +20,9 @@
             android:id="@+id/tvDetalleServicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detalle del servicio"
+            android:text="@string/detalle_del_servicio"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/TitulosUser"
             android:background="@drawable/gradientbackground"
             android:textSize="25sp"
             android:fontFamily="@font/poppinsmedium"/>

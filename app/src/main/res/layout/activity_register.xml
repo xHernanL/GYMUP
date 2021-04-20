@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp">
 
 
         <!-- EditText con Material Design -->
@@ -18,9 +18,10 @@
             android:id="@+id/tvGymList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
+            android:gravity="center_horizontal"
             android:layout_centerHorizontal="true"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -40,6 +41,7 @@
                 <EditText
                     android:id="@+id/etName"
                     android:layout_width="fill_parent"
+                    android:background="@color/FondoTxtBox"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:hint="@string/name"/>
@@ -55,6 +57,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
+                    android:background="@color/FondoTxtBox"
                     android:hint="@string/lastName"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -66,6 +69,7 @@
                 android:id="@+id/etDocument"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/FondoTxtBox"
                 android:inputType="number"
                 android:hint="@string/document"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,6 +87,7 @@
                     android:id="@+id/etHeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/FondoTxtBox"
                     android:inputType="number"
                     android:hint="@string/height"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -96,6 +101,7 @@
                     android:id="@+id/etWeight"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/FondoTxtBox"
                     android:inputType="numberDecimal"
                     android:hint="@string/weight"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -131,6 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
+                android:background="@color/FondoTxtBox"
                 android:hint="@string/address"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,6 +157,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:background="@color/FondoTxtBox"
                     android:hint="@string/city"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -163,6 +171,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:background="@color/FondoTxtBox"
                     android:hint="@string/country"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -182,6 +191,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
+                    android:background="@color/FondoTxtBox"
                     android:hint="@string/phoneNumber"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -194,6 +204,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
+                    android:background="@color/FondoTxtBox"
                     android:hint="@string/cellphone"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -207,6 +218,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:background="@color/FondoTxtBox"
                 android:hint="@string/email"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -225,6 +237,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:background="@color/FondoTxtBox"
                 android:hint="@string/userName"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -238,6 +251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:background="@color/FondoTxtBox"
                 android:hint="@string/password"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -251,6 +265,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:background="@color/FondoTxtBox"
                 android:hint="@string/repeatPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 

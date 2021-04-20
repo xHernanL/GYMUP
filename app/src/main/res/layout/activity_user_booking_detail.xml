@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Detalle de reserva"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/TitulosUser"
             android:background="@drawable/gradientbackground"
             android:textSize="25sp"
             android:fontFamily="@font/poppinsmedium"/>

@@ -25,6 +25,7 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:text="@string/userRegister"
+            android:textColor="@color/TitulosUser"
             />
 
         <LinearLayout
