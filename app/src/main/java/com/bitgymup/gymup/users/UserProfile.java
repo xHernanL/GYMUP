@@ -130,11 +130,14 @@ public class UserProfile extends AppCompatActivity  {
 
                     String completeName = name.trim() + " " + surname.trim();
 
+                    String imc = CalculateIMC(height, weight);
+
                     tvUserCompleteName.setText(completeName);
                     tvUserHeight.setText(height);
                     tvUserWeight.setText(weight);
                     tvUserEmail.setText(email);
                     tvUserPhone.setText(phone);
+                    tvUserIMC.setText(imc);
 
                     //    Toast.makeText(getApplicationContext(), "email: " + email  , Toast.LENGTH_LONG).show();
                     progreso.hide();
@@ -151,6 +154,18 @@ public class UserProfile extends AppCompatActivity  {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
 
+    }
+
+    private String CalculateIMC(String height, String weight) {
+
+        Integer num_height = Integer.parseInt(height);
+        Integer num_weight = Integer.parseInt(weight);
+        Double  dec_height = Double.valueOf(num_height) / 100;
+        Double num_imc = Double.valueOf(num_weight) / (dec_height * dec_height);
+
+        String imc = String.format("%.2f", num_imc);
+
+        return imc;
     }
 
     public void ClickMenu(View view){

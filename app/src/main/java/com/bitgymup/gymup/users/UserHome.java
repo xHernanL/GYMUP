@@ -178,9 +178,12 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
 
                     String completeName = name.trim() + " " + surname.trim();
 
+                    String imc = CalculateIMC(height, weight);
+
                     tvUserCompleteName.setText(completeName);
                     tvUserHeight.setText(height);
                     tvUserWeight.setText(weight);
+                    tvUserIMC.setText(imc);
                     //tvUserEmail.setText(email);
                     //tvUserPhone.setText(phone);
 
@@ -201,6 +204,17 @@ public class UserHome extends AppCompatActivity implements MapsFragment.MapsFrag
 
     }
 
+    private String CalculateIMC(String height, String weight) {
+
+        Integer num_height = Integer.parseInt(height);
+        Integer num_weight = Integer.parseInt(weight);
+        Double  dec_height = Double.valueOf(num_height) / 100;
+        Double num_imc = Double.valueOf(num_weight) / (dec_height * dec_height);
+
+        String imc = String.format("%.2f", num_imc);
+
+        return imc;
+    }
 
     //Inicio Parte de las Notificaciones
     //get de application token

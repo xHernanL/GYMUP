@@ -87,9 +87,6 @@ public class UserServicios extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
             // la activity comienza con este intento de obtener los servicios.
         try
         {
